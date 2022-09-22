@@ -1,0 +1,90 @@
+@import url('https://fonts.googleapis.com/css2?family=Metrophobic&display=swap');
+
+.banner {
+    width: 100%;
+    margin-top: 118px;
+    height: 300px;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}   
+
+.banner--container {
+    font-family: 'Metrophobic', sans-serif;
+    background-color: #F6F5FB;
+    height: 100%;
+    width: 75%;
+    display: flex;
+    position: absolute;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    align-items: center;
+    /* flex */
+}
+
+.banner--container-firstline {
+    font-size: 3rem;
+}
+
+.banner--container-secondline {
+    text-shadow : 0 10px 20px rgba(0,0,0,0.12), 0 6px 6px rgba(0,0,0,0.12);
+}
+
+.polygon-1 {
+    position: absolute;
+    left: 0%;
+    top: 23%;
+    bottom: 0%;
+    width: 0;
+    height: 0;
+    border-bottom: 30px solid transparent;
+    border-top: 65px solid transparent;
+    border-left: 80px solid #403F7D;
+    border-right: 50px solid transparent;
+    transform: rotate(-20deg);
+}
+
+.polygon-2 {
+    position: absolute;
+    left: 0%;
+    bottom: 0%;
+    width: 0;
+    height: 0;
+    border-bottom: 100px solid #485FAE;
+    border-top: 100px solid transparent;
+    border-left: 100px solid #485FAE;
+    border-right: 100px solid transparent;
+}
+
+.polygon-3 {
+    position: absolute;
+    top: 0%;
+    right: 0%;
+    width: 300px;
+    height: 150px;
+    border-radius: 150px 150px 0 0;
+    background-color: #485FAE;
+}
+
+.polygon-4 {
+    position: absolute;
+    top: 50%;
+    right: -10%;
+    width: 300px;
+    height: 150px;
+    border-radius: 150px 150px 0 0;
+    background-color: #403F7D;
+    transform: rotate(180deg);
+}
+
+.btn-start-now {
+    position: absolute;
+    right: 3%;
+    bottom: 5%;
+    background-color: #F6F5FB;
+    padding: .3rem .9rem .3rem .9rem;
+    border-radius: 5rem;
+    border: 1px solid black;
+}

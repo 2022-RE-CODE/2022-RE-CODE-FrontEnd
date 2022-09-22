@@ -1,0 +1,103 @@
+@import url(//spoqa.github.io/spoqa-han-sans/css/SpoqaHanSansNeo.css);
+
+* { font-family: 'Spoqa Han Sans Neo', 'sans-serif'; }
+
+.Header {
+    position: fixed;
+    width: 100%;
+    height: 110px;
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    border-bottom: 1px solid #e3e3e3;
+    padding-bottom: .5rem;
+    z-index: 2;
+    top: 0;
+    left: 0;
+}
+
+.Header--top {
+    width: 65%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;    
+    justify-content: space-between;
+}
+
+.Header--logo-img {
+    width: 120px;
+    height: 50px;
+}
+
+.Header--search {
+    width: 750px; 
+    height: 25px;
+    display: flex;
+    position: relative;
+}
+
+.Header--search-icon {
+    color: #b5b3b2;
+    position: absolute;
+    height: 25px;
+    width: 20px;
+    left: 10%; 
+    z-index: 3;
+}
+
+.Header--search-input {
+    position: absolute;
+    height: 25px;
+    width: 500px;   
+    left: 10%;
+    border-radius: 10rem;
+    border: 1px #f2f2f2;
+    background-color: #f8f8f8;
+}
+
+.Header--search-input::placeholder {
+    color: #b5b3b2;
+}
+
+.Header--search-input:hover {
+    background-color: #e0dede;
+}
+
+.Header--search-input:focus { outline: none; }
+
+.login {
+    font-size: .8rem;
+}
+
+.Header--category {
+    color: white;
+    background-color: black;
+    padding: .5rem 1rem .5rem 1rem;
+    border-radius: 5px;
+    display: flex;
+    align-items: center;
+    gap: .5rem;
+}
+
+.Header--bottom {
+    width: 65%;
+    font-weight: 700;
+    font-size: .8rem;
+    display: flex;
+    align-items: center;    
+    justify-content: flex-start;
+    gap: 2rem;
+}
+
+.Header--menu {
+    font-size: .9rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    gap: 2rem;
+}
+
+
+
+
+

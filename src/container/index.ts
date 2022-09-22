@@ -1,1 +1,1 @@
-export * from "./headerContainer/HeaderContainer";
+export * from "./mainContainer/MainContainer";
