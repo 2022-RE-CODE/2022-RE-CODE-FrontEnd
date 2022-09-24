@@ -2,6 +2,10 @@
 
 * { font-family: 'Spoqa Han Sans Neo', 'sans-serif'; }
 
+body {
+    padding: 110px 0px 0px 0px;
+}
+
 .Header {
     position: fixed;
     width: 100%;
@@ -10,7 +14,8 @@
     display: flex;
     flex-direction: column;
     border-bottom: 1px solid #e3e3e3;
-    padding-bottom: .5rem;
+    background-color: white;
+    padding-top: .5rem;
     z-index: 2;
     top: 0;
     left: 0;
@@ -29,30 +34,61 @@
     height: 50px;
 }
 
-.Header--search {
-    width: 750px; 
-    height: 25px;
+.Header--logo-and-search {
     display: flex;
-    position: relative;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+.Header--search {
+    z-index: 1;
+    height: 35px;
+    width: 30rem;  
+    display: flex;
+    position: absolute;
+    align-items: center;
+    border: #f2f2f2 2px solid;
+    background-color: #f8f8f8;
+    border-radius: 10rem;
+}
+
+.Header--search:hover {
+    background-color: #e0dede;
+}
+
+.Header--search:focus { 
+    outline: none;
+    background-color: white; 
 }
 
 .Header--search-icon {
     color: #b5b3b2;
     position: absolute;
     height: 25px;
-    width: 20px;
-    left: 10%; 
+    width: 20px; 
     z-index: 3;
+}
+
+.Header--search-container {
+    position: relative;
+    height: 30px;
+    width: 30rem;   
+    display: flex;
+    align-items: center;
+    border: #f2f2f2 2px solid; 
+    border-radius: 10rem;
+    background-color: white;
 }
 
 .Header--search-input {
     position: absolute;
-    height: 25px;
-    width: 500px;   
-    left: 10%;
+    z-index: 0;
+    height: 30px;
+    width: 30rem;   
+    left: 5%;
+    border: #f2f2f2 2px solid; 
     border-radius: 10rem;
-    border: 1px #f2f2f2;
-    background-color: #f8f8f8;
+    border-left: none;
 }
 
 .Header--search-input::placeholder {
@@ -63,16 +99,25 @@
     background-color: #e0dede;
 }
 
-.Header--search-input:focus { outline: none; }
+.Header--search-input:focus { 
+    outline: none;
+    background-color: white; 
+}
 
-.login {
+.Header--login-btn {
     font-size: .8rem;
+    text-decoration: none;
+    color: black;
+}
+
+.Header--login-btn:hover {
+    color: red;
 }
 
 .Header--category {
     color: white;
     background-color: black;
-    padding: .5rem 1rem .5rem 1rem;
+    padding: .5rem 1.3rem .5rem 1.3rem;
     border-radius: 5px;
     display: flex;
     align-items: center;

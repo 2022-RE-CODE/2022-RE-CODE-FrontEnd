@@ -2,7 +2,6 @@ import React from 'react'
 import '../styles/banner.css';
 
 const BannerComponent: React.FC = () => {
-
     return (
         <div className="banner">
             <div className="banner--container">

@@ -2,12 +2,12 @@
 
 .banner {
     width: 100%;
-    margin-top: 118px;
     height: 300px;
     position: relative;
     display: flex;
     align-items: center;
     justify-content: center;
+    overflow-x: hidden;
 }   
 
 .banner--container {
@@ -69,6 +69,7 @@
 }
 
 .polygon-4 {
+
     position: absolute;
     top: 50%;
     right: -10%;
