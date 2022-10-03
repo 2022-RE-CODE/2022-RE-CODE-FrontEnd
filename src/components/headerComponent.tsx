@@ -10,19 +10,21 @@ const HeaderComponent: React.FC = () => {
             <div className="Header--top">
                 <div className="Header--logo-and-search">
                     <div className="Header--logo">
-                        <img className="Header--logo-img" src={'logo-recode.png'}/>
+                        <Link to="/" className="Header--home-btn">
+                            <img className="Header--logo-img" src={'logo-recode.png'} />
+                        </Link>
                     </div>
                     <div className="Header--search-container">
                         {/* <select className="Header--search"></select> */}
                         <div className="Header--search-icon"><BiSearch /></div>
                         <input className="Header--search-input" placeholder='관심있는 스택을 검색해보세요!'></input>
                     </div>
-                </div> 
-                <Link to="login" className="Header--login-btn">
+                </div>
+                <Link to="/login" className="Header--login-btn">
                     로그인
                 </Link>
             </div>
-            
+
             <div className="Header--bottom">
                 <div className="Header--category">
                     <BiMenu />

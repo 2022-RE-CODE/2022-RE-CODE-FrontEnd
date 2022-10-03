@@ -29,6 +29,10 @@ body {
     justify-content: space-between;
 }
 
+.Header--home-btn {
+    color: white;
+}
+
 .Header--logo-img {
     width: 120px;
     height: 50px;
