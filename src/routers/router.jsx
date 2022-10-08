@@ -9,8 +9,8 @@ const AppRoutes = () => {
       <Routes>
           <Route path='/' element={<MainContainer />} />
           <Route path='/login' element={<LoginContainer />} />
-          <Route path='/community' element={<CommunityContainer />} />
           <Route path='/auth' element={<AuthContainer />} />
+          <Route path='/community' element={<CommunityContainer />} />
       </Routes>
     </BrowserRouter>
   )

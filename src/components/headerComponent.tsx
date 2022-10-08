@@ -15,7 +15,6 @@ const HeaderComponent: React.FC = () => {
                         </Link>
                     </div>
                     <div className="Header--search-container">
-                        {/* <select className="Header--search"></select> */}
                         <div className="Header--search-icon"><BiSearch /></div>
                         <input className="Header--search-input" placeholder='관심있는 스택을 검색해보세요!'></input>
                     </div>

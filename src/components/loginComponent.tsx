@@ -48,7 +48,7 @@ const LoginComponent: React.FC = () => {
                         onChange={passwordHandler}
                     ></input>
                     <button type="submit">로그인</button>
-                    <button><Link to="auth">회원가입</Link></button>
+                    <button><Link to="/auth">회원가입</Link></button>
                 </form>
             </div>
         </div>

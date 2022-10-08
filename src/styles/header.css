@@ -68,6 +68,8 @@ body {
 .Header--search-icon {
     color: #b5b3b2;
     position: absolute;
+    left: 1%;
+    top: 20%;
     height: 25px;
     width: 20px; 
     z-index: 3;
@@ -75,12 +77,12 @@ body {
 
 .Header--search-container {
     position: relative;
-    height: 30px;
+    height: 32px;
     width: 30rem;   
     display: flex;
     align-items: center;
     border: #f2f2f2 2px solid; 
-    border-radius: 10rem;
+    border-radius: 10rem 10rem 10rem 10rem;
     background-color: white;
 }
 
@@ -91,7 +93,7 @@ body {
     width: 30rem;   
     left: 5%;
     border: #f2f2f2 2px solid; 
-    border-radius: 10rem;
+    border-radius: 0rem 10rem 10rem 0rem;
     border-left: none;
 }
 
