@@ -23,7 +23,6 @@ const LoginComponent: React.FC = () => {
     };
 
     const submitHandler = (e: any) => {
-        toast.success("Success!");
         e.preventDefault();
         // state에 저장한 값을 가져옵니다.
         instance.post("auth/login", JSON.stringify({
@@ -34,7 +33,7 @@ const LoginComponent: React.FC = () => {
             console.log(response);
         });
 
-        // navigate("/");
+        navigate("/");
     };
 
     return (

@@ -3,8 +3,11 @@ import { useState } from 'react';
 import '../../styles/auth.css';
 import { Link, useNavigate } from 'react-router-dom';
 import { instance } from '../api/axios.instance';
-import { instanceWithHeader } from '../api/axiosWithHeader.instance';
+import instanceWithHeader from '../api/axiosWithHeader.instance';
 import qs from 'qs';
+import { toast, ToastContainer, Slide } from "react-toastify";
+import 'react-toastify/dist/ReactToastify.css';
+
 
 type EnumPositionType = {
     [key: string]: string
@@ -18,6 +21,7 @@ const EnumPosition: EnumPositionType = {
 }
 
 const AuthComponent: React.FC = () => {
+
     const navigate = useNavigate();
     const [email, setEmail] = useState<string>("");
     const [verificationCode, setVerificationCode] = useState<string>("");
@@ -61,9 +65,9 @@ const AuthComponent: React.FC = () => {
         instanceWithHeader.post("email/join", qs.stringify({
             email: email
         }))
-            .then((response) => {
-                // 코드 발송 완료 ~에서 확인해주세요
-                console.log(response);
+            .then((response: any) => {
+                // 알림
+                toast(response);
             });
     }
 
@@ -120,6 +124,14 @@ const AuthComponent: React.FC = () => {
                     <button className="auth--form--submitBtn" type="submit">회원가입하기</button>
                 </form>
             </div>
+            <ToastContainer
+                position="bottom-center"
+                autoClose={2000}
+                hideProgressBar={true}
+                newestOnTop={true}
+                transition={Slide}
+                limit={1}
+            />
         </div>
     )
 }

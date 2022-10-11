@@ -15,16 +15,17 @@ body {
 
     /* 기본 적용 스타일 바꾸기 */
     --toastify-toast-width: 320px;
-    --toastify-toast-min-height: 64px;
+    /* --toastify-toast-height: 10px; */
+    --toastify-toast-min-height: 10px;
     --toastify-toast-max-height: 800px;
     --toastify-font-family: 'Spoqa Han Sans Neo';
 
 }
 
 .Toastify__close-button--light {
-    color: white;
+    color: white !important;
 }
 
 .Toastify__close-button--dark {
-    color: white;
+    color: white !important;
 }
