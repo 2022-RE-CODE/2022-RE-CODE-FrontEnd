@@ -3,6 +3,8 @@ import { useState } from 'react';
 import '../../styles/login.css';
 import { Link, useNavigate } from 'react-router-dom';
 import { instance } from '../api/axios.instance';
+import { toast, ToastContainer, Slide } from "react-toastify";
+import 'react-toastify/dist/ReactToastify.css';
 
 const LoginComponent: React.FC = () => {
     const navigate = useNavigate();
@@ -21,6 +23,7 @@ const LoginComponent: React.FC = () => {
     };
 
     const submitHandler = (e: any) => {
+        toast.success("Success!");
         e.preventDefault();
         // state에 저장한 값을 가져옵니다.
         instance.post("auth/login", JSON.stringify({
@@ -31,7 +34,7 @@ const LoginComponent: React.FC = () => {
             console.log(response);
         });
 
-        navigate("/");
+        // navigate("/");
     };
 
     return (
@@ -42,7 +45,6 @@ const LoginComponent: React.FC = () => {
                 </Link>
                 <div className="login--title1">자신의 능력으로</div>
                 <div className="login--title2">추가 수익을 만들어보세요!</div>
-
                 <form className="login--form" onSubmit={submitHandler}>
                     <label className="login--form--label"></label>
                     <input type="email" value={email} onChange={emailHandler} placeholder="이메일"></input>
@@ -53,6 +55,13 @@ const LoginComponent: React.FC = () => {
                     </div>
                 </form>
             </div>
+            <ToastContainer 
+                position="bottom-center" 
+                autoClose={2000} 
+                hideProgressBar={true} 
+                newestOnTop={true} 
+                transition={Slide}
+            />
         </div>
     )
 }

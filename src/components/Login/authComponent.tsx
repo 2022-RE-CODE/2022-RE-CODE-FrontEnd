@@ -57,6 +57,7 @@ const AuthComponent: React.FC = () => {
     }
 
     const getVerificationCode = () => {
+
         instanceWithHeader.post("email/join", qs.stringify({
             email: email
         }))
@@ -118,8 +119,6 @@ const AuthComponent: React.FC = () => {
                     </select>
                     <button className="auth--form--submitBtn" type="submit">회원가입하기</button>
                 </form>
-
-                
             </div>
         </div>
     )

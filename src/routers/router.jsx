@@ -1,7 +1,6 @@
 import React from 'react'
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
-import { CommunityContainer, LoginContainer, MainContainer } from '../container';
-import { AuthContainer } from '../container/authContainer/AuthContainer';
+import { CommunityContainer, LoginContainer, MainContainer, AuthContainer } from '../container';
 
 const AppRoutes = () => {
   return (

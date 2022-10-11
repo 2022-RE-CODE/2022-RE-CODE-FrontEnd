@@ -1,38 +1,30 @@
-.App {
-  text-align: center;
+@import url(//spoqa.github.io/spoqa-han-sans/css/SpoqaHanSansNeo.css);
+
+body {
+    /* 테마별 색상 바꾸기 */
+    --toastify-color-light: #2E2E2E;
+    --toastify-color-dark: #2E2E2E;
+    --toastify-text-color-light: white;
+    --toastify-text-color-dark: white;
+
+    /* 테마별 아이콘 색상 바꾸기 */
+    --toastify-icon-color-info: none;
+    --toastify-icon-color-success: none;
+    --toastify-icon-color-warning: none;
+    --toastify-icon-color-error: none;
+
+    /* 기본 적용 스타일 바꾸기 */
+    --toastify-toast-width: 320px;
+    --toastify-toast-min-height: 64px;
+    --toastify-toast-max-height: 800px;
+    --toastify-font-family: 'Spoqa Han Sans Neo';
+
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.Toastify__close-button--light {
+    color: white;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
-}
-
-.App-link {
-  color: #61dafb;
-}
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.Toastify__close-button--dark {
+    color: white;
 }
