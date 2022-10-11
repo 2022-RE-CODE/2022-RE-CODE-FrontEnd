@@ -7,3 +7,14 @@ export const instance = axios.create({
         "Content-Type": "application/json"
     }
 });
+
+instance.interceptors.response.use(response => {
+    if (!response.data.status) return response.data;
+    if (response.data.status === 500) return response.data.message;
+    if (response.data.status === 401) return response.data.message;
+},
+error => {
+    return Promise.reject(error);
+});
+
+export default instance; 
