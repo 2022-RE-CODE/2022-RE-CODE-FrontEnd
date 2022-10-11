@@ -1,0 +1,121 @@
+.auth {
+    display: flex;
+    justify-content: center;
+}
+
+.auth--form-container {
+    position: relative;
+    margin-top: 3rem;
+    width: 23%;
+    padding: 6rem 3rem;
+    border: 1px solid #e3e3e3;
+    border-radius: 0.6rem;
+}
+
+.auth--form-container>a>img {
+    position: absolute;
+    left: 8%;
+    top: 10%;
+}
+
+.auth--form {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 2rem;
+}
+
+.auth--form > input {
+    height: 2rem;
+    border: none;
+    padding: .5rem;
+    border-bottom: 1px solid #e3e3e3;
+}
+
+.auth--form > input:focus {
+    position: relative;
+    outline: none;
+    border-bottom: 1px solid black;
+}
+
+.auth--form > input::-webkit-input-placeholder {
+    transition: all .3s ease;
+    position: absolute;
+    top: 50%;
+    color: #919191;
+}
+
+.auth--form > input:focus::-webkit-input-placeholder {
+    position: absolute;
+    font-size: 11px;
+    top: 0%;
+    left: 2%;
+    color: #7b7b7b;
+}
+
+.auth--form--submitBtn {
+    background-color: #ed234b;
+    color: white;
+    padding: .9rem;
+    border: none;
+    border-radius: .3rem;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+.auth--form--emailBtn {
+    background-color: #2e2e2e;
+    color: white;
+    height: 2rem;
+    border-radius: .3rem;
+    cursor: pointer;
+}
+
+.auth--email-container {
+    margin-top: 2rem;
+    width: 100%;
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+}
+
+.auth--email-container > input {
+    width: 60%;
+    height: 2rem;
+    border: none;
+    padding: .5rem;
+    border-bottom: 1px solid #e3e3e3;
+}
+
+.auth--email-container > input:focus {
+    position: relative;
+    outline: none;
+    border-bottom: 1px solid black;
+}
+
+.auth--email-container > input::-webkit-input-placeholder {
+    transition: all .3s ease;
+    position: absolute;
+    top: 50%;
+    color: #919191;
+}
+
+.auth--email-container > input:focus::-webkit-input-placeholder {
+    position: absolute;
+    font-size: 11px;
+    top: 0%;
+    left: 2%;
+    color: #7b7b7b;
+}
+
+.auth--form-position {
+    height: 2rem;
+    border: none;
+    border-bottom: 1px solid #e3e3e3;
+    text-indent: .3rem; 
+}
+
+.auth--form-position:focus {
+    outline: none;
+}
