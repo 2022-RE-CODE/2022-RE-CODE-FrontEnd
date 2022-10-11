@@ -1,5 +1,5 @@
 import React from 'react'
-import '../styles/subtitle.css';
+import '../../styles/subtitle.css';
 
 const SubTitleComponent: React.FC = () => {
     return (

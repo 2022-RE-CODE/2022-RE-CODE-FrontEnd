@@ -1,5 +1,5 @@
 import React from 'react'
-import '../styles/allreviews.css';
+import '../../styles/allreviews.css';
 
 const ViewAllReviewsComponent: React.FC = () => {
 

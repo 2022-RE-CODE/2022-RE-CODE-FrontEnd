@@ -1,11 +1,8 @@
-import React from 'react'
-import AuthComponent from '../../components/authComponent'
-import HeaderComponent from '../../components/headerComponent'
+import AuthComponent from '../../components/Login/authComponent'
 
 export const AuthContainer = () => {
     return(
         <div className='auth-container'>
-            <HeaderComponent/>
             <AuthComponent/>
         </div>
     )

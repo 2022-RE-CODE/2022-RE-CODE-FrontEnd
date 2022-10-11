@@ -1,5 +1,5 @@
 import React from 'react'
-import '../styles/popularReveiewer.css';
+import '../../styles/popularReveiewer.css';
 
 const PopularReviewerComponent: React.FC = () => {
 

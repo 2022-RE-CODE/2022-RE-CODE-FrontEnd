@@ -1,9 +1,8 @@
-import React from 'react'
-import BannerComponent from '../../components/bannerComponent'
+import BannerComponent from '../../components/Main/bannerComponent'
 import HeaderComponent from '../../components/headerComponent'
-import PopularReviewerComponent from '../../components/popularReviewerComponent'
-import SubTitleComponent from '../../components/subTitleComponent'
-import ViewAllReviewsComponent from '../../components/viewAllReviewsComponent'
+import PopularReviewerComponent from '../../components/Main/popularReviewerComponent'
+import SubTitleComponent from '../../components/Main/subTitleComponent'
+import ViewAllReviewsComponent from '../../components/Main/viewAllReviewsComponent'
 
 export const MainContainer = () => {
     return(

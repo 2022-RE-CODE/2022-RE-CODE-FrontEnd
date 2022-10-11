@@ -2,7 +2,7 @@
 
 * { font-family: 'Spoqa Han Sans Neo', 'sans-serif'; }
 
-body {
+body:not(body:has(> div > div > .login-container), body:has(> div > div > .auth-container)) {
     padding: 110px 0px 0px 0px;
 }
 
