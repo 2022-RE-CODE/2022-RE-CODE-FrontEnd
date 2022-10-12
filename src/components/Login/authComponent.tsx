@@ -86,12 +86,11 @@ const AuthComponent: React.FC = () => {
         });
 
         instance.post("user", payload)
-            .then((response) => {
-                console.log(response);
+            .then((response: any) => {
+                toast(response);
             });
 
         // 로그인 페이지로 이동
-        // Todo:: 예외 처리
         // Todo:: Code 200 일 때만 Navigate
         navigate("/login");
     };

@@ -24,15 +24,13 @@ const LoginComponent: React.FC = () => {
 
     const submitHandler = (e: any) => {
         e.preventDefault();
-        // state에 저장한 값을 가져옵니다.
         instance.post("auth/login", JSON.stringify({
             email: email,
             password: password
         }))
-        .then((response) => {
-            console.log(response);
+        .then((response: any) => {
+            toast(response);
         });
-
         navigate("/");
     };
 
