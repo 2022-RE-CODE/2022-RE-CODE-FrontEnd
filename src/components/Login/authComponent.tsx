@@ -65,16 +65,14 @@ const AuthComponent: React.FC = () => {
         instanceWithHeader.post("email/join", qs.stringify({
             email: email
         }))
-            .then((response: any) => {
-                // 알림
-                toast(response);
-            });
+        .then((response) => {
+            toast(response.data);
+        });
+
     }
 
     const submitHandler = (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
-
-        console.log(position);
 
         const payload = JSON.stringify({
             email: email,
@@ -86,13 +84,19 @@ const AuthComponent: React.FC = () => {
         });
 
         instance.post("user", payload)
-            .then((response: any) => {
-                toast(response);
-            });
-
-        // 로그인 페이지로 이동
-        // Todo:: Code 200 일 때만 Navigate
-        navigate("/login");
+        .then(response => {
+            if (response.status === 200) {
+                // TODO :: Navigate 후에도 알림 뜨도록 수정
+                navigate("/login");
+                toast("회원가입이 완료되었습니다.");
+            }
+            else {
+                toast.error(response.data);
+            }
+        })
+        .catch(error => {
+            toast.error(error.data);
+        });
     };
 
     return (

@@ -1,5 +1,10 @@
 import axios from 'axios';
 
+type responseType = { 
+    status: number,
+    data: JSON | string
+} | undefined
+
 const instanceWithHeader = axios.create({
     baseURL: "http://localhost:8090/",
     headers: {
@@ -7,9 +12,19 @@ const instanceWithHeader = axios.create({
     }
 });
 
-instanceWithHeader.interceptors.response.use(response => {
-    if (!response.data.status) return response.data;
-    if (response.data.status === 500) return response.data.message;
+instanceWithHeader.interceptors.response.use((response): responseType => {
+    if (response === undefined) return {
+        status: 400,
+        data: "Axios 통신 에러"
+    };
+    if (!response.data.status) return {
+        status: 200,
+        data: response.data
+    };
+    if (response.data.status === 500) return {
+        status: 500,
+        data: response.data.message
+    };
 },
 error => {
     return Promise.reject(error);

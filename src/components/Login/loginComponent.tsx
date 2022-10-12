@@ -28,10 +28,16 @@ const LoginComponent: React.FC = () => {
             email: email,
             password: password
         }))
-        .then((response: any) => {
-            toast(response);
+        .then(response => {
+            if (response.status === 200) {
+                // TODO :: Navigate 후에도 알림 뜨도록 수정
+                toast("로그인이 완료되었습니다.");
+                navigate("/");
+            }
+            else {
+                toast(response.data);
+            }
         });
-        navigate("/");
     };
 
     return (
