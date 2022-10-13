@@ -1,9 +1,21 @@
 import LoginComponent from '../../components/Login/loginComponent'
+import { RootState } from '../../redux'
+import { useSelector, useDispatch } from 'react-redux';
+import { loginSuccess, logoutSuccess } from '../../redux/user/action/user.action';
 
 export const LoginContainer = () => {
+
+    const dispatch = useDispatch();
+
+    const onLogin = (token: string) => {
+        dispatch(loginSuccess(token));
+    }
+
     return(
         <div className='login-container'>
-            <LoginComponent/>
+            <LoginComponent
+                onLogin={onLogin}
+            />
         </div>
     )
 }

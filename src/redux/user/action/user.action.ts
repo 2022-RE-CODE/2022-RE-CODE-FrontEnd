@@ -1,8 +1,16 @@
-import { GET_USERINFO, LOGIN_FAIL, UNAUTHORIZED_ERROR, LOGIN_SUCCESS, LOGOUT_SUCCESS } from "./user.actionType";
+import { 
+    GET_USERINFO, 
+    LOGIN_FAIL, 
+    UNAUTHORIZED_ERROR, 
+    LOGIN_SUCCESS, 
+    LOGOUT_SUCCESS,
+    FETCH_TOKEN_FAIL 
+} from "./user.actionType";
 
 export const getUserInfo = () => ({ type: GET_USERINFO });
 export const unauthorizedError = () => ({ type: UNAUTHORIZED_ERROR });
 export const loginFail = () => ({ type: LOGIN_FAIL });
+export const fetchTokenFail = () => ({ type: FETCH_TOKEN_FAIL })
 export const logoutSuccess = () => ({ type: LOGOUT_SUCCESS });
 export const loginSuccess = (token: string) => ({ 
     type: LOGIN_SUCCESS,

@@ -120,6 +120,17 @@ body:not(body:has(> div > div > .login-container), body:has(> div > div > .auth-
     color: red;
 }
 
+
+.Header--logout-btn {
+    font-size: .8rem;
+    text-decoration: none;
+    color: black;
+}
+
+.Header--logout-btn:hover {
+    color: red;
+}
+
 .Header--category {
     color: white;
     background-color: black;

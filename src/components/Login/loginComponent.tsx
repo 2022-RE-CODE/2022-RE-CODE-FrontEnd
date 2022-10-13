@@ -6,7 +6,13 @@ import { instance } from '../api/axios.instance';
 import { toast, ToastContainer, Slide } from "react-toastify";
 import 'react-toastify/dist/ReactToastify.css';
 
-const LoginComponent: React.FC = () => {
+export type LoginComponentProps = {
+    onLogin: (token: string) => void;
+}
+
+const LoginComponent: React.FC<LoginComponentProps> = ({
+    onLogin,
+}: LoginComponentProps) => {
     const navigate = useNavigate();
 
     const [email, setEmail] = useState("");
@@ -32,7 +38,8 @@ const LoginComponent: React.FC = () => {
             if (response.status === 200) {
                 // TODO :: Navigate 후에도 알림 뜨도록 수정
                 toast("로그인이 완료되었습니다.");
-                navigate("/");
+                onLogin(response.data.accessToken.value);
+                // navigate("/");
             }
             else {
                 toast(response.data);
@@ -66,6 +73,6 @@ const LoginComponent: React.FC = () => {
                 transition={Slide}
             />
         </div>
-    )
+    );
 }
 export default LoginComponent;

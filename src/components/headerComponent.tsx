@@ -4,7 +4,13 @@ import { BiMenu } from "react-icons/bi";
 import { BiSearch } from "react-icons/bi";
 import { Link } from 'react-router-dom';
 
-const HeaderComponent: React.FC = () => {
+type HeaderComponentProps = {
+    isAuthenticated: boolean | null;
+}
+
+const HeaderComponent: React.FC<HeaderComponentProps> = ({
+    isAuthenticated
+}) => {
     return (
         <div className="Header">
             <div className="Header--top">
@@ -19,9 +25,13 @@ const HeaderComponent: React.FC = () => {
                         <input className="Header--search-input" placeholder='관심있는 스택을 검색해보세요!'></input>
                     </div>
                 </div>
-                <Link to="/login" className="Header--login-btn">
+                { !isAuthenticated ? 
+                (<Link to="/login" className="Header--login-btn">
                     로그인
-                </Link>
+                </Link>) : 
+                <Link to="/logout" className="Header--logout-btn">
+                    로그아웃
+                </Link>}
             </div>
 
             <div className="Header--bottom">
