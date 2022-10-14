@@ -1,9 +1,9 @@
-import AuthComponent from '../../components/Login/authComponent'
+import AuthComponent from '../../components/Auth/authComponent'
 
 export const AuthContainer = () => {
-    return(
+    return (
         <div className='auth-container'>
-            <AuthComponent/>
+            <AuthComponent />
         </div>
     )
 }

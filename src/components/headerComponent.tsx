@@ -6,10 +6,12 @@ import { Link } from 'react-router-dom';
 
 type HeaderComponentProps = {
     isAuthenticated: boolean | null;
+    onLogout: () => void;
 }
 
 const HeaderComponent: React.FC<HeaderComponentProps> = ({
-    isAuthenticated
+    isAuthenticated,
+    onLogout
 }) => {
     return (
         <div className="Header">
@@ -29,9 +31,9 @@ const HeaderComponent: React.FC<HeaderComponentProps> = ({
                 (<Link to="/login" className="Header--login-btn">
                     로그인
                 </Link>) : 
-                <Link to="/logout" className="Header--logout-btn">
+                <button onClick={onLogout} className="Header--logout-btn">
                     로그아웃
-                </Link>}
+                </button>}
             </div>
 
             <div className="Header--bottom">

@@ -1,4 +1,4 @@
-import { getUserInfo, unauthorizedError, loginFail, logoutSuccess, loginSuccess, fetchTokenFail } from "../action/user.action";
+import { getUserInfo, unauthorizedError, loginFail, logoutSuccess, loginSuccess, fetchTokenFail, fetchTokenSuccess } from "../action/user.action";
 
 export type UserReducerAction =
     | ReturnType<typeof getUserInfo>
@@ -6,7 +6,8 @@ export type UserReducerAction =
     | ReturnType<typeof loginFail>
     | ReturnType<typeof logoutSuccess>
     | ReturnType<typeof loginSuccess>
-    | ReturnType<typeof fetchTokenFail>;
+    | ReturnType<typeof fetchTokenFail>
+    | ReturnType<typeof fetchTokenSuccess>;
 
 // TODO :: UserReducerState user 타입 정의
 export type UserReducerState = {
