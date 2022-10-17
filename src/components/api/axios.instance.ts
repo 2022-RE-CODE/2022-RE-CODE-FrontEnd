@@ -1,12 +1,12 @@
 import axios from 'axios';
 
-type responseType = { 
+type responseType = {
     status: number,
     data: JSON | string
 } | undefined
 
 export const instance = axios.create({
-    baseURL: "http://localhost:8090/",
+    baseURL: "http://localhost:8081/",
     timeout: 3000,
     headers: {
         "Content-Type": "application/json"
@@ -35,20 +35,20 @@ instance.interceptors.response.use((response): responseType => {
         data: response.data.message
     };
 },
-error => {
-    if (error.response.data.status === 422) return {
-        status: 422,
-        data: error.response.data.message
-    }
-    if (error.response.data.status === 401) return {
-        status: 401,
-        data: error.response.data.message
-    }
-    if (error.response.data.status === 404) return {
-        status: 404,
-        data: error.response.data.message
-    }
-    return Promise.reject(error);
-});
+    error => {
+        if (error.response.data.status === 422) return {
+            status: 422,
+            data: error.response.data.message
+        }
+        if (error.response.data.status === 401) return {
+            status: 401,
+            data: error.response.data.message
+        }
+        if (error.response.data.status === 404) return {
+            status: 404,
+            data: error.response.data.message
+        }
+        return Promise.reject(error);
+    });
 
 export default instance; 

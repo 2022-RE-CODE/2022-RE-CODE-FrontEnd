@@ -1,7 +1,7 @@
 import React from 'react'
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import { CommunityContainer, LoginContainer, MainContainer, AuthContainer } from '../container';
-import { PostContainer } from '../container/postContainer/PostContainer';
+import { UserInfoContainer } from '../container/userInfoContainer/UserInfoContainer';
 
 const AppRoutes = () => {
   return (
@@ -10,8 +10,8 @@ const AppRoutes = () => {
           <Route path='/' element={<MainContainer />} />
           <Route path='/login' element={<LoginContainer />} />
           <Route path='/auth' element={<AuthContainer />} />
-          <Route path='/community' element={<CommunityContainer />} />
-          <Route path='/post' element={<PostContainer />} />
+          <Route path='/post' element={<CommunityContainer />} />
+          <Route path='/user/:id' element={<UserInfoContainer />} />
       </Routes>
     </BrowserRouter>
   )

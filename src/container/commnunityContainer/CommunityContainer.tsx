@@ -1,6 +1,7 @@
 import React from 'react'
 import { useDispatch, useSelector } from 'react-redux';
 import HeaderComponent from '../../components/headerComponent'
+import PostComponent from '../../components/Post/postComponent';
 import { RootState } from '../../redux';
 import { logoutSuccess } from '../../redux/user/action/user.action';
 
@@ -19,6 +20,7 @@ export const CommunityContainer = () => {
                 isAuthenticated={isAuthenticated}
                 onLogout={onLogout}
             />
+            <PostComponent />
         </div>
     )
 }

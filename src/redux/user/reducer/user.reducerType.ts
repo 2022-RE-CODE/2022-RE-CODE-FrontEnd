@@ -11,9 +11,9 @@ export type UserReducerAction =
 
 // TODO :: UserReducerState user 타입 정의
 export type UserReducerState = {
-    token: string | null,
-    isAuthenticated: boolean | null,
-    user: any | null,
+    token: string | null, 
+    isAuthenticated: boolean | null, 
+    user: any | null, 
 }
 
 export const initialState = {
