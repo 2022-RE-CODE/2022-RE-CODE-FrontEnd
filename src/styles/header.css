@@ -56,15 +56,6 @@ body:not(body:has(> div > div > .login-container), body:has(> div > div > .auth-
     border-radius: 10rem;
 }
 
-.Header--search:hover {
-    background-color: #e0dede;
-}
-
-.Header--search:focus { 
-    outline: none;
-    background-color: white; 
-}
-
 .Header--search-icon {
     color: #b5b3b2;
     position: absolute;
@@ -83,7 +74,18 @@ body:not(body:has(> div > div > .login-container), body:has(> div > div > .auth-
     align-items: center;
     border: #f2f2f2 2px solid; 
     border-radius: 10rem 10rem 10rem 10rem;
-    background-color: white;
+    background-color: #f8f8f8;
+}
+
+.Header--search-container-gray {
+    position: relative;
+    height: 32px;
+    width: 30rem;   
+    display: flex;
+    align-items: center;
+    border: #f2f2f2 2px solid; 
+    border-radius: 10rem 10rem 10rem 10rem;
+    background-color: #e8e8e8;
 }
 
 .Header--search-input {
@@ -92,6 +94,19 @@ body:not(body:has(> div > div > .login-container), body:has(> div > div > .auth-
     height: 30px;
     width: 30rem;   
     left: 5%;
+    background-color: #f8f8f8;
+    border: #f2f2f2 2px solid; 
+    border-radius: 0rem 10rem 10rem 0rem;
+    border-left: none;
+}
+
+.Header--search-input-gray {
+    position: absolute;
+    z-index: 0;
+    height: 30px;
+    width: 30rem;   
+    left: 5%;
+    background-color: #e8e8e8;
     border: #f2f2f2 2px solid; 
     border-radius: 0rem 10rem 10rem 0rem;
     border-left: none;
@@ -101,13 +116,17 @@ body:not(body:has(> div > div > .login-container), body:has(> div > div > .auth-
     color: #b5b3b2;
 }
 
-.Header--search-input:hover {
-    background-color: #e0dede;
-}
-
 .Header--search-input:focus { 
     outline: none;
-    background-color: white; 
+}
+
+.Header--search-input-gray::placeholder {
+    color: #b5b3b2;
+}
+
+
+.Header--search-input-gray:focus { 
+    outline: none;
 }
 
 .Header--login-btn {
@@ -127,6 +146,7 @@ body:not(body:has(> div > div > .login-container), body:has(> div > div > .auth-
     color: black;
     background-color: white;
     border: none;
+    cursor: pointer;
 }
 
 .Header--logout-btn:hover {
@@ -136,11 +156,15 @@ body:not(body:has(> div > div > .login-container), body:has(> div > div > .auth-
 .Header--category {
     color: white;
     background-color: black;
-    padding: .5rem 1.3rem .5rem 1.3rem;
+    padding: .5rem 1.6rem .5rem 1.6rem;
     border-radius: 5px;
     display: flex;
     align-items: center;
     gap: .5rem;
+}
+
+.Header--category:hover {
+    background-color: red;
 }
 
 .Header--bottom {
@@ -151,6 +175,8 @@ body:not(body:has(> div > div > .login-container), body:has(> div > div > .auth-
     align-items: center;    
     justify-content: flex-start;
     gap: 2rem;
+    margin-top: .4rem;
+    margin-left: 1.2rem;
 }
 
 .Header--menu {
@@ -160,6 +186,16 @@ body:not(body:has(> div > div > .login-container), body:has(> div > div > .auth-
     justify-content: space-around;
     gap: 2rem;
 }
+
+.Header--menu > div {
+    cursor: pointer;
+}
+
+.Header--menu > div:hover {
+    color: red;
+}
+
+
 
 
 

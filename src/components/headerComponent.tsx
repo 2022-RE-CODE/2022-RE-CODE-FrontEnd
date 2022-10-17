@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import '../styles/header.css';
 import { BiMenu } from "react-icons/bi";
 import { BiSearch } from "react-icons/bi";
@@ -13,6 +13,15 @@ const HeaderComponent: React.FC<HeaderComponentProps> = ({
     isAuthenticated,
     onLogout
 }) => {
+
+    const [searchEvent, setSearchEvent] = useState(0);
+    const onMouseOverHandle = () => {
+        setSearchEvent(1);
+    }
+    const onMouseOutHandle = () => {
+        setSearchEvent(0);
+    }
+
     return (
         <div className="Header">
             <div className="Header--top">
@@ -22,18 +31,22 @@ const HeaderComponent: React.FC<HeaderComponentProps> = ({
                             <img className="Header--logo-img" src={'logo-recode.png'} />
                         </Link>
                     </div>
-                    <div className="Header--search-container">
+                    <div className={searchEvent?"Header--search-container-gray":"Header--search-container"}>
                         <div className="Header--search-icon"><BiSearch /></div>
-                        <input className="Header--search-input" placeholder='관심있는 스택을 검색해보세요!'></input>
+                        <input
+                            className={searchEvent?"Header--search-input-gray":"Header--search-input"}
+                            placeholder='관심있는 스택을 검색해보세요!'
+                            onMouseOver={onMouseOverHandle}
+                            onMouseOut={onMouseOutHandle}></input>
                     </div>
                 </div>
-                { !isAuthenticated ? 
-                (<Link to="/login" className="Header--login-btn">
-                    로그인
-                </Link>) : 
-                <button onClick={onLogout} className="Header--logout-btn">
-                    로그아웃
-                </button>}
+                {!isAuthenticated ?
+                    (<Link to="/login" className="Header--login-btn">
+                        로그인
+                    </Link>) :
+                    <button onClick={onLogout} className="Header--logout-btn">
+                        로그아웃
+                    </button>}
             </div>
 
             <div className="Header--bottom">

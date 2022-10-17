@@ -1,6 +1,4 @@
-import React, { useEffect, useState } from 'react'
-import { useParams, useSearchParams } from 'react-router-dom';
-import instance from '../api/axios.instance';
+import React, { useEffect, useState } from 'react';
 
 type UserInfoComponentProps = {
     user: {
