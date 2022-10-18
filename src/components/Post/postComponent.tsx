@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import instance from '../api/axios.instance';
+import { CategoryType, PostType } from './postType';
 
 const PostComponent: React.FC = () => {
     const [posts, setPosts] = useState<any>();
@@ -11,9 +12,7 @@ const PostComponent: React.FC = () => {
     const getPosts = async () => {
         try {
             const response = await instance.get('post/find/all?page=0');
-            console.log(response.data.count);
-            console.log(response.data.data);
-            const postList = response.data.data.map((post: any) => {
+            const postList = response.data.data.map((post: PostType) => {
                 return (
                     <div>
                         {post.postId}
@@ -22,10 +21,10 @@ const PostComponent: React.FC = () => {
                         {post.view}
                         {post.likes}
                         {post.createMinutesAgo}
-                        {post.categories.map((categori: any) => {
+                        {post.categories.map((category: CategoryType) => {
                             return(
                                 <div>
-                                    {categori.name}
+                                    {category.name}
                                 </div>
                             )
                         })}
