@@ -28,7 +28,7 @@ const HeaderComponent: React.FC<HeaderComponentProps> = ({
                 <div className="Header--logo-and-search">
                     <div className="Header--logo">
                         <Link to="/" className="Header--home-btn">
-                            <img className="Header--logo-img" src={'logo-recode.png'} />
+                            <img className="Header--logo-img" src='/logo-recode.png' />
                         </Link>
                     </div>
                     <div className={searchEvent?"Header--search-container-gray":"Header--search-container"}>
