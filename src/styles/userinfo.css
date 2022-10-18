@@ -1,0 +1,50 @@
+.userinfo-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.user-info--label {
+    height: 0.1rem;
+    margin: 3.2rem 0;
+    border-width: 0.1rem 0 0;
+    border-top: 0.1rem solid #e3e3e3;
+    color: #919191;
+    text-align: center;
+}
+
+.user-info--label::after {
+    content: "유저 정보";
+    position: relative;
+    top: -.9rem;
+    font-size: .9rem;
+    padding: 0px 1.6rem;
+    background: white;
+}
+
+.userInfo {
+    margin-top: 2rem;
+    height: 20rem;
+    width: 50rem;
+}
+
+.user-img {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 10rem;
+    height: 10rem;
+    background-color: #e3e3e3;
+    border-radius: 100%;
+}
+
+.user-info--card {
+    display: flex;
+    gap: 3rem;
+}
+
+.user-img > svg {
+    color: white;
+    width: 5rem;
+    height: 5rem;
+}

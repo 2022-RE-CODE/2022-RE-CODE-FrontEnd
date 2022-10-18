@@ -2,8 +2,9 @@
 
 * { font-family: 'Spoqa Han Sans Neo', 'sans-serif'; }
 
-body:not(body:has(> div > div > .login-container), body:has(> div > div > .auth-container)) {
-    padding: 110px 0px 0px 0px;
+body:not(body:has(> div > div > .login-container), 
+body:has(> div > div > .auth-container)) {
+    padding: 120px 0px 0px 0px;
 }
 
 .Header {
@@ -52,7 +53,7 @@ body:not(body:has(> div > div > .login-container), body:has(> div > div > .auth-
     position: absolute;
     align-items: center;
     border: #f2f2f2 2px solid;
-    background-color: #f8f8f8;
+    background-color: #f2f2f2;
     border-radius: 10rem;
 }
 
@@ -85,7 +86,7 @@ body:not(body:has(> div > div > .login-container), body:has(> div > div > .auth-
     align-items: center;
     border: #f2f2f2 2px solid; 
     border-radius: 10rem 10rem 10rem 10rem;
-    background-color: #e8e8e8;
+    background-color: #f2f2f2
 }
 
 .Header--search-input {
@@ -106,7 +107,7 @@ body:not(body:has(> div > div > .login-container), body:has(> div > div > .auth-
     height: 30px;
     width: 30rem;   
     left: 5%;
-    background-color: #e8e8e8;
+    background-color: #f2f2f2;
     border: #f2f2f2 2px solid; 
     border-radius: 0rem 10rem 10rem 0rem;
     border-left: none;
@@ -161,6 +162,7 @@ body:not(body:has(> div > div > .login-container), body:has(> div > div > .auth-
     display: flex;
     align-items: center;
     gap: .5rem;
+    cursor: pointer;
 }
 
 .Header--category:hover {

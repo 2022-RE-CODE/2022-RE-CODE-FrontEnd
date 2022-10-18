@@ -14,7 +14,7 @@ export const UserInfoContainer = () => {
     }
 
     return(
-        <div className="main"> 
+        <div className="userinfo-container"> 
             <HeaderComponent 
                 isAuthenticated={isAuthenticated}
                 onLogout = {onLogout}
