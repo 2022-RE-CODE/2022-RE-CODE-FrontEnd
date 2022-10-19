@@ -1,9 +1,12 @@
 import React, { useEffect, useState } from 'react'
 import instance from '../api/axios.instance';
+import '../../styles/post.css';
+import { BiLike, BiTimeFive, BiImageAlt } from "react-icons/bi";
+import { MdOutlineVisibility } from "react-icons/md";
 import { CategoryType, PostType } from './postType';
 
 const PostComponent: React.FC = () => {
-    const [posts, setPosts] = useState<any>();
+    const [posts, setPosts] = useState<React.ReactNode>();
 
     useEffect(() => {
         getPosts();
@@ -14,32 +17,43 @@ const PostComponent: React.FC = () => {
             const response = await instance.get('post/find/all?page=0');
             const postList = response.data.data.map((post: PostType) => {
                 return (
-                    <div>
-                        {post.postId}
-                        {post.title}
-                        {post.content}
-                        {post.view}
-                        {post.likes}
-                        {post.createMinutesAgo}
-                        {post.categories.map((category: CategoryType) => {
-                            return(
-                                <div>
-                                    {category.name}
-                                </div>
-                            )
-                        })}
-                        {post.user.userId}
+                    <div className="post-card" key={post.postId}>
+                        <div className="user-img">
+                            {post.user?.img ?
+                                <img src={post.user.img}></img>
+                                : <BiImageAlt />
+                            }
+                        </div>
+                        <div className="post--title">{post.title}</div>
                         {post.user.nickname}
-                        {post.user.role}
-                        {post.user.roles}
-                        {post.user.position}
-                        {post.user.gitLink}
-                        {post.user.blogLink}
-                        {post.user.img}
+                        <div className="post--view">
+                            <MdOutlineVisibility />
+                            {post.view}
+                        </div>
+                        <div className="post--likes">
+                            <BiLike />
+                            {post.likes}
+                        </div>
+                        <div className="post--time">
+                            <BiTimeFive />
+                            {post.createMinutesAgo}
+                        </div>
+                        <div className='post--category-container'>
+                            {post.categories.map((category: CategoryType) => {
+                                return (
+                                    <div className='post--category'>
+                                        {category.name}
+                                    </div>
+                                )
+                            })}
+                        </div>
+                        {/* TODO :: Position에 기반한 게시글 나누기 */}
+                        {/* {post.user.position} */}
                     </div>
                 )
             })
             setPosts(postList);
+
         } catch (err) {
             // TODO :: 예외 처리
         }
@@ -47,7 +61,9 @@ const PostComponent: React.FC = () => {
 
     return (
         <div className="post">
-            {posts}
+            <div className="post-card--container">
+                {posts}
+            </div>
         </div>
     )
 }

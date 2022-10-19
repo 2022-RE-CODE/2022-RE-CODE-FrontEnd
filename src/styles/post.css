@@ -1,0 +1,18 @@
+.post {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.post-card--container {
+    width: 70%;
+}
+
+.post-card {
+    display: flex;
+}
+
+.post--title {
+    font-weight: 600;
+    font-size: 1.2rem;
+}
