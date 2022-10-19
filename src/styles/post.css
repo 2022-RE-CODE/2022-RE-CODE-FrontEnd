@@ -10,9 +10,23 @@
 
 .post-card {
     display: flex;
+    flex-direction: column;
+}
+
+.post--user {
+    display: flex;
 }
 
 .post--title {
     font-weight: 600;
     font-size: 1.2rem;
+}
+
+.post--column {
+    display: flex;
+    flex-direction: column;
+}
+
+.post--category-container {
+    display: flex;
 }

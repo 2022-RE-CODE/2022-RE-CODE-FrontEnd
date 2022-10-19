@@ -18,25 +18,29 @@ const PostComponent: React.FC = () => {
             const postList = response.data.data.map((post: PostType) => {
                 return (
                     <div className="post-card" key={post.postId}>
-                        <div className="user-img">
-                            {post.user?.img ?
-                                <img src={post.user.img}></img>
-                                : <BiImageAlt />
-                            }
-                        </div>
                         <div className="post--title">{post.title}</div>
-                        {post.user.nickname}
-                        <div className="post--view">
-                            <MdOutlineVisibility />
-                            {post.view}
+                        <div className="post--user">
+                            <div className="user-img">
+                                {post.user?.img ?
+                                    <img src={post.user.img}></img>
+                                    : <BiImageAlt />
+                                }
+                            </div>
+                            <div className="post--nickname">{post.user.nickname}</div>
                         </div>
-                        <div className="post--likes">
-                            <BiLike />
-                            {post.likes}
-                        </div>
-                        <div className="post--time">
-                            <BiTimeFive />
-                            {post.createMinutesAgo}
+                        <div className="post--info">
+                            <div className="post--info--view">
+                                <MdOutlineVisibility />
+                                {post.view}
+                            </div>
+                            <div className="post--info--likes">
+                                <BiLike />
+                                {post.likes}
+                            </div>
+                            <div className="post--info--time">
+                                <BiTimeFive />
+                                {post.createMinutesAgo}
+                            </div>
                         </div>
                         <div className='post--category-container'>
                             {post.categories.map((category: CategoryType) => {
@@ -50,10 +54,10 @@ const PostComponent: React.FC = () => {
                         {/* TODO :: Position에 기반한 게시글 나누기 */}
                         {/* {post.user.position} */}
                     </div>
+
                 )
             })
             setPosts(postList);
-
         } catch (err) {
             // TODO :: 예외 처리
         }
