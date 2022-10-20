@@ -4,9 +4,11 @@ import '../../styles/post.css';
 import { BiLike, BiTimeFive, BiImageAlt } from "react-icons/bi";
 import { MdOutlineVisibility } from "react-icons/md";
 import { CategoryType, PostType } from './postType';
+import { Link, Navigate, useNavigate } from 'react-router-dom';
 
 const PostComponent: React.FC = () => {
     const [posts, setPosts] = useState<React.ReactNode>();
+    const navigate = useNavigate();
 
     useEffect(() => {
         getPosts();
@@ -17,7 +19,9 @@ const PostComponent: React.FC = () => {
             const response = await instance.get('post/find/all?page=0');
             const postList = response.data.data.map((post: PostType) => {
                 return (
-                    <div className="post-card" key={post.postId}>
+                    <div onClick={() => { navigate(`/post/${post.postId}`) }}
+                        className="post-card"
+                        key={post.postId}>
                         <div className="post--title">{post.title}</div>
                         <div className="post--user">
                             <div className="user-img">
@@ -54,7 +58,6 @@ const PostComponent: React.FC = () => {
                         {/* TODO :: Position에 기반한 게시글 나누기 */}
                         {/* {post.user.position} */}
                     </div>
-
                 )
             })
             setPosts(postList);
