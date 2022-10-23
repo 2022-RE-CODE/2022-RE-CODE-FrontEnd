@@ -4,7 +4,7 @@ import '../../styles/post.css';
 import { BiLike, BiTimeFive, BiImageAlt } from "react-icons/bi";
 import { MdOutlineVisibility } from "react-icons/md";
 import { CategoryType, PostType } from './postType';
-import { Link, Navigate, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
 const PostComponent: React.FC = () => {
     const [posts, setPosts] = useState<React.ReactNode>();
