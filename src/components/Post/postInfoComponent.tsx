@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react'
 import { Link, Navigate, useNavigate, useParams } from 'react-router-dom';
 import instance from '../api/axios.instance';
 import '../../styles/postinfo.css';
+import FobbidenErrorComponent from '../Auth/fobbidenErrorComponent';
 
 type PostInfoComponentProps = {
     isAuthenticated: boolean | null;
@@ -12,7 +13,6 @@ const PostInfoComponent: React.FC<PostInfoComponentProps> = ({
 }) => {
 
     const params = useParams();
-    const navigate = useNavigate();
 
     useEffect(() => {
         getUserInfo(params.id);
@@ -28,18 +28,11 @@ const PostInfoComponent: React.FC<PostInfoComponentProps> = ({
         }
     }
 
-    const toLogin = () => {
-        navigate("/login");
-    }
-
     return (
         <div className="post-info">
             { isAuthenticated ? 
                 <div></div> : 
-                <div className="fobbiden-error">
-                    <div className="error-title">서비스를 이용하려면 로그인이 필요합니다.</div>
-                    <button className="post-info--redirect-loginBtn" onClick={toLogin}>로그인 창으로 이동하기</button>
-                </div>
+                <FobbidenErrorComponent />
             }
         </div>
     )
