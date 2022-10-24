@@ -3,6 +3,7 @@ import { useParams, useSearchParams } from 'react-router-dom';
 import instance from '../api/axios.instance';
 import UserInfoComponent from './userInfoComponent';
 
+// TODO :: Container 에서 instance.get 실행하고 이 컴포넌트 삭제
 const UserComponent: React.FC = () => {
 
     const [user, setUser] = useState();

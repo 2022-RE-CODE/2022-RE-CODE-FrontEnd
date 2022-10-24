@@ -1,7 +1,7 @@
 import React from 'react'
 import { useState } from 'react';
 import '../../styles/login.css';
-import { Link, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 // TODO :: css 분리
 import '../../styles/postinfo.css';
 

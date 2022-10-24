@@ -4,19 +4,21 @@ import '../../styles/post.css';
 import { BiLike, BiTimeFive, BiImageAlt } from "react-icons/bi";
 import { MdOutlineVisibility } from "react-icons/md";
 import { CategoryType, PostType } from './postType';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useSearchParams } from 'react-router-dom';
 
 const PostComponent: React.FC = () => {
     const [posts, setPosts] = useState<React.ReactNode>();
+    const [searchParams, setSearchParams] = useSearchParams();
     const navigate = useNavigate();
-
+    
     useEffect(() => {
         getPosts();
     }, [])
 
     const getPosts = async () => {
         try {
-            const response = await instance.get('post/find/all?page=0');
+            const page = searchParams.get('page'); 
+            const response = await instance.get(`post/find/all?page=${page ?? 0}`);
             const postList = response.data.data.map((post: PostType) => {
                 return (
                     <div onClick={() => { navigate(`/post/${post.postId}`) }}
@@ -70,6 +72,10 @@ const PostComponent: React.FC = () => {
         <div className="post">
             <div className="post-card--container">
                 {posts}
+            </div>
+            <div className="post-pagenation">
+                // TODO :: PAGENATION
+                <div></div>
             </div>
         </div>
     )
