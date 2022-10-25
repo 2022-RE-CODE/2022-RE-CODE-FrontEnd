@@ -2,6 +2,7 @@ import React from 'react'
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import { CommunityContainer, LoginContainer, MainContainer, AuthContainer } from '../container';
 import { PostInfoContainer } from '../container/postInfoContainer/PostInfoContainer';
+import { SecessionContainer } from '../container/secessionContainer/SecessionContainer';
 import { UserInfoContainer } from '../container/userInfoContainer/UserInfoContainer';
 
 const AppRoutes = () => {
@@ -14,6 +15,7 @@ const AppRoutes = () => {
           <Route path='/post' element={<CommunityContainer />} />
           <Route path='/user/:id' element={<UserInfoContainer />} />
           <Route path='/post/:id' element={<PostInfoContainer />} />
+          <Route path='/secession' element={<SecessionContainer />} />
       </Routes>
     </BrowserRouter>
   )
