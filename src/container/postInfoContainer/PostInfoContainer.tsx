@@ -7,7 +7,6 @@ import { logoutSuccess } from '../../redux/user/action/user.action'
 
 export const PostInfoContainer = () => {
 
-
     const isAuthenticated = useSelector((state: RootState) => state.userReducer.isAuthenticated);
     const dispatch = useDispatch();
 

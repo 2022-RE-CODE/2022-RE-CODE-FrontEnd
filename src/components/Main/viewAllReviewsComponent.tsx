@@ -3,8 +3,9 @@ import '../../styles/allreviews.css';
 
 const ViewAllReviewsComponent: React.FC = () => {
 
-    const CardEl = Array.from("____").map(() => {
-        return (<div className="card">
+    const CardEl = Array.from("____").map((data, idx) => {
+        return (
+        <div className="card" key={idx}>
             <div className="card--img">예시 이미지</div>
             <div className="card--title">대용량 트래픽 처리 방법좀 알려주세요!</div>
             <div className="card--tags">

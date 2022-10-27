@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import '../styles/header.css';
 import { BiMenu } from "react-icons/bi";
 import { BiSearch } from "react-icons/bi";
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 
 type HeaderComponentProps = {
     isAuthenticated: boolean | null;
@@ -14,12 +14,20 @@ const HeaderComponent: React.FC<HeaderComponentProps> = ({
     onLogout
 }) => {
 
+    const navigate = useNavigate();
+
     const [searchEvent, setSearchEvent] = useState(0);
+
     const onMouseOverHandle = () => {
         setSearchEvent(1);
     }
+
     const onMouseOutHandle = () => {
         setSearchEvent(0);
+    }
+
+    const toCommunity = () => {
+        navigate('/post');
     }
 
     return (
@@ -55,10 +63,10 @@ const HeaderComponent: React.FC<HeaderComponentProps> = ({
                     <div className="Header--category--text">카테고리</div>
                 </div>
                 <div className="Header--menu">
-                    <div className="Header--menu-1">게시판</div>
-                    <div className="Header--menu-2">예시 1</div>
-                    <div className="Header--menu-3">예시 2</div>
-                    <div className="Header--menu-4">예시 3</div>
+                    <div className="Header--menu-1" onClick = {toCommunity}>게시판</div>
+                    <div className="Header--menu-2">채팅</div>
+                    <div className="Header--menu-3">깃허브</div>
+                    <div className="Header--menu-4">설정</div>
                 </div>
             </div>
         </div>
