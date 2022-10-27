@@ -7,6 +7,8 @@ body:has(> div > div > .auth-container)) {
     padding: 120px 0px 0px 0px;
 }
 
+body {width:100%; height:100%; margin:0; padding:0; overflow-y:scroll; position:relative;}
+
 .Header {
     position: fixed;
     width: 100%;

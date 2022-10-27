@@ -5,12 +5,17 @@
 }
 
 .post-card--container {
+    margin-top: 5rem;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
     width: 70%;
 }
 
 .post-card {
-    display: flex;
-    flex-direction: column;
+    display: grid;
+    justify-items: center;
+    grid-template-rows: 1fr 0.05rem;
+    height: 14rem;
 }
 
 .post--user {
@@ -18,8 +23,15 @@
 }
 
 .post--title {
+    font-size: 1.0rem;
+    line-height: 150%;
+    font-weight: 500;
+}   
+
+.post--img-title {
     font-weight: 600;
-    font-size: 1.2rem;
+    font-size: 1rem;
+    margin-left: 1rem;
 }
 
 .post--column {
@@ -29,12 +41,73 @@
 
 .post--category-container {
     display: flex;
+    gap: .5rem;
+    align-items: center;
+}
+
+.post--category {
+    height: 1.2rem;
+    font-size: .8rem;
+    background-color: #f2f2f2;
+    color: #949494;
+    border-radius: 5px;
+    padding: .2rem .3rem .2rem .3rem;
+}
+
+hr {
+    /* height: 1px; */
+    width: 80%;
+    border-top: 0.05rem solid #c8c8d2;
 }
 
 .post-pagenation {
     
 }
 
-.user-img {
+
+.post--img {
+    display: flex;
+    background-color: #ffc519;
+    width: 12rem;
+    height: 8rem;
+    align-items: center;
+    justify-content: flex-start;
+    border-radius: .5rem;
+}
+
+.post--user-img{
+    background-color: #f2f2f2;
     width: 2rem;
+    height: 2rem;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.post--img-line {
+    display: grid;
+    grid-template-rows: 1fr 1fr 1fr 1fr;
+    height: 15rem;
+}
+
+.post--info {
+    display: flex;
+}
+
+.post--info--view > span {
+    font-weight: 500;
+    font-size: .7rem;
+    margin-right: .2rem;
+}
+
+.post--info--dot > span {
+    font-size: .7rem;
+    margin-right: .2rem;
+}
+
+.post--info--like > span {
+    font-weight: 500;
+    font-size: .7rem;
+    margin-right: .2rem;
 }

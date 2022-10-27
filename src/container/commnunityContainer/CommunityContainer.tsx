@@ -4,6 +4,7 @@ import HeaderComponent from '../../components/headerComponent'
 import PostComponent from '../../components/Post/postComponent';
 import { RootState } from '../../redux';
 import { logoutSuccess } from '../../redux/user/action/user.action';
+import useCheckToken from '../../utils/useCheckToken';
 
 export const CommunityContainer = () => {
 
@@ -13,6 +14,8 @@ export const CommunityContainer = () => {
     const onLogout = () => {
         dispatch(logoutSuccess());
     }
+
+    useCheckToken();
 
     return(
         <div className="community"> 

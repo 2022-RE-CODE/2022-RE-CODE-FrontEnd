@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import instance from '../api/axios.instance';
 import '../../styles/post.css';
-import { BiLike, BiTimeFive, BiImageAlt } from "react-icons/bi";
+import { VscTriangleUp } from "react-icons/vsc";
 import { MdOutlineVisibility } from "react-icons/md";
 import { CategoryType, PostType } from './postType';
 import { useNavigate, useSearchParams } from 'react-router-dom';
@@ -24,41 +24,35 @@ const PostComponent: React.FC = () => {
                     <div onClick={() => { navigate(`/post/${post.postId}`) }}
                         className="post-card"
                         key={post.postId}>
-                        <div className="post--title">{post.title}</div>
-                        <div className="post--user">
-                            <div className="user-img">
-                                {post.user?.img ?
-                                    <img src={post.user.img}></img>
-                                    : <BiImageAlt />
-                                }
+                        <div className="post--img-line"> 
+                            <div className="post--img">
+                                <div className="post--img-title">{post.title}</div>
                             </div>
-                            <div className="post--nickname">{post.user.nickname}</div>
-                        </div>
-                        <div className="post--info">
-                            <div className="post--info--view">
-                                <MdOutlineVisibility />
-                                {post.view}
+                            <div className='post--category-container'>
+                                {post.categories.map((category: CategoryType) => {
+                                    return (
+                                        <div className='post--category'>
+                                            {category.name}
+                                        </div>
+                                    )
+                                })}
                             </div>
-                            <div className="post--info--likes">
-                                <BiLike />
-                                {post.likes}
+                            <div className="post--title">{post.title}</div>
+                            <div className="post--info">
+                                <div className="post--info--view">
+                                    <span>조회수 {post.view}</span>
+                                </div>
+                                <div className="post--info--dot">
+                                    <span>•</span>
+                                </div>
+                                <div className='post--info--like'>
+                                    <span>추천 {post.likes}</span>
+                                </div>
                             </div>
-                            <div className="post--info--time">
-                                <BiTimeFive />
-                                {post.createMinutesAgo}
-                            </div>
-                        </div>
-                        <div className='post--category-container'>
-                            {post.categories.map((category: CategoryType) => {
-                                return (
-                                    <div className='post--category'>
-                                        {category.name}
-                                    </div>
-                                )
-                            })}
                         </div>
                         {/* TODO :: Position에 기반한 게시글 나누기 */}
                         {/* {post.user.position} */}
+                        <hr/>
                     </div>
                 )
             })
@@ -74,7 +68,7 @@ const PostComponent: React.FC = () => {
                 {posts}
             </div>
             <div className="post-pagenation">
-                // TODO :: PAGENATION
+                {/* TODO :: PAGENATION */}
                 <div></div>
             </div>
         </div>

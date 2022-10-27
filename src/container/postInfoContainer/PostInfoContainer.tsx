@@ -4,6 +4,7 @@ import { RootState } from '../../redux'
 import instance from '../../components/api/axios.instance'
 import PostInfoComponent from '../../components/Post/postInfoComponent'
 import { logoutSuccess } from '../../redux/user/action/user.action'
+import useCheckToken from '../../utils/useCheckToken'
 
 export const PostInfoContainer = () => {
 
@@ -13,6 +14,8 @@ export const PostInfoContainer = () => {
     const onLogout = () => {
         dispatch(logoutSuccess());
     }
+
+    useCheckToken();    
 
     return (
         <div className="post-info-container">
