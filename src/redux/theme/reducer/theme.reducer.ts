@@ -1,8 +1,7 @@
-import { whiteMode } from "../action/theme.action";
 import { DARK_MODE, WHITE_MODE } from "../action/theme.actionType";
 import { initialState, ThemeReducerAction, ThemeReducerState } from "./theme.reducerType";
 
-const themeReducer = (state: ThemeReducerState = initialState, action: ThemeReducerAction) {
+const themeReducer = (state: ThemeReducerState = initialState, action: ThemeReducerAction) => {
     switch (action.type) {
         case DARK_MODE:
             return {
@@ -12,5 +11,9 @@ const themeReducer = (state: ThemeReducerState = initialState, action: ThemeRedu
             return {
                 theme: 'white'
             }
+        default:
+            return state;
     }
 }
+
+export default themeReducer;

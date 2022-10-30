@@ -2,7 +2,10 @@ import HeaderComponent from '../../components/headerComponent'
 import { useDispatch, useSelector } from 'react-redux'
 import { RootState } from '../../redux'
 import { logoutSuccess } from '../../redux/user/action/user.action'
-import UserComponent from '../../components/User/userComponent'
+import { useEffect, useState } from 'react'
+import { useParams } from 'react-router-dom'
+import UserInfoComponent from '../../components/User/userInfoComponent'
+import instance from '../../components/api/axios.instance'
 
 export const UserInfoContainer = () => {
 
@@ -13,13 +16,32 @@ export const UserInfoContainer = () => {
         dispatch(logoutSuccess());
     }
 
+    const [user, setUser] = useState();
+    //TODO :: Header IMG render
+        
+    const params = useParams();
+
+    useEffect(() => {
+        getUserInfo(params.id);
+    }, []);
+
+    const getUserInfo = async (id: string | undefined) => {
+        try {
+            const response = await instance.get(`user/${id}`);
+            setUser(response.data);
+        } catch(err) {  
+            // TODO :: 예외 처리
+            // setMessage(err);
+        }
+    }
+
     return(
         <div className="userinfo-container"> 
             <HeaderComponent 
                 isAuthenticated={isAuthenticated}
                 onLogout = {onLogout}
             />
-            <UserComponent />
+            <UserInfoComponent user={user} />
         </div>
     )
 }
