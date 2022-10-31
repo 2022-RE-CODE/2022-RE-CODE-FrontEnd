@@ -50,9 +50,9 @@ const PostComponent: React.FC = () => {
                                 </div>
                             </div>
                         </div>
+                        <hr/>
                         {/* TODO :: Position에 기반한 게시글 나누기 */}
                         {/* {post.user.position} */}
-                        <hr/>
                     </div>
                 )
             })

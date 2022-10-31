@@ -5,6 +5,8 @@ import instance from '../../components/api/axios.instance'
 import PostInfoComponent from '../../components/Post/postInfoComponent'
 import { logoutSuccess } from '../../redux/user/action/user.action'
 import useCheckToken from '../../utils/useCheckToken'
+import { useParams } from 'react-router-dom'
+import { useEffect, useState } from 'react'
 
 export const PostInfoContainer = () => {
 
@@ -15,7 +17,24 @@ export const PostInfoContainer = () => {
         dispatch(logoutSuccess());
     }
 
-    useCheckToken();    
+    useCheckToken();
+
+    const [postInfo, setpostInfo] = useState();
+    const params = useParams();
+
+    useEffect(() => {
+        getUserInfo(params.id);
+    }, []);
+
+    const getUserInfo = async (id: string | undefined) => {
+        try {
+            const response = await instance.get(`post/find/detail/${id}`);
+            setpostInfo(response.data);
+        } catch (err) {
+            // TODO :: 예외 처리
+            // setMessage(err);
+        }
+    }
 
     return (
         <div className="post-info-container">
@@ -23,8 +42,9 @@ export const PostInfoContainer = () => {
                 isAuthenticated={isAuthenticated}
                 onLogout={onLogout}
             />
-            <PostInfoComponent 
+            <PostInfoComponent
                 isAuthenticated={isAuthenticated}
+                postInfo={postInfo}
             />
         </div>
     )

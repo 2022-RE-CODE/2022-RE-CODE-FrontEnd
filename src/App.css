@@ -28,3 +28,8 @@ body {
 .Toastify__close-button--dark {
     color: white !important;
 }
+
+::selection {
+    background-color: #ed234b;
+    color: white;
+}

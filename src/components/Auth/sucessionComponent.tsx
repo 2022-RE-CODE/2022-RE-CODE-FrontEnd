@@ -8,7 +8,7 @@ export type SecesstionComponentProps = {
     token: string | null
 }
 
-const SecesstionComponent: React.FC<SecesstionComponentProps> = ({
+const SecessionComponent: React.FC<SecesstionComponentProps> = ({
     token,
 }: SecesstionComponentProps) => {
     const navigate = useNavigate();
@@ -34,9 +34,9 @@ const SecesstionComponent: React.FC<SecesstionComponentProps> = ({
     };
 
     return (
-        <div className="secesstion">
+        <div className="secession">
 
         </div>
     );
 }
-export default SecesstionComponent;
+export default SecessionComponent;
