@@ -1,7 +1,8 @@
 import React from 'react'
 import { useDispatch, useSelector } from 'react-redux';
-import HeaderComponent from '../../components/headerComponent'
-import PostComponent from '../../components/Post/postComponent';
+import FooterComponent from '../../components/common/footerComponent';
+import HeaderComponent from '../../components/common/headerComponent'
+import PostComponent from '../../components/post/postComponent';
 import { RootState } from '../../redux';
 import { logoutSuccess } from '../../redux/user/action/user.action';
 import useCheckToken from '../../utils/useCheckToken';
@@ -17,13 +18,14 @@ export const CommunityContainer = () => {
 
     useCheckToken();
 
-    return(
-        <div className="community"> 
-            <HeaderComponent 
+    return (
+        <div className="community">
+            <HeaderComponent
                 isAuthenticated={isAuthenticated}
                 onLogout={onLogout}
             />
             <PostComponent />
+            <FooterComponent />
         </div>
     )
 }

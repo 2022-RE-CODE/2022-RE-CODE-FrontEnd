@@ -34,17 +34,17 @@ const LoginComponent: React.FC<LoginComponentProps> = ({
             email: email,
             password: password
         }))
-        .then(response => {
-            if (response.status === 200) {
-                // TODO :: Navigate 후에도 알림 뜨도록 수정
-                toast("로그인이 완료되었습니다.");
-                onLogin(response.data.accessToken.value);
-                // navigate("/");
-            }
-            else {
-                toast(response.data);
-            }
-        });
+            .then(response => {
+                if (response.status === 200) {
+                    // TODO :: Navigate 후에도 알림 뜨도록 수정
+                    toast("로그인이 완료되었습니다.");
+                    onLogin(response.data.accessToken.value);
+                    // navigate("/");
+                }
+                else {
+                    toast(response.data);
+                }
+            });
     };
 
     return (
@@ -65,11 +65,11 @@ const LoginComponent: React.FC<LoginComponentProps> = ({
                     </div>
                 </form>
             </div>
-            <ToastContainer 
-                position="bottom-center" 
-                autoClose={2000} 
-                hideProgressBar={true} 
-                newestOnTop={true} 
+            <ToastContainer
+                position="bottom-center"
+                autoClose={2000}
+                hideProgressBar={true}
+                newestOnTop={true}
                 transition={Slide}
             />
         </div>

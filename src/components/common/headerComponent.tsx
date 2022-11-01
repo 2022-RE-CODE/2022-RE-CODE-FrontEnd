@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import '../styles/header.css';
+import '../../styles/header.css';
 import { BiMenu } from "react-icons/bi";
 import { BiSearch } from "react-icons/bi";
 import { Link, useNavigate } from 'react-router-dom';

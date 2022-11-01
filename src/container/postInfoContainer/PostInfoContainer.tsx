@@ -1,12 +1,13 @@
-import HeaderComponent from '../../components/headerComponent'
+import HeaderComponent from '../../components/common/headerComponent'
 import { useDispatch, useSelector } from 'react-redux'
 import { RootState } from '../../redux'
 import instance from '../../components/api/axios.instance'
-import PostInfoComponent from '../../components/Post/postInfoComponent'
+import PostInfoComponent from '../../components/post/postInfoComponent'
 import { logoutSuccess } from '../../redux/user/action/user.action'
 import useCheckToken from '../../utils/useCheckToken'
 import { useParams } from 'react-router-dom'
 import { useEffect, useState } from 'react'
+import FooterComponent from '../../components/common/footerComponent'
 
 export const PostInfoContainer = () => {
 

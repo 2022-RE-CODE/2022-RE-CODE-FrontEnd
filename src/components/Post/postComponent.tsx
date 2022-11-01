@@ -10,21 +10,21 @@ const PostComponent: React.FC = () => {
     const [posts, setPosts] = useState<React.ReactNode>();
     const [searchParams, setSearchParams] = useSearchParams();
     const navigate = useNavigate();
-    
+
     useEffect(() => {
         getPosts();
     }, [])
 
     const getPosts = async () => {
         try {
-            const page = searchParams.get('page'); 
+            const page = searchParams.get('page');
             const response = await instance.get(`post/find/all?page=${page ?? 0}`);
             const postList = response.data.data.map((post: PostType) => {
                 return (
                     <div onClick={() => { navigate(`/post/${post.postId}`) }}
                         className="post-card"
                         key={post.postId}>
-                        <div className="post--img-line"> 
+                        <div className="post--img-line">
                             <div className="post--img">
                                 <div className="post--img-title">{post.title}</div>
                             </div>
@@ -50,7 +50,7 @@ const PostComponent: React.FC = () => {
                                 </div>
                             </div>
                         </div>
-                        <hr/>
+                        <hr />
                         {/* TODO :: Position에 기반한 게시글 나누기 */}
                         {/* {post.user.position} */}
                     </div>

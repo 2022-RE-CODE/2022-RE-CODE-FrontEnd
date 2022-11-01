@@ -65,9 +65,9 @@ const AuthComponent: React.FC = () => {
         instanceWithHeader.post("email/join", qs.stringify({
             email: email
         }))
-        .then((response) => {
-            toast(response.data);
-        });
+            .then((response) => {
+                toast(response.data);
+            });
 
     }
 
@@ -84,19 +84,19 @@ const AuthComponent: React.FC = () => {
         });
 
         instance.post("user", payload)
-        .then(response => {
-            if (response.status === 200) {
-                // TODO :: Navigate 후에도 알림 뜨도록 수정
-                navigate("/login");
-                toast("회원가입이 완료되었습니다.");
-            }
-            else {
-                toast.error(response.data);
-            }
-        })
-        .catch(error => {
-            toast.error(error.data);
-        });
+            .then(response => {
+                if (response.status === 200) {
+                    // TODO :: Navigate 후에도 알림 뜨도록 수정
+                    navigate("/login");
+                    toast("회원가입이 완료되었습니다.");
+                }
+                else {
+                    toast.error(response.data);
+                }
+            })
+            .catch(error => {
+                toast.error(error.data);
+            });
     };
 
     return (

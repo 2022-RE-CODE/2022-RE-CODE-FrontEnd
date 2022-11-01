@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react'
 import { Link, Navigate, useNavigate, useParams } from 'react-router-dom';
 import instance from '../api/axios.instance';
 import '../../styles/postinfo.css';
-import FobbidenErrorComponent from '../Auth/fobbidenErrorComponent';
+import FobbidenErrorComponent from '../auth/fobbidenErrorComponent';
 import { CategoryType } from './postType';
 
 type PostInfoComponentProps = {
@@ -80,7 +80,7 @@ const PostInfoComponent: React.FC<PostInfoComponentProps> = ({
                             )
                         })}
                     </div>
-                    
+
                 </div>
                 : <FobbidenErrorComponent />
             }
