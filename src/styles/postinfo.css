@@ -83,6 +83,98 @@
     width: 1rem;
 }
 
+.post-upload {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
 
+
+.post-upload {
+    display: flex;
+    justify-content: center;
+}
+
+.post-upload--container {
+    position: relative;
+    margin-top: 3rem;
+    width: 65%;
+    padding: 3rem 3rem;
+    border: 1px solid #e3e3e3;
+    border-radius: 0.6rem;
+}
+
+.post-upload--title1 {
+    font-size: 1.3rem;
+}
+
+.post-upload--form {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 2rem;
+}
+
+.post-upload-category--label {
+    height: 0.1rem;
+    margin: 3.2rem 0;
+    border-width: 0.1rem 0 0;
+    border-top: 0.1rem solid #e3e3e3;
+    color: #919191;
+    text-align: center;
+}
+
+
+.post-upload-category--label::after {
+    content: "카테고리 선택";
+    position: relative;
+    top: -.9rem;
+    font-size: .9rem;
+    padding: 0px 1.6rem;
+    background: white;
+}
+
+.post-upload--form > input {
+    height: 2rem;
+    border: none;
+    padding: .5rem;
+    border-bottom: 1px solid #e3e3e3;
+}
+
+.post-upload--form > input:focus {
+    position: relative;
+    outline: none;
+    border-bottom: 1px solid black;
+}
+
+.post-upload--form > input::-webkit-input-placeholder {
+    transition: all .3s ease;
+    position: absolute;
+    top: 50%;
+    color: #919191;
+}
+
+.post-upload--form > input:focus::-webkit-input-placeholder {
+    position: absolute;
+    font-size: 11px;
+    top: 0%;
+    left: 2%;
+    color: #7b7b7b;
+}
+
+.post-upload--form > textarea {
+    height: 30rem;
+    border: none;
+    padding: .5rem;
+    border: 1px solid #e3e3e3;
+    resize: none;
+}
+
+.post-upload--form > textarea:focus {
+    position: relative;
+    outline: none;
+    border-bottom: 1px solid black;
+    border-radius: .3rem;
+}
 
 

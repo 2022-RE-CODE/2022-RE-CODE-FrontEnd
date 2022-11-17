@@ -1,8 +1,7 @@
 import { useDispatch, useSelector } from 'react-redux'
 import { RootState } from '../../redux'
 import { logoutSuccess } from '../../redux/user/action/user.action'
-import instance from '../../components/api/axios.instance'
-import useCheckToken from '../../utils/useCheckToken'
+import { useCheckToken } from '../../utils'
 
 /** Components */
 import BannerComponent from '../../components/main/bannerComponent'

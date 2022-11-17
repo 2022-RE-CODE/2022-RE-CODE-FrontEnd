@@ -101,3 +101,7 @@ hr {
     font-size: .7rem;
     margin-right: .2rem;
 }
+
+.post-upload-btn {
+    width: 3rem;
+}

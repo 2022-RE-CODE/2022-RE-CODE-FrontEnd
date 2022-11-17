@@ -7,7 +7,8 @@ import {
     AuthContainer, 
     PostInfoContainer, 
     UserInfoContainer, 
-    SecessionContainer
+    SecessionContainer,
+    PostUploadContainer
 } from '../container';
 
 const AppRoutes = () => {
@@ -21,6 +22,7 @@ const AppRoutes = () => {
                 <Route path='/user/:id' element={<UserInfoContainer />} />
                 <Route path='/post/:id' element={<PostInfoContainer />} />
                 <Route path='/secession' element={<SecessionContainer />} />
+                <Route path='/post/upload' element={<PostUploadContainer />} />
             </Routes>
         </BrowserRouter>
     )

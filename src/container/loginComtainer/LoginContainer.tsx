@@ -1,7 +1,6 @@
 import LoginComponent from '../../components/auth/loginComponent'
-import { RootState } from '../../redux'
-import { useSelector, useDispatch } from 'react-redux';
-import { loginSuccess, logoutSuccess } from '../../redux/user/action/user.action';
+import { useDispatch } from 'react-redux';
+import { loginSuccess } from '../../redux/user/action/user.action';
 
 export const LoginContainer = () => {
 
