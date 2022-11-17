@@ -1,26 +1,43 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react';
 import '../../styles/allreviews.css';
+import instance from '../api/axios.instance';
+import { CategoryType, PostType } from '../post/postType';
 
-const ViewAllReviewsComponent: React.FC = () => {
+const ViewAllReviewsComponent: React.FC = (props) => {
 
-    const CardEl = Array.from("____").map((data, idx) => {
-        return (
-        <div className="card" key={idx}>
-            <div className="card--img">예시 이미지</div>
-            <div className="card--title">대용량 트래픽 처리 방법좀 알려주세요!</div>
-            <div className="card--tags">
-                <div className="card--tag1">Spring</div>
-                <div className="card--tag2">대용량 처리</div>
-            </div>
-        </div>)
-    })
+    const [posts, setPosts] = useState<React.ReactNode>();
+
+    useEffect(() => {
+        getPosts();
+    }, [])
+
+    const getPosts = async () => {
+        const response = await instance.get(`post/find/all?page=$0`);
+        const CardEl = response.data.data.slice(0, 4).map((post: PostType) => {
+            return (
+                <div className="card" key={post.postId}>
+                <div className="card--img">{}</div>
+                <div className="card--title">{post.title}</div>
+                <div className="card--tags">
+                    {post.categories.map((category: CategoryType) => {
+                        return (
+                            <div className='card--tag1'>
+                                {category.name}
+                            </div>
+                        )
+                    })}
+                </div>
+            </div>)
+        })
+        setPosts(CardEl);
+    }
 
     return (
         <div className="view-all-review">
             <div className="view-all-review--container">
                 <div className="view-all-review--title">모든 리뷰 요청</div>
                 <div className="card-container">
-                    {CardEl}
+                    {posts}
                 </div>
             </div>
         </div>

@@ -11,6 +11,7 @@ import SubTitleComponent from '../../components/main/subTitleComponent'
 import ViewAllReviewsComponent from '../../components/main/viewAllReviewsComponent'
 import FooterComponent from '../../components/common/footerComponent'
 
+
 export const MainContainer = () => {
 
     useCheckToken();
@@ -21,7 +22,6 @@ export const MainContainer = () => {
     const onLogout = () => {
         dispatch(logoutSuccess());
     }
-
 
     return (
         <div className="main">
