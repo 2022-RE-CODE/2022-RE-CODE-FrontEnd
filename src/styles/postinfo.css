@@ -32,3 +32,57 @@
     font-size: 1rem;
     font-weight: 600;
 }
+
+.post-info--view {
+    width: 65%;
+    margin-top: 4rem;
+    display: flex;
+    gap: 1.5rem;
+    flex-direction: column;
+}
+
+.post-info--title {
+    font-size: 2rem;
+    font-weight: 600;
+}
+
+.post--info--category-container {
+    display: flex;
+    gap: .5rem;
+    align-items: center;
+}
+
+.post--info--category {
+    height: 1.2rem;
+    font-size: .8rem;
+    background-color: #f2f2f2;
+    color: #949494;
+    border-radius: 5px;
+    padding: .2rem .3rem .2rem .3rem;
+}
+
+.post-info--title > span {
+    font-size: 1rem;
+    font-weight: 400;
+}
+
+.post--info-content {
+    font-size: 1rem;
+}
+
+.post--info-likes {
+    display: flex;
+    gap: 0.5rem;
+}
+
+.post--info-likes-svg {
+    width: 1rem;
+}
+
+.post--info-hates-svg {
+    width: 1rem;
+}
+
+
+
+

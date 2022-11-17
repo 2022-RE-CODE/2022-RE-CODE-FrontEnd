@@ -6,7 +6,7 @@ type responseType = {
 } | undefined
 
 export const instance = axios.create({
-    baseURL: "http://localhost:8081/",
+    baseURL: `http://${process.env.REACT_APP_BACK_BASE_URL}/`,
     timeout: 3000,
     headers: {
         "Content-Type": "application/json"

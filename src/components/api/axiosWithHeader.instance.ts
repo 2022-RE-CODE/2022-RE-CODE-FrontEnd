@@ -6,7 +6,7 @@ type responseType = {
 } | undefined
 
 const instanceWithHeader = axios.create({
-    baseURL: "http://localhost:8081/",
+    baseURL: `http://${process.env.REACT_APP_BACK_BASE_URL}/`,
     headers: {
         "Content-Type": "application/x-www-form-urlencoded"
     }
