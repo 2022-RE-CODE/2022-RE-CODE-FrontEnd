@@ -1,11 +1,15 @@
 import React, { useState } from 'react'
 import '../../styles/postinfo.css';
-import instance from '../api/axios.instance';
+import instanceWithToken from '../api/axiosWithToken.instance';
 import FobbidenErrorComponent from '../auth/fobbidenErrorComponent';
 
 type PostUploadComponentProps = {
     isAuthenticated: boolean | null;
 };
+
+type CategoriesType = {
+    name: string;
+}[];
 
 const PostUploadComponent: React.FC<PostUploadComponentProps> = ({
     isAuthenticated,
@@ -13,6 +17,7 @@ const PostUploadComponent: React.FC<PostUploadComponentProps> = ({
 
     const [title, setTitle] = useState("");
     const [content, setContent] = useState("");
+    const [categories, setCategories] = useState<CategoriesType>([]);
 
     const titleHandler = (e: any) => {
         e.preventDefault();
@@ -24,15 +29,18 @@ const PostUploadComponent: React.FC<PostUploadComponentProps> = ({
         setContent(e.target.value);
     };
 
-
     const submitHandler = (e: any) => {
         e.preventDefault();
-        instance.post("post", JSON.stringify({
+        instanceWithToken.post("post", JSON.stringify({
             title: title,
             content: content,
-            categories: []
+            categories: categories
         }));
     };
+
+    const addCategory = (name: string) => {
+        setCategories([{name: name}]);
+    }
 
     return (
         <div className="post-upload">
@@ -44,6 +52,13 @@ const PostUploadComponent: React.FC<PostUploadComponentProps> = ({
                             <input type="text" value={title} onChange={titleHandler} placeholder="제목"></input>
                             <textarea value={content} onChange={contentHandler} placeholder="내용"></textarea>
                             <label className="post-upload-category--label"></label>
+                            <div className="post-upload-categories">
+                                <div className="post-upload-category" onClick={()=>addCategory("리액트")}>리액트</div>
+                                <div className="post-upload-category">스프링</div>
+                                <div className="post-upload-category">자바</div>
+                                <div className="post-upload-category">리액트</div>
+                                <div className="post-upload-category">리액트</div>
+                            </div>
                             <div className="login--form--btnContainer">
                                 <button className="login--form--submitBtn" type="submit">글쓰기</button>
                             </div>

@@ -38,7 +38,7 @@ const LoginComponent: React.FC<LoginComponentProps> = ({
                 if (response.status === 200) {
                     // TODO :: Navigate 후에도 알림 뜨도록 수정
                     toast("로그인이 완료되었습니다.");
-                    onLogin(response.data.accessToken.value);
+                    onLogin(response.data.accessToken.split(' ')[1]);
                     // navigate("/");
                 }
                 else {

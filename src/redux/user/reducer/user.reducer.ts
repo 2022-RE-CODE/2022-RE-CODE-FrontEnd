@@ -16,7 +16,7 @@ const userReducer = (state: UserReducerState = initialState, action: UserReducer
             localStorage.removeItem("ACCESS_TOKEN");
             instance.delete("auth/logout", {
                 headers: {
-                    "ACCESS-TOKEN": state.token || false
+                    "Authorization": state.token || false
                 }
             });
             return {

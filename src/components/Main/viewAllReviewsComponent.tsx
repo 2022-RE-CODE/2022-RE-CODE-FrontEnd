@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
-import '../../styles/allreviews.css';
+import { useNavigate } from 'react-router-dom';
+import '../../styles/allReviews.css';
 import instance from '../api/axios.instance';
 import { CategoryType, PostType } from '../post/postType';
 
@@ -11,11 +12,13 @@ const ViewAllReviewsComponent: React.FC = (props) => {
         getPosts();
     }, [])
 
+    const navigate = useNavigate();
+
     const getPosts = async () => {
         const response = await instance.get(`post/find/all?page=$0`);
         const CardEl = response.data.data.slice(0, 4).map((post: PostType) => {
             return (
-                <div className="card" key={post.postId}>
+                <div className="card" onClick={() => {navigate(`/post/${post.postId}`)}} key={post.postId}>
                 <div className="card--img">{}</div>
                 <div className="card--title">{post.title}</div>
                 <div className="card--tags">

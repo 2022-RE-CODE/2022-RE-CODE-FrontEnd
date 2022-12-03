@@ -5,14 +5,15 @@ type responseType = {
     data: JSON | string
 } | undefined
 
-const instanceWithHeader = axios.create({
+const instanceWithToken = axios.create({
     baseURL: `http://${process.env.REACT_APP_BACK_BASE_URL}/`,
-    headers: {
-        "Content-Type": "application/x-www-form-urlencoded",
+    headers: { 
+        "Content-Type": "application/json",
+        'Authorization': 'bearer ' + localStorage.getItem("ACCESS_TOKEN") ?? null
     }
 });
 
-instanceWithHeader.interceptors.response.use((response): responseType => {
+instanceWithToken.interceptors.response.use((response): responseType => {
     if (response === undefined) return {
         status: 400,
         data: "Axios 통신 에러"
@@ -30,4 +31,4 @@ instanceWithHeader.interceptors.response.use((response): responseType => {
         return Promise.reject(error);
     });
 
-export default instanceWithHeader; 
+export default instanceWithToken; 

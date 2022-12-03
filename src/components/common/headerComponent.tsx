@@ -52,9 +52,13 @@ const HeaderComponent: React.FC<HeaderComponentProps> = ({
                     <Link to="/login" className="Header--login-btn">
                         로그인
                     </Link> :
-                    <button onClick={onLogout} className="Header--logout-btn">
-                        로그아웃
-                    </button>}
+                    <>
+                        <button onClick={onLogout} className="Header--logout-btn">
+                            로그아웃
+                        </button>
+                    </>
+                    }
+
             </div>
 
             <div className="Header--bottom">
