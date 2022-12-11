@@ -1,7 +1,7 @@
 import React from 'react'
 import '../../styles/postinfo.css';
 import FobbidenErrorComponent from '../Auth/fobbidenErrorComponent';
-import { CategoryType, CommentType } from './PostType';
+import { CategoryType, CommentType } from './postType';
 
 type PostInfoComponentProps = {
     isAuthenticated: boolean | null;

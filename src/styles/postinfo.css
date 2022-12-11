@@ -124,6 +124,24 @@
     text-align: center;
 }
 
+.post-upload-category--label-selected {
+    height: 0.1rem;
+    margin: 3.2rem 0;
+    border-width: 0.1rem 0 0;
+    border-top: 0.1rem solid #e3e3e3;
+    color: #919191;
+    text-align: center;
+}
+
+.post-upload-category--label-selected::after {
+    content: "선택된 카테고리";
+    position: relative;
+    top: -.9rem;
+    font-size: .9rem;
+    padding: 0px 1.6rem;
+    background: white;
+}
+
 
 .post-upload-category--label::after {
     content: "카테고리 선택";
@@ -179,9 +197,11 @@
 
 .post-upload-categories {
     display: flex;
-    flex-wrap: nowrap;
+    flex-wrap: wrap;
+    overflow-y: hidden;
     overflow-x: auto;
     gap: 1rem;
+    align-items: center;
 }
 
 .post-upload-category {
@@ -193,7 +213,7 @@
 }
 
 .post-upload-category:hover {
-    transform: scale(1.1);
+    transform: scale(1.05);
 }
 
 .post-upload-categories::-webkit-scrollbar {
@@ -209,6 +229,35 @@
 
 .post-upload-categories::-webkit-scrollbar-track {
     background: #808080;  /*스크롤바 뒷 배경 색상*/
+}
+
+.post-upload-category-input-wrap {
+    display: flex;
+    gap: 0.7rem;
+}
+
+.post-upload-category-input-label {
+    color: #949494;
+}
+
+.post-upload-category-input {
+    border: none;
+    border-bottom: 1px solid #e3e3e3;
+}
+
+.post-upload-category-input:focus {
+    position: relative;
+    outline: none;
+    border-bottom: 1px solid black;
+}
+
+.post-upload-category-button {
+    background-color: black;
+    color: white;
+    border: none;
+    border-radius: .3rem;
+    font-weight: 600;
+    cursor: pointer;
 }
 
 

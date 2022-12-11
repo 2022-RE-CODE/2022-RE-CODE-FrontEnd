@@ -4,7 +4,7 @@ import '../../styles/post.css';
 import { useNavigate, useSearchParams } from 'react-router-dom';
 import instanceWithToken from '../api/axiosWithToken.instance';
 import { useSelector } from 'react-redux';
-import { CategoryType, PostType } from './PostType';
+import { CategoryType, PostType } from './postType';
 import { RootState } from '../../redux';
 
 const PostComponent: React.FC = () => {
