@@ -16,7 +16,7 @@ const userReducer = (state: UserReducerState = initialState, action: UserReducer
             localStorage.removeItem("ACCESS_TOKEN");
             instance.delete("auth/logout", {
                 headers: {
-                    "Authorization": state.token || false
+                    "Authorization": "bearer " + state.token || false
                 }
             });
             return {
@@ -41,7 +41,15 @@ const userReducer = (state: UserReducerState = initialState, action: UserReducer
         case LOGIN_FAIL:
             return state;
         case GET_USERINFO:
-            return state;
+            const user = instance.get("user", {
+                headers: {
+                    "Authorization": "bearer " + state.token || false
+                }
+            });
+            return {
+                ...state,
+                user: user
+            }
         default:
             return state;
     }

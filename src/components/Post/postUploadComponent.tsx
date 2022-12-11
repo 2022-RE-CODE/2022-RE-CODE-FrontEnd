@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import { Navigate, useNavigate } from 'react-router-dom';
 import '../../styles/postinfo.css';
 import instanceWithToken from '../api/axiosWithToken.instance';
 import FobbidenErrorComponent from '../auth/fobbidenErrorComponent';
@@ -15,6 +16,7 @@ const PostUploadComponent: React.FC<PostUploadComponentProps> = ({
     isAuthenticated,
 }) => {
 
+    const navigate = useNavigate();
     const [title, setTitle] = useState("");
     const [content, setContent] = useState("");
     const [categories, setCategories] = useState<CategoriesType>([]);
@@ -36,10 +38,11 @@ const PostUploadComponent: React.FC<PostUploadComponentProps> = ({
             content: content,
             categories: categories
         }));
+        navigate('/post');
     };
 
     const addCategory = (name: string) => {
-        setCategories([{name: name}]);
+        setCategories(prevState => [...prevState, {name: name}]);
     }
 
     return (
@@ -54,10 +57,10 @@ const PostUploadComponent: React.FC<PostUploadComponentProps> = ({
                             <label className="post-upload-category--label"></label>
                             <div className="post-upload-categories">
                                 <div className="post-upload-category" onClick={()=>addCategory("리액트")}>리액트</div>
-                                <div className="post-upload-category">스프링</div>
-                                <div className="post-upload-category">자바</div>
-                                <div className="post-upload-category">리액트</div>
-                                <div className="post-upload-category">리액트</div>
+                                <div className="post-upload-category" onClick={()=>addCategory("스프링")}>스프링</div>
+                                <div className="post-upload-category" onClick={()=>addCategory("자바")}>자바</div>
+                                <div className="post-upload-category" onClick={()=>addCategory("타입스크립트")}>타입스크립트</div>
+                                <div className="post-upload-category" onClick={()=>addCategory("넥스트")}>넥스트js</div>
                             </div>
                             <div className="login--form--btnContainer">
                                 <button className="login--form--submitBtn" type="submit">글쓰기</button>

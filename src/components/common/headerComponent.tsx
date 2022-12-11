@@ -48,6 +48,9 @@ const HeaderComponent: React.FC<HeaderComponentProps> = ({
                             onMouseOut={onMouseOutHandle}></input>
                     </div>
                 </div>
+                <div>
+                    
+                </div>
                 {!isAuthenticated ?
                     <Link to="/login" className="Header--login-btn">
                         로그인
@@ -57,10 +60,8 @@ const HeaderComponent: React.FC<HeaderComponentProps> = ({
                             로그아웃
                         </button>
                     </>
-                    }
-
+                }
             </div>
-
             <div className="Header--bottom">
                 <div className="Header--category">
                     <BiMenu />

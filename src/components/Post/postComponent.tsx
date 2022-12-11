@@ -3,11 +3,15 @@ import instance from '../api/axios.instance';
 import '../../styles/post.css';
 import { CategoryType, PostType } from './postType';
 import { useNavigate, useSearchParams } from 'react-router-dom';
+import instanceWithToken from '../api/axiosWithToken.instance';
+import { useSelector } from 'react-redux';
+import { UserReducerState } from '../../redux/user/reducer/user.reducerType';
 
 const PostComponent: React.FC = () => {
     const [posts, setPosts] = useState<React.ReactNode>();
     const [searchParams, ] = useSearchParams();
     const navigate = useNavigate();
+    // const count = useSelector((state: UserReducerState) => state.user.userId);
 
     useEffect(() => {
         getPosts();
@@ -22,40 +26,56 @@ const PostComponent: React.FC = () => {
             const page = searchParams.get('page');
             const response = await instance.get(`post/find/all?page=${page ?? 0}`);
             const postList = response.data.data.map((post: PostType) => {
+
+                const deletePost = (postId: number) => {
+                    instanceWithToken.delete(`/post/delete/${postId}`);
+                }
+
                 return (
-                    <div onClick={() => { navigate(`/post/${post.postId}`) }}
-                        className="post-card"
-                        key={post.postId}>
-                        <div className="post--img-line">
-                            <div className="post--img">
-                                <div className="post--img-title">{post.title}</div>
-                            </div>
-                            <div className='post--category-container'>
-                                {post.categories.map((category: CategoryType) => {
-                                    return (
-                                        <div className='post--category'>
-                                            {category.name}
-                                        </div>
-                                    )
-                                })}
-                            </div>
-                            <div className="post--title">{post.title}</div>
-                            <div className="post--info">
-                                <div className="post--info--view">
-                                    <span>조회수 {post.view}</span>
+                    <>
+                        <div 
+                            className="post-card"
+                            key={post.postId}>
+                            <div className="post--img-line">
+                                <div className="post--img">
+                                    <div className="post--img-title">{post.title}</div>
                                 </div>
-                                <div className="post--info--dot">
-                                    <span>•</span>
+                                <div className='post--category-container'>
+                                    {post.categories.map((category: CategoryType) => {
+                                        return (
+                                            <div className='post--category'>
+                                                {category.name}
+                                            </div>
+                                        )
+                                    })}
                                 </div>
-                                <div className='post--info--like'>
-                                    <span>추천 {post.likes}</span>
+                                <div 
+                                    className="post--title" 
+                                    onClick={() => { navigate(`/post/${post.postId}`) }}>
+                                    {post.title}
                                 </div>
+                                <div className="post--info">
+                                    <div className="post--info--view">
+                                        <span>조회수 {post.view}</span>
+                                    </div>
+                                    <div className="post--info--dot">
+                                        <span>•</span>
+                                    </div>
+                                    <div className='post--info--like'>
+                                        <span>추천 {post.likes}</span>
+                                    </div>
+                                </div>
+                                {/* {post.user.userId ==  */}
+                                <div 
+                                    className="post--info--delete" 
+                                    onClick={() => deletePost(post.postId)}>삭제</div>
+                                {/* }    */}
                             </div>
+                            <hr />
+                            {/* TODO :: Position에 기반한 게시글 나누기 */}
+                            {/* {post.user.position} */}
                         </div>
-                        <hr />
-                        {/* TODO :: Position에 기반한 게시글 나누기 */}
-                        {/* {post.user.position} */}
-                    </div>
+                    </>
                 )
             })
             setPosts(postList);

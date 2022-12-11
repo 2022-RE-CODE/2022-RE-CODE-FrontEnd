@@ -14,7 +14,7 @@ const useCheckToken = () => {
             (async () => {
                 const user = await instance.get("user", {
                     headers: {
-                        "Authorization": token || false
+                        "Authorization": "bearer " + token || false
                     }
                 });
                 if (user.status === 401) {

@@ -27,6 +27,7 @@
     font-size: 1.0rem;
     line-height: 150%;
     font-weight: 500;
+    cursor: pointer;
 }   
 
 .post--img-title {
@@ -104,4 +105,17 @@ hr {
 
 .post-upload-btn {
     width: 3rem;
+}
+
+.post--info--delete {
+    text-align: center;
+    width: 2rem;
+    background-color: #ed234b;
+    color: white;
+    padding: .2rem;
+    border: none;
+    border-radius: .3rem;
+    font-size: .5rem;
+    font-weight: 600;
+    cursor: pointer;
 }

@@ -9,7 +9,7 @@ const instanceWithToken = axios.create({
     baseURL: `http://${process.env.REACT_APP_BACK_BASE_URL}/`,
     headers: { 
         "Content-Type": "application/json",
-        'Authorization': 'bearer ' + localStorage.getItem("ACCESS_TOKEN") ?? null
+        "Authorization": "bearer " + localStorage.getItem("ACCESS_TOKEN") ?? null
     }
 });
 

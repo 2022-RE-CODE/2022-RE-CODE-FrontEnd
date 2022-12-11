@@ -9,6 +9,7 @@ import { useParams } from 'react-router-dom'
 import { useEffect, useState } from 'react'
 import FooterComponent from '../../components/common/footerComponent'
 import { useCheckToken } from '../../utils'
+import CommentComponent from '../../components/post/commentComponent'
 
 export const PostInfoContainer = () => {
 
@@ -48,6 +49,7 @@ export const PostInfoContainer = () => {
                 isAuthenticated={isAuthenticated}
                 postInfo={postInfo}
             />
+            <CommentComponent />
         </div>
     )
 }
