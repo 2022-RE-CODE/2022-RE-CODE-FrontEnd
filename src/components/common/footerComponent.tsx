@@ -9,9 +9,9 @@ const FooterComponent: React.FC = () => {
         <div className="Footer">
                 <div className="footer--nav-container">
                     <div className="footer--nav">
-                        <a className="footer--nav--github" href={GITHUB_URL} target="_blank">깃허브</a>
+                        <a className="footer--nav--github" rel="noreferrer" href={GITHUB_URL} target="_blank">깃허브</a>
                         <div className="footer--divider"></div>
-                        <a className="footer--nav--bssm" href={BSSM_WEB_URL} target="_blank">부산소프트웨어 마이스터고</a>
+                        <a className="footer--nav--bssm" rel="noreferrer" href={BSSM_WEB_URL} target="_blank">부산소프트웨어 마이스터고</a>
                     </div>
                 </div> 
                 <div className="footer--info-container">

@@ -209,7 +209,16 @@ body {width:100%; height:100%; margin:0; padding:0; overflow-y:scroll; position:
     cursor: pointer;
 }
 
+.Header--menu > a {
+    text-decoration: none;
+    color: black;    
+}
+
 .Header--menu > div:hover {
+    color: red;
+}
+
+.Header--menu > a:hover {
     color: red;
 }
 
@@ -255,6 +264,7 @@ body {width:100%; height:100%; margin:0; padding:0; overflow-y:scroll; position:
     font-size: .8rem;
     margin: .4rem 0;
     padding: .4rem 0;
+    cursor: pointer;
 }
 
 .Header--user-info--menu--myinfo:hover {

@@ -5,6 +5,7 @@ import { BiSearch } from "react-icons/bi";
 import { Link, useNavigate } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import { RootState } from '../../redux';
+import { GITHUB_URL } from '../../constants/constants';
 
 type HeaderComponentProps = {
     isAuthenticated: boolean | null;
@@ -23,6 +24,10 @@ const HeaderComponent: React.FC<HeaderComponentProps> = ({
 
     const toCommunity = () => {
         navigate('/post');
+    }
+
+    const toChatRoom = () => {
+        navigate('/chatRoom');
     }
 
     const toUserInfo = (userId: number | undefined) => {
@@ -101,8 +106,8 @@ const HeaderComponent: React.FC<HeaderComponentProps> = ({
                 </div>
                 <div className="Header--menu">
                     <div className="Header--menu-1" onClick = {toCommunity}>게시판</div>
-                    <div className="Header--menu-2">채팅</div>
-                    <div className="Header--menu-3">깃허브</div>
+                    <div className="Header--menu-2" onClick = {toChatRoom}>채팅</div>
+                    <a className="Header--menu-3" rel="noreferrer" href={GITHUB_URL} target="_blank">깃허브</a>
                     <div className="Header--menu-4">설정</div>
                 </div>
             </div>

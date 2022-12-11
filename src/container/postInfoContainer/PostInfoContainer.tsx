@@ -10,6 +10,7 @@ import { useEffect, useState } from 'react'
 import FooterComponent from '../../components/common/footerComponent'
 import { useCheckToken } from '../../utils'
 import CommentComponent from '../../components/Post/commentComponent'
+import instanceWithHeader from '../../components/api/axiosWithHeader.instance'
 
 export const PostInfoContainer = () => {
 
@@ -27,7 +28,7 @@ export const PostInfoContainer = () => {
 
     useEffect(() => {
         getPostInfo(params.id);
-    }, []);
+    }, [params.id]);
 
     const getPostInfo = async (id: string | undefined) => {
         try {
@@ -36,6 +37,14 @@ export const PostInfoContainer = () => {
         } catch (err) {
             // TODO :: 예외 처리
             // setMessage(err);
+        }
+    }
+
+    const ToggleLikes = async (id: number | undefined) => {
+        try {
+            await instanceWithHeader.put(`likes/${id}`);
+        } catch (err) {
+            // TODO :: 예외 처리
         }
     }
 
@@ -48,6 +57,7 @@ export const PostInfoContainer = () => {
             <PostInfoComponent
                 isAuthenticated={isAuthenticated}
                 postInfo={postInfo}
+                ToggleLikes={ToggleLikes}
             />
             <CommentComponent />
         </div>
