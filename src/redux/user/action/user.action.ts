@@ -1,3 +1,4 @@
+import { UserType } from "../reducer/user.reducerType";
 import { 
     GET_USERINFO, 
     LOGIN_FAIL, 
@@ -8,7 +9,10 @@ import {
     FETCH_TOKEN_SUCCESS
 } from "./user.actionType";
 
-export const getUserInfo = () => ({ type: GET_USERINFO });
+export const getUserInfo = (user: UserType) => ({ 
+    type: GET_USERINFO,
+    payload: user
+});
 export const unauthorizedError = () => ({ type: UNAUTHORIZED_ERROR });
 export const loginFail = () => ({ type: LOGIN_FAIL });
 export const fetchTokenFail = () => ({ type: FETCH_TOKEN_FAIL })

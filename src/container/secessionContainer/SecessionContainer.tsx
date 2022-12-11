@@ -1,6 +1,6 @@
 import { RootState } from '../../redux'
 import { useSelector, useDispatch } from 'react-redux';
-import SecessionComponent from '../../components/auth/sucessionComponent';
+import SecessionComponent from '../../components/Auth/sucessionComponent';
 
 export const SecessionContainer = () => {
 

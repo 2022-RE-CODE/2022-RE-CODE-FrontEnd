@@ -1,7 +1,7 @@
 import React from 'react'
 import '../../styles/postinfo.css';
-import FobbidenErrorComponent from '../auth/fobbidenErrorComponent';
-import { CategoryType } from './postType';
+import FobbidenErrorComponent from '../Auth/fobbidenErrorComponent';
+import { CategoryType, CommentType } from './PostType';
 
 type PostInfoComponentProps = {
     isAuthenticated: boolean | null;
@@ -25,7 +25,7 @@ type PostInfoComponentProps = {
             img: string
         },
         // TODO :: COMMENTS TYPE 따로 파일 빼기
-        comments: string[]
+        comments: CommentType[]
     } | undefined
 };
 
@@ -76,15 +76,14 @@ const PostInfoComponent: React.FC<PostInfoComponentProps> = ({
                         {postInfo?.content}
                     </div>
                     <div className='post--info--comment-container'>
-                        {postInfo?.comments.map((comment: string) => {
+                        {postInfo?.comments.map((comment: CommentType) => {
                             return (
                                 <div className='post--comment'>
-                                    {comment}
+                                    {comment.comment}
                                 </div>
                             )
                         })}
                     </div>
-
                 </div>
                 : <FobbidenErrorComponent />
             }

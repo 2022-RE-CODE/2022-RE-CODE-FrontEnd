@@ -2,14 +2,14 @@ import HeaderComponent from '../../components/common/headerComponent'
 import { useDispatch, useSelector } from 'react-redux'
 import { RootState } from '../../redux'
 import instance from '../../components/api/axios.instance'
-import PostInfoComponent from '../../components/post/postInfoComponent'
+import PostInfoComponent from '../../components/Post/postInfoComponent'
 import { logoutSuccess } from '../../redux/user/action/user.action'
 
 import { useParams } from 'react-router-dom'
 import { useEffect, useState } from 'react'
 import FooterComponent from '../../components/common/footerComponent'
 import { useCheckToken } from '../../utils'
-import CommentComponent from '../../components/post/commentComponent'
+import CommentComponent from '../../components/Post/commentComponent'
 
 export const PostInfoContainer = () => {
 

@@ -2,7 +2,7 @@ import React from 'react'
 import { useDispatch, useSelector } from 'react-redux';
 import FooterComponent from '../../components/common/footerComponent';
 import HeaderComponent from '../../components/common/headerComponent'
-import PostComponent from '../../components/post/postComponent';
+import PostComponent from '../../components/Post/postComponent';
 import { RootState } from '../../redux';
 import { logoutSuccess } from '../../redux/user/action/user.action';
 import useCheckToken from '../../utils/useCheckToken';

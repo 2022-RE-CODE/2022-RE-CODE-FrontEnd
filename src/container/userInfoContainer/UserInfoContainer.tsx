@@ -4,7 +4,7 @@ import { RootState } from '../../redux'
 import { logoutSuccess } from '../../redux/user/action/user.action'
 import { useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom'
-import UserInfoComponent from '../../components/user/userInfoComponent'
+import UserInfoComponent from '../../components/User/userInfoComponent'
 import instance from '../../components/api/axios.instance'
 
 export const UserInfoContainer = () => {

@@ -1,4 +1,4 @@
-import AuthComponent from '../../components/auth/authComponent'
+import AuthComponent from '../../components/Auth/authComponent'
 
 export const AuthContainer = () => {
     return (

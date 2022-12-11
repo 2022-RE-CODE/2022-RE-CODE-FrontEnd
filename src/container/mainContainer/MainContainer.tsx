@@ -5,11 +5,11 @@ import { useCheckToken } from '../../utils'
 import { useEffect } from 'react';
 
 /** Components */
-import BannerComponent from '../../components/main/bannerComponent'
+import BannerComponent from '../../components/Main/bannerComponent'
 import HeaderComponent from '../../components/common/headerComponent'
-import PopularReviewerComponent from '../../components/main/popularReviewerComponent'
-import SubTitleComponent from '../../components/main/subTitleComponent'
-import ViewAllReviewsComponent from '../../components/main/viewAllReviewsComponent'
+import PopularReviewerComponent from '../../components/Main/popularReviewerComponent'
+import SubTitleComponent from '../../components/Main/subTitleComponent'
+import ViewAllReviewsComponent from '../../components/Main/viewAllReviewsComponent'
 import FooterComponent from '../../components/common/footerComponent'
 
 

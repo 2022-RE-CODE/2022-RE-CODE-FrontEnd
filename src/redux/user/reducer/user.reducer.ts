@@ -41,14 +41,9 @@ const userReducer = (state: UserReducerState = initialState, action: UserReducer
         case LOGIN_FAIL:
             return state;
         case GET_USERINFO:
-            const user = instance.get("user", {
-                headers: {
-                    "Authorization": "bearer " + state.token || false
-                }
-            });
             return {
                 ...state,
-                user: user
+                user: action.payload
             }
         default:
             return state;

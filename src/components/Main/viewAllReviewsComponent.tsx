@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import '../../styles/allReviews.css';
+import '../../styles/allreviews.css';
 import instance from '../api/axios.instance';
-import { CategoryType, PostType } from '../post/postType';
+import { CategoryType, PostType } from '../Post/PostType';
 
 const ViewAllReviewsComponent: React.FC = (props) => {
 

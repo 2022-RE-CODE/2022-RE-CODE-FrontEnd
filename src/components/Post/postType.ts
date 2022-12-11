@@ -29,3 +29,9 @@ export type RootPostObjectType = {
     count: number;
     data: PostType[];
 }
+
+export type CommentType = {
+    userId: number,
+    comment: string,
+    nickname: string
+}

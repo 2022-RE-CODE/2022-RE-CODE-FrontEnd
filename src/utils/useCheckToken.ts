@@ -1,7 +1,7 @@
 import { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import instance from '../components/api/axios.instance';
-import { fetchTokenFail, fetchTokenSuccess } from '../redux/user/action/user.action';
+import { fetchTokenFail, fetchTokenSuccess, getUserInfo } from '../redux/user/action/user.action';
 
 const useCheckToken = () => {
 
@@ -22,6 +22,7 @@ const useCheckToken = () => {
                 }
                 if (user.status === 200) {
                     dispatch(fetchTokenSuccess(token));
+                    dispatch(getUserInfo(user.data))
                 }
             })();
         }

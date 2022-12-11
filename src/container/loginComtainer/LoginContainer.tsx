@@ -1,4 +1,4 @@
-import LoginComponent from '../../components/auth/loginComponent'
+import LoginComponent from '../../components/Auth/loginComponent'
 import { useDispatch } from 'react-redux';
 import { loginSuccess } from '../../redux/user/action/user.action';
 

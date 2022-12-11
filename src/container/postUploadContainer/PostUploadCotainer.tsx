@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import { RootState } from '../../redux'
 import { logoutSuccess } from '../../redux/user/action/user.action'
 import useCheckToken from '../../utils/useCheckToken'
-import PostUploadComponent from '../../components/post/postUploadComponent'
+import PostUploadComponent from '../../components/Post/postUploadComponent'
 
 export const PostUploadContainer = () => {
 

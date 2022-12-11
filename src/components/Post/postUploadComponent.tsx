@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import { Navigate, useNavigate } from 'react-router-dom';
 import '../../styles/postinfo.css';
 import instanceWithToken from '../api/axiosWithToken.instance';
-import FobbidenErrorComponent from '../auth/fobbidenErrorComponent';
+import FobbidenErrorComponent from '../Auth/fobbidenErrorComponent';
 
 type PostUploadComponentProps = {
     isAuthenticated: boolean | null;
