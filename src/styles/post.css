@@ -107,6 +107,19 @@ hr {
     width: 3rem;
 }
 
+.post--info--modify {
+    text-align: center;
+    width: 2rem;
+    background-color: black;
+    color: white;
+    padding: .2rem;
+    border: none;
+    border-radius: .3rem;
+    font-size: .5rem;
+    font-weight: 600;
+    cursor: pointer;
+}
+
 .post--info--delete {
     text-align: center;
     width: 2rem;
@@ -118,4 +131,10 @@ hr {
     font-size: .5rem;
     font-weight: 600;
     cursor: pointer;
+}
+
+.post--info-btn-wrapper {
+    display: flex;
+    align-items: center;
+    gap: .3rem;
 }

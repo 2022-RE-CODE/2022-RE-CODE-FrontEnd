@@ -13,7 +13,7 @@ type CategoriesType = {
     name: string;
 }[];
 
-const PostUploadComponent: React.FC<PostUploadComponentProps> = ({
+const PostModify: React.FC<PostUploadComponentProps> = ({
     isAuthenticated,
 }) => {
 
@@ -62,7 +62,7 @@ const PostUploadComponent: React.FC<PostUploadComponentProps> = ({
             {isAuthenticated ?
                 <>
                     <div className="post-upload--container">
-                        <div className="post-upload--title1">코드 리뷰 글 작성하기</div>
+                        <div className="post-upload--title1">코드 리뷰 글 수정하기</div>
                         <form className="post-upload--form" onSubmit={submitHandler}>
                             <input type="text" value={title} onChange={titleHandler} placeholder="제목"></input>
                             <textarea value={content} onChange={contentHandler} placeholder="내용"></textarea>
@@ -110,4 +110,4 @@ const PostUploadComponent: React.FC<PostUploadComponentProps> = ({
     )
 }
 
-export default PostUploadComponent;
+export default PostModify;

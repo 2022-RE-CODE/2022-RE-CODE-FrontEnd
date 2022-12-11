@@ -1,7 +1,7 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useState, useCallback} from 'react'
 import instance from '../api/axios.instance';
 import '../../styles/post.css';
-import { useNavigate, useSearchParams } from 'react-router-dom';
+import { useNavigate, useParams, useSearchParams } from 'react-router-dom';
 import instanceWithToken from '../api/axiosWithToken.instance';
 import { useSelector } from 'react-redux';
 import { CategoryType, PostType } from './postType';
@@ -17,17 +17,18 @@ const PostComponent: React.FC = () => {
         navigate('/post/upload');
     }
 
-    const deletePost = (postId: number) => {
-        instanceWithToken.delete(`/post/delete/${postId}`);
-    }
-
     useEffect(() => { 
         const getPosts = async () => {
             try {
                 const page = searchParams.get('page');
                 const response = await instance.get(`post/find/all?page=${page ?? 0}`);
                 const postList = response.data.data.map((post: PostType) => {
-    
+
+                    const deletePost = (postId: number) => {
+                        instanceWithToken.delete(`/post/delete/${postId}`);
+                        // TODO :: 랜더링 이슈
+                    }
+
                     return (
                         <>
                             <div 
@@ -66,9 +67,14 @@ const PostComponent: React.FC = () => {
                                         </div>
                                     </div>
                                     { post.user.userId === userId ? 
-                                    <div 
-                                        className="post--info--delete" 
-                                        onClick={() => deletePost(post.postId)}>삭제</div>
+                                    <div className='post--info-btn-wrapper'>
+                                        <div 
+                                            className="post--info--modify" 
+                                            onClick={() => navigate('modify')}>수정</div>
+                                        <div 
+                                            className="post--info--delete" 
+                                            onClick={() => deletePost(post.postId)}>삭제</div>
+                                    </div>
                                     : null }
                                     </div>
                                 <hr />
@@ -84,7 +90,7 @@ const PostComponent: React.FC = () => {
             }
         }
         getPosts();
-    }, [searchParams, userId, navigate, deletePost]);
+    }, [searchParams, userId, navigate]);
 
     return (
         <div className="post">

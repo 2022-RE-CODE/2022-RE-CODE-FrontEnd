@@ -24,7 +24,8 @@ const AppRoutes = () => {
                 <Route path='/post/:id' element={<PostInfoContainer />} />
                 <Route path='/secession' element={<SecessionContainer />} />
                 <Route path='/post/upload' element={<PostUploadContainer />} />
-                <Route path='/chatRoom' element={<ChatRoomContainer />} />
+                <Route path='/chatRoom' element={<ChatRoomContainer />} />'
+            
             </Routes>
         </BrowserRouter>
     )

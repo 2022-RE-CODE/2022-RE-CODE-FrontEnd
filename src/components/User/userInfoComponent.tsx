@@ -24,7 +24,7 @@ const UserInfoComponent: React.FC<UserInfoComponentProps> = ({
             <div className="user-info--card">
                 <div className="user-img">
                     { user?.img?
-                    <img src={user.img}></img>
+                    <img src={user.img} className="user-img-tag"></img>
                     : <BiImageAlt />
                     }
                 </div>
