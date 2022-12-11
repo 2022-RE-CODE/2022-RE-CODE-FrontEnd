@@ -30,10 +30,25 @@
 }
 
 .card--img {
+    cursor: ost;
+    position: relative;
     background-color: lightgreen;
     width: 14rem;
     height: 7.5rem;
     border-radius: 20px;
+}
+
+.card--img > img {
+    width: 100%;
+    height: 100%;
+    border-radius: 20px;
+}
+.card--img--title {
+    position: absolute;
+    top: 45%;
+    font-size: 1.1rem;
+    font-weight: 600;
+    left: 5%;
 }
 
 .card--title {

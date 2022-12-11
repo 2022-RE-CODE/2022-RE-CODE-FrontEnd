@@ -17,6 +17,10 @@ const PostComponent: React.FC = () => {
         navigate('/post/upload');
     }
 
+    const deletePost = (postId: number) => {
+        instanceWithToken.delete(`/post/delete/${postId}`);
+    }
+
     useEffect(() => { 
         const getPosts = async () => {
             try {
@@ -24,18 +28,17 @@ const PostComponent: React.FC = () => {
                 const response = await instance.get(`post/find/all?page=${page ?? 0}`);
                 const postList = response.data.data.map((post: PostType) => {
     
-                    const deletePost = (postId: number) => {
-                        instanceWithToken.delete(`/post/delete/${postId}`);
-                    }
-    
                     return (
                         <>
                             <div 
                                 className="post-card"
                                 key={post.postId}>
                                 <div className="post--img-line">
-                                    <div className="post--img">
-                                        <div className="post--img-title">{post.title}</div>
+                                    <div 
+                                        className="card--img"
+                                        onClick={() => { navigate(`/post/${post.postId}`) }}>
+                                        <img src='/post-background.png' alt="logo"></img>
+                                        <div className="card--img--title">{post.title}</div>
                                     </div>
                                     <div className='post--category-container'>
                                         {post.categories.map((category: CategoryType) => {
@@ -81,7 +84,7 @@ const PostComponent: React.FC = () => {
             }
         }
         getPosts();
-    }, [searchParams, userId, navigate]);
+    }, [searchParams, userId, navigate, deletePost]);
 
     return (
         <div className="post">

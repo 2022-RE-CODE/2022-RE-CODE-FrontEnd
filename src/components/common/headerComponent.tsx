@@ -54,12 +54,12 @@ const HeaderComponent: React.FC<HeaderComponentProps> = ({
                 </div>
                 <div className="Header--auth-box">
                     {/* TODO :: 테스트 주석 삭제 */}
-                    {/* {isAuthenticated ? */}
+                    {isAuthenticated ?
                         <div 
                             className="Header--user-info" 
                             onMouseOver={()=>{setOnUserHover(1)}}
                         >
-                            <img src={user?.img} alt="userInfo"></img>
+                            <img src={user?.img || '/default.png'} alt="userInfo"></img>
                             <div className="Header--user-info--name">{user?.nickname}님</div>
                             {onUserHover? 
                                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" className="w-5 h-5">
@@ -79,8 +79,8 @@ const HeaderComponent: React.FC<HeaderComponentProps> = ({
                                     </div>
                             </div> : null}
                         </div>   
-                        {/* : null */}
-                    {/* } */}
+                        : null 
+                    }
                     {!isAuthenticated ?
                         <Link to="/login" className="Header--login-btn">
                             로그인

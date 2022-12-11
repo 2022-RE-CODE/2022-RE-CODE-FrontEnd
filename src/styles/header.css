@@ -146,6 +146,10 @@ body {width:100%; height:100%; margin:0; padding:0; overflow-y:scroll; position:
     width: 1rem;
 }
 
+.Header--logout-btn > svg {
+    width: 1rem;
+}
+
 .Header--login-btn:hover {
     color: red;
 }
@@ -158,6 +162,10 @@ body {width:100%; height:100%; margin:0; padding:0; overflow-y:scroll; position:
     background-color: white;
     border: none;
     cursor: pointer;
+    width: 5rem;
+    display: flex;
+    gap: .2rem;
+    align-items: center;
 }
 
 .Header--logout-btn:hover {
