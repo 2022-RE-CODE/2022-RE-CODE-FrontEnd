@@ -49,6 +49,7 @@ const PostUploadComponent: React.FC<PostUploadComponentProps> = ({
     }
 
     const addCategory = (name: string) => {
+        if (!name.length) return;
         setCategories(prevState => [...prevState, {name: name}]);
     }
 

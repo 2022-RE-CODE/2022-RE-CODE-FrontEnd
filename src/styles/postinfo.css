@@ -144,7 +144,7 @@
 
 
 .post-upload-category--label::after {
-    content: "카테고리 선택";
+    content: "카테고리 선택하기";
     position: relative;
     top: -.9rem;
     font-size: .9rem;
@@ -234,6 +234,7 @@
 .post-upload-category-input-wrap {
     display: flex;
     gap: 0.7rem;
+    align-items: center;
 }
 
 .post-upload-category-input-label {
@@ -252,12 +253,17 @@
 }
 
 .post-upload-category-button {
-    background-color: black;
+    background-color: #2f3543;
     color: white;
     border: none;
+    padding: .3rem;
     border-radius: .3rem;
-    font-weight: 600;
+    /* font-weight: 600; */
     cursor: pointer;
+}
+
+.post-upload-category-button:hover {
+    transform: scale(1.05);
 }
 
 
