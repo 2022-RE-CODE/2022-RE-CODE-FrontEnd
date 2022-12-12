@@ -23,10 +23,6 @@ export const MainContainer = () => {
         dispatch(logoutSuccess());
     }
 
-    // useEffect(() => {
-    //     dispatch(getUserInfo());
-    // }, []);
-
     return (
         <div className="main">
             <HeaderComponent

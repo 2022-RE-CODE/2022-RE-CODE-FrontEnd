@@ -33,9 +33,9 @@ const PostUploadComponent: React.FC<PostUploadComponentProps> = ({
         setContent(e.target.value);
     };
 
-    const submitHandler = (e: any) => {
+    const submitHandler = async (e: any) => {
         e.preventDefault();
-        instanceWithToken.post("post", JSON.stringify({
+        await instanceWithToken.post("post", JSON.stringify({
             title: title,
             content: content,
             categories: categories

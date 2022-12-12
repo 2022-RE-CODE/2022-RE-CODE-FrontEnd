@@ -1,6 +1,9 @@
 import React from 'react'
+import { useNavigate } from 'react-router-dom';
+import { UserType } from '../../redux/user/reducer/user.reducerType';
 import '../../styles/postinfo.css';
 import FobbidenErrorComponent from '../Auth/fobbidenErrorComponent';
+import CommentComponent from './commentComponent';
 import { CategoryType, CommentType } from './postType';
 
 type PostInfoComponentProps = {
@@ -14,16 +17,7 @@ type PostInfoComponentProps = {
         createMinutesAgo: string,
         categories: CategoryType[],
         // TODO :: USER TYPE 따로 파일 뺴기 
-        user: {
-            userId: number,
-            nickname: string,
-            role: string,
-            roles: string,
-            position: string,
-            gitLink: string,
-            blogLink: string,
-            img: string
-        },
+        user: UserType,
         comments: CommentType[]
     } | undefined,
     ToggleLikes: (id: number | undefined) => void;
@@ -35,12 +29,19 @@ const PostInfoComponent: React.FC<PostInfoComponentProps> = ({
     ToggleLikes
 }) => {
 
+    const navigate = useNavigate();
+
     return (
         <div className="post-info">
             {isAuthenticated ?
                 <div className="post-info--view">
                     <div className="post-info--title">
-                        {postInfo?.title} <span>- {postInfo?.user.nickname}</span>
+                        {postInfo?.title} 
+                        <span 
+                            onClick={()=>navigate(`/user/${postInfo?.user.userId}`)}
+                            className="post-info--user">
+                                - {postInfo?.user.nickname}
+                        </span>
                     </div>
                     <div className='post--info--category-container'>
                         {postInfo?.categories.map((category: CategoryType) => {
@@ -76,16 +77,11 @@ const PostInfoComponent: React.FC<PostInfoComponentProps> = ({
                     <div className="post--info-content">
                         {postInfo?.content}
                     </div>
-                    <div className='post--info--comment-container'>
-                        {postInfo?.comments.map((comment: CommentType) => {
-                            return (
-                                <div className='post--comment'>
-                                    {comment.comment}
-                                </div>
-                            )
-                        })}
-                    </div>
+                    <CommentComponent 
+                        postInfo={postInfo}
+                    />
                 </div>
+                
                 : <FobbidenErrorComponent />
             }
         </div>

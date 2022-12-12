@@ -46,6 +46,10 @@
     font-weight: 600;
 }
 
+.post-info--user {
+    cursor: pointer;
+}
+
 .post--info--category-container {
     display: flex;
     gap: .5rem;

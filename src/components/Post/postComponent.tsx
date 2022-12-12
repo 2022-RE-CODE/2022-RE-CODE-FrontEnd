@@ -24,9 +24,9 @@ const PostComponent: React.FC = () => {
                 const response = await instance.get(`post/find/all?page=${page ?? 0}`);
                 const postList = response.data.data.map((post: PostType) => {
 
-                    const deletePost = (postId: number) => {
-                        instanceWithToken.delete(`/post/delete/${postId}`);
-                        // TODO :: 랜더링 이슈
+                    const deletePost = async (postId: number) => {
+                        await instanceWithToken.delete(`/post/delete/${postId}`);
+                        window.location.reload();
                     }
 
                     return (
@@ -70,7 +70,7 @@ const PostComponent: React.FC = () => {
                                     <div className='post--info-btn-wrapper'>
                                         <div 
                                             className="post--info--modify" 
-                                            onClick={() => navigate('modify')}>수정</div>
+                                            onClick={() => navigate(`/post/modify/${post.postId}`)}>수정</div>
                                         <div 
                                             className="post--info--delete" 
                                             onClick={() => deletePost(post.postId)}>삭제</div>

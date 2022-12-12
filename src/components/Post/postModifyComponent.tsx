@@ -1,27 +1,46 @@
-import React, { useState } from 'react'
-import { Navigate, useNavigate } from 'react-router-dom';
+import React, { useEffect, useState } from 'react'
+import { Navigate, useNavigate, useParams } from 'react-router-dom';
 import '../../styles/postinfo.css';
 import instanceWithToken from '../api/axiosWithToken.instance';
 import FobbidenErrorComponent from '../Auth/fobbidenErrorComponent';
-import { CategoryType } from './postType';
+import { UserType } from '../../redux/user/reducer/user.reducerType';
+import { CategoryType, CommentType } from './postType';
 
 type PostUploadComponentProps = {
-    isAuthenticated: boolean | null;
+    isAuthenticated: boolean | null,
+    postInfo : {
+        postId: number,
+        title: string,
+        content: string,
+        view: number,
+        likes: number,
+        createMinutesAgo: string,
+        categories: CategoryType[],
+        user: UserType,
+        comments: CommentType[]
+    } | undefined,
 };
 
 type CategoriesType = {
     name: string;
 }[];
 
-const PostModify: React.FC<PostUploadComponentProps> = ({
+const PostModifyComponent: React.FC<PostUploadComponentProps> = ({
     isAuthenticated,
+    postInfo
 }) => {
 
+    const { postId } = useParams();
     const navigate = useNavigate();
-    const [title, setTitle] = useState("");
-    const [content, setContent] = useState("");
+    const [title, setTitle] = useState<string | undefined>("");
+    const [content, setContent] = useState<string | undefined>("");
     const [category, setCategory] = useState("");
     const [categories, setCategories] = useState<CategoriesType>([]);
+
+    useEffect(() => {
+        setTitle(postInfo?.title);
+        setContent(postInfo?.content)
+    }, [postInfo]);
 
     const titleHandler = (e: any) => {
         e.preventDefault();
@@ -33,9 +52,9 @@ const PostModify: React.FC<PostUploadComponentProps> = ({
         setContent(e.target.value);
     };
 
-    const submitHandler = (e: any) => {
+    const submitHandler = async (e: any) => {
         e.preventDefault();
-        instanceWithToken.post("post", JSON.stringify({
+        await instanceWithToken.put(`post/update/${postId}`, JSON.stringify({
             title: title,
             content: content,
             categories: categories
@@ -100,7 +119,7 @@ const PostModify: React.FC<PostUploadComponentProps> = ({
                             })}
                             </div>
                             <div className="login--form--btnContainer">
-                                <button className="login--form--submitBtn" type="submit">글쓰기</button>
+                                <button className="login--form--submitBtn" type="submit">수정하기</button>
                             </div>
                         </form>
                     </div>
@@ -110,4 +129,4 @@ const PostModify: React.FC<PostUploadComponentProps> = ({
     )
 }
 
-export default PostModify;
+export default PostModifyComponent;

@@ -23,7 +23,7 @@ export const PostInfoContainer = () => {
 
     useCheckToken();
 
-    const [postInfo, setpostInfo] = useState();
+    const [postInfo, setPostInfo] = useState();
     const params = useParams();
 
     useEffect(() => {
@@ -33,7 +33,7 @@ export const PostInfoContainer = () => {
     const getPostInfo = async (id: string | undefined) => {
         try {
             const response = await instance.get(`post/find/detail/${id}`);
-            setpostInfo(response.data);
+            setPostInfo(response.data);
         } catch (err) {
             // TODO :: 예외 처리
             // setMessage(err);
@@ -59,7 +59,6 @@ export const PostInfoContainer = () => {
                 postInfo={postInfo}
                 ToggleLikes={ToggleLikes}
             />
-            <CommentComponent />
         </div>
     )
 }
