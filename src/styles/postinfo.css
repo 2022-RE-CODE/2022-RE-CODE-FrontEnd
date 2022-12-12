@@ -72,6 +72,10 @@
 
 .post--info-content {
     font-size: 1rem;
+    min-height: 20rem;
+    background-color: #f6f7f9;
+    border-radius: .5rem;
+    padding: 1rem;
 }
 
 .post--info-likes {
@@ -268,6 +272,11 @@
 
 .post-upload-category-button:hover {
     transform: scale(1.05);
+}
+
+.post--info-view-wrap {
+    display: flex;
+    gap: 1rem;
 }
 
 

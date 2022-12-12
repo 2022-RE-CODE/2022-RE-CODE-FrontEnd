@@ -59,6 +59,7 @@ export const PostInfoContainer = () => {
                 postInfo={postInfo}
                 ToggleLikes={ToggleLikes}
             />
+            <FooterComponent />
         </div>
     )
 }
