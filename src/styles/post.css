@@ -7,9 +7,11 @@
 .post-card--container {
     margin-top: 5rem;
     display: grid;
-    grid-template-columns: repeat(4, 1fr);
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 2rem;
     grid-auto-rows: 18rem;
     width: 70%;
+    /* gap: 2rem; */
 }
 
 .post-card {

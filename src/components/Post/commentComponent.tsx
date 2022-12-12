@@ -1,5 +1,7 @@
 import React, { useState } from 'react'
-import { useNavigate, useParams } from 'react-router-dom';
+import { useSelector } from 'react-redux';
+import { Navigate, useNavigate, useParams } from 'react-router-dom';
+import { RootState } from '../../redux';
 import { UserType } from '../../redux/user/reducer/user.reducerType';
 import '../../styles/comment.css';
 import instanceWithToken from '../api/axiosWithToken.instance';
@@ -24,8 +26,10 @@ const CommentComponent: React.FC<CommentComponentType> = ({
 }: CommentComponentType) => {
 
     const [comment, setComment] = useState("");
+    const [hover, setHover] = useState("");
     const { id } = useParams();
     const navigate = useNavigate();
+    const userId = useSelector((state: RootState) => state.userReducer.user?.userId);
 
     const commentHandler = (e: any) => {
         e.preventDefault();
@@ -43,15 +47,36 @@ const CommentComponent: React.FC<CommentComponentType> = ({
         window.location.reload();
     }
 
+    const deleteComment = async (commentId: number) => {
+        await instanceWithToken.delete(`comment/delete/${commentId}`);
+        window.location.reload();
+    }
+
     return (
         <div className='post--info--comment-container'>
             <div className='post--info--comment--title'>피드백 전체보기</div>
             <div className='post--info--comment-all'>
                 {postInfo?.comments.map((comment: CommentType) => {
                     return (
-                        <div className='post--comment'>
-                            <div className='post--comment-nickname'>{comment.nickname}님의 피드백</div>
+                        <div 
+                            className='post--comment' 
+                            // TODO :: commentid로 변경
+                            onMouseOver={() => {setHover(comment.comment)}} 
+                            onMouseOut={() => {setHover("")}}>
+                            <div 
+                                className='post--comment-nickname'
+                                onClick={() => {navigate(`/user/${comment.userId}`)}}>{comment.nickname}님의 피드백</div>
                             <div className='post--comment-content'>{comment.comment}</div>
+                            {/* TODO :: 하드코딩 변경, commentid로 변경 */}
+                            {(comment.userId == userId && hover === comment.comment) ?
+                                <>
+                                    <div
+                                        className='post--comment-btn'
+                                        onClick={() => {deleteComment(9)}}>
+                                        삭제
+                                    </div>
+                                </> : null
+                            }
                         </div>
                     )
                 })}
