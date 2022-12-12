@@ -31,7 +31,11 @@ const HeaderComponent: React.FC<HeaderComponentProps> = ({
     }
 
     const toUserInfo = (userId: number | undefined) => {
-        navigate(`/user/${userId}`)
+        navigate(`/user/${userId}`);
+    }
+
+    const toSetting = () => {
+        navigate('/setting');
     }
 
     return (
@@ -108,7 +112,7 @@ const HeaderComponent: React.FC<HeaderComponentProps> = ({
                     <div className="Header--menu-1" onClick = {toCommunity}>게시판</div>
                     <div className="Header--menu-2" onClick = {toChatRoom}>채팅</div>
                     <a className="Header--menu-3" rel="noreferrer" href={GITHUB_URL} target="_blank">깃허브</a>
-                    <div className="Header--menu-4">설정</div>
+                    <div className="Header--menu-4" onClick = {toSetting}>설정</div>
                 </div>
             </div>
         </div>

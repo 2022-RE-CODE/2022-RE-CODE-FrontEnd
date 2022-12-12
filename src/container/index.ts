@@ -8,3 +8,4 @@ export * from "./userInfoContainer/UserInfoContainer";
 export * from "./postUploadContainer/PostUploadCotainer";
 export * from "./chatRoomContainer/ChatRoomContainer";
 export * from "./postModifyContainer/PostModifyContainer";
+export * from "./settingContainer/SettingContainer";

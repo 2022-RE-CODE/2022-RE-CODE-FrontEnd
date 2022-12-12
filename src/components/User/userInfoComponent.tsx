@@ -1,6 +1,6 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import "../../styles/userinfo.css";
-import { BiImageAlt } from "react-icons/bi"; 
+import { BiImageAlt } from "react-icons/bi";
 
 type UserInfoComponentProps = {
     user: {
@@ -24,7 +24,7 @@ const UserInfoComponent: React.FC<UserInfoComponentProps> = ({
             <div className="user-info--card">
                 <div className="user-img">
                     { user?.img?
-                    <img src={user.img} className="user-img-tag"></img>
+                    <img src={user.img} className="user-img-tag" alt="userImg"></img>
                     : <BiImageAlt />
                     }
                 </div>
@@ -35,7 +35,7 @@ const UserInfoComponent: React.FC<UserInfoComponentProps> = ({
                     <div>깃허브 링크 : {user?.gitLink}</div>
                     <div>블로그 링크 : {user?.blogLink}</div>
                 </div>
-            </div>
+            </div>    
         </div>
     )
 }
