@@ -6,11 +6,12 @@ import PostInfoComponent from '../../components/Post/postInfoComponent'
 import { logoutSuccess } from '../../redux/user/action/user.action'
 
 import { useParams } from 'react-router-dom'
-import { useEffect, useState } from 'react'
+import { useCallback, useEffect, useState } from 'react'
 import FooterComponent from '../../components/common/footerComponent'
 import { useCheckToken } from '../../utils'
 import CommentComponent from '../../components/Post/commentComponent'
 import instanceWithHeader from '../../components/api/axiosWithHeader.instance'
+import instanceWithToken from '../../components/api/axiosWithToken.instance'
 
 export const PostInfoContainer = () => {
 
@@ -25,11 +26,7 @@ export const PostInfoContainer = () => {
 
     const [postInfo, setPostInfo] = useState();
     const params = useParams();
-
-    useEffect(() => {
-        getPostInfo(params.id);
-    }, [params.id]);
-
+    
     const getPostInfo = async (id: string | undefined) => {
         try {
             const response = await instance.get(`post/find/detail/${id}`);
@@ -39,14 +36,19 @@ export const PostInfoContainer = () => {
             // setMessage(err);
         }
     }
-
+    
     const ToggleLikes = async (id: number | undefined) => {
         try {
-            await instanceWithHeader.put(`likes/${id}`);
+            await instanceWithToken.put(`likes/${id}`);
+            window.location.reload();
         } catch (err) {
             // TODO :: 예외 처리
         }
     }
+
+    useEffect(() => {
+        getPostInfo(params.id); 
+    }, [params.id]);
 
     return (
         <div className="post-info-container">

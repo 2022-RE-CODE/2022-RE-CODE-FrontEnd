@@ -28,23 +28,23 @@ const LoginComponent: React.FC<LoginComponentProps> = ({
         setPassword(e.target.value);
     };
 
-    const submitHandler = (e: any) => {
+    const submitHandler = async (e: any) => {
         e.preventDefault();
-        instance.post("auth/login", JSON.stringify({
+        await instance.post("auth/login", JSON.stringify({
             email: email,
             password: password
         }))
-            .then(response => {
-                if (response.status === 200) {
-                    // TODO :: Navigate 후에도 알림 뜨도록 수정
-                    toast("로그인이 완료되었습니다.");
-                    onLogin(response.data.accessToken.split(' ')[1]);
-                    // navigate("/");
-                }
-                else {
-                    toast(response.data);
-                }
-            });
+        .then(response => {
+            if (response.status === 200) {
+                // TODO :: Navigate 후에도 알림 뜨도록 수정
+                toast("로그인이 완료되었습니다.");
+                onLogin(response.data.accessToken.split(' ')[1]);
+                navigate('/');
+            }
+            else {
+                toast(response.data);
+            }
+        });
     };
 
     return (

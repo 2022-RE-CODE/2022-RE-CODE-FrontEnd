@@ -1,7 +1,11 @@
 import React from 'react'
+import { useNavigate } from 'react-router-dom';
 import '../../styles/banner.css';
 
 const BannerComponent: React.FC = () => {
+
+    const navigate = useNavigate();
+
     return (
         <div className="banner">
             <div className="banner--container">
@@ -11,7 +15,7 @@ const BannerComponent: React.FC = () => {
                 <div className="banner--container-secondline">
                     LEVEL UP YOUR CODES
                 </div>
-                <button className="btn-start-now">지금 시작하기</button>
+                <button className="btn-start-now" onClick={()=>navigate('/login')}>지금 시작하기</button>
             </div>
             <div className="polygon-1"></div>
             <div className="polygon-2"></div> 

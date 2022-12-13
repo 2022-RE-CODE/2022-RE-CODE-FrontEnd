@@ -17,4 +17,5 @@ const PortfolioButtonComponent: React.FC = () => {
         </div>
     )
 }
+
 export default PortfolioButtonComponent; 

@@ -50,7 +50,6 @@ const CommentComponent: React.FC<CommentComponentType> = ({
                     return (
                         <div 
                             className='post--comment' 
-                            // TODO :: commentid로 변경
                             onMouseOver={() => {setHover(comment.commentId)}} 
                             onMouseOut={() => {setHover(0)}}>
                             <div 
@@ -62,7 +61,7 @@ const CommentComponent: React.FC<CommentComponentType> = ({
                                 <>
                                     <div
                                         className='post--comment-btn'
-                                        onClick={() => {deleteComment(9)}}>
+                                        onClick={() => {deleteComment(comment.commentId)}}>
                                         삭제
                                     </div>
                                 </> : null
