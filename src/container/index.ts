@@ -6,6 +6,6 @@ export * from "./postInfoContainer/PostInfoContainer";
 export * from "./secessionContainer/SecessionContainer";
 export * from "./userInfoContainer/UserInfoContainer";
 export * from "./postUploadContainer/PostUploadCotainer";
-export * from "./chatRoomContainer/ChatRoomContainer";
+export * from "./portfolioContainer/PortfolioContainer";
 export * from "./postModifyContainer/PostModifyContainer";
 export * from "./settingContainer/SettingContainer";

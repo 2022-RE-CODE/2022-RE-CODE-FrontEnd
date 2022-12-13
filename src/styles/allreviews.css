@@ -30,9 +30,8 @@
 }
 
 .card--img {
-    cursor: ost;
+    cursor: pointer;
     position: relative;
-    background-color: lightgreen;
     width: 14rem;
     height: 7.5rem;
     border-radius: 20px;

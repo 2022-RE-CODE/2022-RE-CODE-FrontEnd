@@ -26,8 +26,8 @@ const HeaderComponent: React.FC<HeaderComponentProps> = ({
         navigate('/post');
     }
 
-    const toChatRoom = () => {
-        navigate('/chatRoom');
+    const toPortfolio = () => {
+        navigate('/portfolio/my');
     }
 
     const toUserInfo = (userId: number | undefined) => {
@@ -110,7 +110,7 @@ const HeaderComponent: React.FC<HeaderComponentProps> = ({
                 </div>
                 <div className="Header--menu">
                     <div className="Header--menu-1" onClick = {toCommunity}>게시판</div>
-                    <div className="Header--menu-2" onClick = {toChatRoom}>채팅</div>
+                    <div className="Header--menu-2" onClick = {toPortfolio}>포트폴리오</div>
                     <a className="Header--menu-3" rel="noreferrer" href={GITHUB_URL} target="_blank">깃허브</a>
                     <div className="Header--menu-4" onClick = {toSetting}>설정</div>
                 </div>

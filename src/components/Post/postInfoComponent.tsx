@@ -52,9 +52,6 @@ const PostInfoComponent: React.FC<PostInfoComponentProps> = ({
                             )
                         })}
                     </div>
-                    {/* <div className="post--info-img">
-                        <img src={postInfo?.user.img} alt={postInfo?.user.nickname}></img>
-                    </div> */}
                     <div className="post--info-view-wrap">
                         <div className="post--info-view">
                             조회수 {postInfo?.view}
@@ -80,7 +77,7 @@ const PostInfoComponent: React.FC<PostInfoComponentProps> = ({
                         {postInfo?.content}
                     </div>
                     <CommentComponent 
-                        postInfo={postInfo}
+                        comments={postInfo?.comments}
                     />
                 </div>
                 

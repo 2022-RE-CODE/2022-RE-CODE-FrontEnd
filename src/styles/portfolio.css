@@ -1,0 +1,185 @@
+.portfolio--button-warpper {
+    position: fixed;
+    right: 1.5rem;
+    bottom: 1.5rem;
+    transition: bottom ease-in-out .3s;
+}
+
+.portfolio--button-warpper:hover {
+    bottom: 1.7rem;
+}
+
+.portfolio--button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 4rem;
+    height: 4rem;
+    border-radius: 100%;
+    background-color: black;
+    box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+    cursor: pointer;
+}
+
+.portfolio--button > svg {
+    fill: white;
+    width: 2.5rem;
+}
+
+.portfolios {
+    position: fixed;
+    left: 0;
+    width: 18rem;
+    height: 100%;
+    background-color: #fafbfd;
+}
+
+.portfolios--header {
+    padding: 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.portfolios--title {
+    font-size: 1.5rem;
+    font-weight: 600;
+}
+
+.portfolio--content {
+    /* position: fixed; */
+    margin-left: 20rem;
+    height: 100%;
+    width: 70%;
+}
+
+.portfolio--content--header {
+    width: 100%;
+    height: 5rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 1rem; 
+    /* align-items: center; */
+}
+
+.portfolio--content--header--title {
+    font-size: 1.5rem;
+    font-weight: 600;
+}
+
+.portfolios-all {
+    display: flex;
+    flex-direction: column;
+    padding: 1rem;
+    gap: .4rem;
+    overflow: auto;
+    height: 100%;
+}
+
+.portfolio--portfolio-item {
+    display: flex;
+    align-items: center;  
+    padding: 1rem;  
+    background-color: white;
+    height: 2rem;
+    box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.10);
+    border-radius: .8rem;
+    font-size: .9rem;
+    font-weight: 600;
+    transition: background-color ease-in-out .4s;
+    cursor: pointer;
+    color: black;
+    text-decoration: none;
+}
+
+.active {
+    background-color: #30333f;
+    color: white;
+}
+
+.portfolio--portfolio-item:hover {
+    background-color: #30333f;
+    color: white;
+}
+
+.portfolio--content--my--link {
+    font-size: 1rem;
+    font-weight: 550;   
+    color: black;
+}
+
+.portfolio--content-item {
+    display: flex;
+    gap: .3rem;
+    border-radius: .2rem;
+    transition: background-color ease-in-out .4s;
+    cursor: pointer;
+    align-items: center;
+    padding: .5rem 1rem;
+    text-decoration-line: none;
+}
+
+.portfolio--content--my--ref {
+    color: #c9c9c9;
+}
+
+.portfolio--content--my--link {
+    font-size: 1.5rem;
+}
+
+.portfolio--content-item:hover {
+    background-color: #f1f1ef;
+}
+
+.portfolio--content--header--time {
+    font-size: .9rem;
+    color: #a3aab0;
+}
+
+.portfolio--content--input-submit-btn {
+    background-color: #2e2e2e;
+    color: white;
+    height: 2rem;
+    border-radius: .3rem;
+    cursor: pointer;
+    width: 5rem;
+}
+
+.portfolio--content--input-wrapper {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    align-items: center;
+    gap: 2rem;
+    flex-wrap: wrap;
+    padding: 1rem;
+    width: 100%;
+}
+
+.portfolio--content--input-wrapper > input {
+    height: 2rem;
+    border: none;
+    padding: .5rem;
+    border-bottom: 1px solid #e3e3e3;
+}
+
+.portfolio--content--input-wrapper > input:focus {
+    position: relative;
+    outline: none;
+    border-bottom: 1px solid black;
+}
+
+.portfolio--content--input-wrapper > input::-webkit-input-placeholder {
+    transition: all .3s ease;
+    position: absolute;
+    top: 50%;
+    color: #919191;
+}
+
+.portfolio--content--input-wrapper > input:focus::-webkit-input-placeholder {
+    position: absolute;
+    font-size: 11px;
+    top: 0%;
+    left: 2%;
+    color: #7b7b7b;
+}

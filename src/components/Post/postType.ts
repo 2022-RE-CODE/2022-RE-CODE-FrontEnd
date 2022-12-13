@@ -31,6 +31,7 @@ export type RootPostObjectType = {
 }
 
 export type CommentType = {
+    commentId: number
     userId: number,
     comment: string,
     nickname: string

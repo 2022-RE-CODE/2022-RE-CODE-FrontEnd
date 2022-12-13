@@ -8,25 +8,15 @@ import instanceWithToken from '../api/axiosWithToken.instance';
 import { CategoryType, CommentType } from './postType';
 
 type CommentComponentType = {
-    postInfo: {
-        postId: number,
-        title: string,
-        content: string,
-        view: number,
-        likes: number,
-        createMinutesAgo: string,
-        categories: CategoryType[],
-        user: UserType,
-        comments: CommentType[]
-    } | undefined,
+    comments: CommentType[] | undefined
 }
 
 const CommentComponent: React.FC<CommentComponentType> = ({
-    postInfo
+    comments
 }: CommentComponentType) => {
 
     const [comment, setComment] = useState("");
-    const [hover, setHover] = useState("");
+    const [hover, setHover] = useState(0);
     const { id } = useParams();
     const navigate = useNavigate();
     const userId = useSelector((state: RootState) => state.userReducer.user?.userId);
@@ -56,19 +46,19 @@ const CommentComponent: React.FC<CommentComponentType> = ({
         <div className='post--info--comment-container'>
             <div className='post--info--comment--title'>피드백 전체보기</div>
             <div className='post--info--comment-all'>
-                {postInfo?.comments.map((comment: CommentType) => {
+                {comments?.map((comment: CommentType) => {
                     return (
                         <div 
                             className='post--comment' 
                             // TODO :: commentid로 변경
-                            onMouseOver={() => {setHover(comment.comment)}} 
-                            onMouseOut={() => {setHover("")}}>
+                            onMouseOver={() => {setHover(comment.commentId)}} 
+                            onMouseOut={() => {setHover(0)}}>
                             <div 
                                 className='post--comment-nickname'
                                 onClick={() => {navigate(`/user/${comment.userId}`)}}>{comment.nickname}님의 피드백</div>
                             <div className='post--comment-content'>{comment.comment}</div>
                             {/* TODO :: 하드코딩 변경, commentid로 변경 */}
-                            {(comment.userId == userId && hover === comment.comment) ?
+                            {(comment.userId == userId && hover === comment.commentId) ?
                                 <>
                                     <div
                                         className='post--comment-btn'

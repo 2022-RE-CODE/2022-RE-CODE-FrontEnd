@@ -10,7 +10,7 @@ const instanceWithToken = axios.create({
     headers: { 
         "Content-Type": "application/json",
         "Authorization": "bearer " + localStorage.getItem("ACCESS_TOKEN") ?? null
-    }
+    }   
 });
 
 instanceWithToken.interceptors.response.use((response): responseType => {

@@ -1,8 +1,7 @@
 import { useDispatch, useSelector } from 'react-redux'
 import { RootState } from '../../redux'
-import { getUserInfo, logoutSuccess } from '../../redux/user/action/user.action'
+import { logoutSuccess } from '../../redux/user/action/user.action'
 import { useCheckToken } from '../../utils'
-import { useEffect } from 'react';
 
 /** Components */
 import BannerComponent from '../../components/Main/bannerComponent'
@@ -11,6 +10,7 @@ import PopularReviewerComponent from '../../components/Main/popularReviewerCompo
 import SubTitleComponent from '../../components/Main/subTitleComponent'
 import ViewAllReviewsComponent from '../../components/Main/viewAllReviewsComponent'
 import FooterComponent from '../../components/common/footerComponent'
+import PortfolioButtonComponent from '../../components/Portfolio/portfolioButtonComponent'
 
 
 export const MainContainer = () => {
@@ -33,6 +33,7 @@ export const MainContainer = () => {
             <SubTitleComponent />
             <ViewAllReviewsComponent />
             <PopularReviewerComponent />
+            <PortfolioButtonComponent />
             <FooterComponent />
         </div>
     )
