@@ -7,23 +7,19 @@ type responseType = {
 
 const instanceWithToken = axios.create({
     baseURL: `http://${process.env.REACT_APP_BACK_BASE_URL}/`,
-    // headers: { 
-    //     "Content-Type": "application/json",
-    // }   
 });
 
 instanceWithToken.interceptors.request.use(
-    (response) => {
+    (request) => {
         const accessToken = localStorage.getItem("ACCESS_TOKEN");
         if (accessToken) {
-            response.headers = {
+            request.headers = {
                 "Authorization": "bearer " + accessToken ?? null,
                 "Content-Type": "application/json",
             }
         }
-        return response;
+        return request;
     },
-
     (error: AxiosError) => {
         return error;
     }

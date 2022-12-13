@@ -1,7 +1,7 @@
-import React, { useEffect, useState, useCallback} from 'react'
+import React, { useEffect, useState } from 'react'
 import instance from '../api/axios.instance';
 import '../../styles/post.css';
-import { useNavigate, useParams, useSearchParams } from 'react-router-dom';
+import { useNavigate, useSearchParams } from 'react-router-dom';
 import instanceWithToken from '../api/axiosWithToken.instance';
 import { useSelector } from 'react-redux';
 import { CategoryType, PostType } from './postType';
@@ -21,9 +21,15 @@ const PostComponent: React.FC = () => {
         const getPosts = async () => {
             try {
                 const page = searchParams.get('page');
-                const response = await instance.get(`post/find/all?page=${page ?? 0}`);
+                const title = searchParams.get('title');
+                let response;
+                if (title === null) {
+                    response = await instance.get(`post/find/all?page=${page ?? 0}`);
+                } else {
+                    response = await instance.get(`post/find/title?title=${title}`);
+                }
                 const postList = response.data.data.map((post: PostType) => {
-
+                    
                     const deletePost = async (postId: number) => {
                         await instanceWithToken.delete(`/post/delete/${postId}`);
                         window.location.reload();

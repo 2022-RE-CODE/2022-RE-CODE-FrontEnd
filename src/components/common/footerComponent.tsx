@@ -1,6 +1,5 @@
 import React from 'react'
 import '../../styles/footer.css';
-import { useNavigate } from 'react-router-dom';
 import { BSSM_WEB_URL, GITHUB_URL } from '../../constants/constants';
 
 const FooterComponent: React.FC = () => {

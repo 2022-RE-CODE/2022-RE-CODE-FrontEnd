@@ -1,5 +1,5 @@
-import React, { useRef, useState } from 'react'
-import { Navigate, useNavigate } from 'react-router-dom';
+import React, { useState } from 'react'
+import { useNavigate } from 'react-router-dom';
 import '../../styles/postinfo.css';
 import instanceWithToken from '../api/axiosWithToken.instance';
 import FobbidenErrorComponent from '../Auth/fobbidenErrorComponent';
@@ -27,11 +27,6 @@ const PostUploadComponent: React.FC<PostUploadComponentProps> = ({
     const titleHandler = (e: any) => {
         e.preventDefault();
         setTitle(e.target.value);
-    };
-
-    const contentHandler = (e: any) => {
-        e.preventDefault();
-        setContent(e.target.value);
     };
 
     const submitHandler = async (e: any) => {

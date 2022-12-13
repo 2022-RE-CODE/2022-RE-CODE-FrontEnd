@@ -1,28 +1,47 @@
-import React from 'react'
+import React, {useState, useEffect} from 'react'
+import { useNavigate } from 'react-router-dom';
 import '../../styles/popularReveiewer.css';
+import instance from '../api/axios.instance';
+import { CategoryType, PostType } from '../Post/postType';
 
 const PopularReviewerComponent: React.FC = () => {
 
-    const CardEl = Array.from("____").map((data, idx) => {
-        return (<div className="card" key={idx}>
-            <div className="card--img">
-                <img src='/post-background.png' alt="logo"></img>
-                <div className="card--img--title">대용량 트래픽 처리</div>
-            </div>
-            <div className="card--title">대용량 트래픽 처리 방법좀 알려주세요!</div>
-            <div className="card--tags">
-                <div className="card--tag1">Spring</div>
-                <div className="card--tag2">대용량 처리</div>
-            </div>
-        </div>)
-    })
+    const [posts, setPosts] = useState<React.ReactNode>();
+    const navigate = useNavigate();
+
+    useEffect(() => {
+        const getPosts = async () => {
+            const response = await instance.get(`post/find/view`);
+            const CardEl = response.data.data.slice(0, 4).map((post: PostType) => {
+                return (
+                    <div className="card" onClick={() => {navigate(`/post/${post.postId}`)}} key={post.postId}>
+                    <div className="card--img">
+                        <img src='/post-background.png' alt="logo"></img>
+                        <div className="card--img--title">{post.title}</div>
+                    </div>
+                    <div className="card--title">{post.title}</div>
+                    <div className="card--tags">
+                        {post.categories.map((category: CategoryType) => {
+                            return (
+                                <div className='card--tag1'>
+                                    {category.name}
+                                </div>
+                            )
+                        })}
+                    </div>
+                </div>)
+            })
+            setPosts(CardEl);
+        }
+        getPosts();
+    }, [navigate]);
 
     return (
         <div className="popular-reviewer">
             <div className="popular-reviewer--container">
-                <div className="popular-reviewer--title">최근 인기있는 리뷰어</div>
+                <div className="popular-reviewer--title">가장 인기있는 리뷰</div>
                 <div className="card-container">
-                    {CardEl}
+                    {posts}
                 </div>
             </div>
         </div>

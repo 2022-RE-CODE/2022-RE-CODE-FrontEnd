@@ -17,7 +17,6 @@ type PostInfoComponentProps = {
         likes: number,
         createMinutesAgo: string,
         categories: CategoryType[],
-        // TODO :: USER TYPE 따로 파일 뺴기 
         user: UserType,
         comments: CommentType[]
     } | undefined,
@@ -30,7 +29,7 @@ const PostInfoComponent: React.FC<PostInfoComponentProps> = ({
     ToggleLikes
 }) => {
 
-    const codeblockRegexp = /^(language\-.*)/;
+    const codeblockRegexp = /^(language.*)/;
     const postXssFilter = new FilterXSS({
         onIgnoreTagAttr: (tag, name, value) => {
             if (name === 'style') return `${name}="${escapeAttrValue(value)}"`;

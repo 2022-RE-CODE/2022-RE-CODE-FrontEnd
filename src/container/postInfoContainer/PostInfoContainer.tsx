@@ -6,11 +6,9 @@ import PostInfoComponent from '../../components/Post/postInfoComponent'
 import { logoutSuccess } from '../../redux/user/action/user.action'
 
 import { useParams } from 'react-router-dom'
-import { useCallback, useEffect, useState } from 'react'
+import { useEffect, useState } from 'react'
 import FooterComponent from '../../components/common/footerComponent'
 import { useCheckToken } from '../../utils'
-import CommentComponent from '../../components/Post/commentComponent'
-import instanceWithHeader from '../../components/api/axiosWithHeader.instance'
 import instanceWithToken from '../../components/api/axiosWithToken.instance'
 
 export const PostInfoContainer = () => {

@@ -1,7 +1,5 @@
 import React from 'react'
-import { useState } from 'react';
 import '../../styles/login.css';
-import { Link, useNavigate } from 'react-router-dom';
 import 'react-toastify/dist/ReactToastify.css';
 
 export type SecesstionComponentProps = {
@@ -11,11 +9,9 @@ export type SecesstionComponentProps = {
 const SecessionComponent: React.FC<SecesstionComponentProps> = ({
     token,
 }: SecesstionComponentProps) => {
-    const navigate = useNavigate();
 
-
-    const submitHandler = (e: any) => {
-        e.preventDefault();
+    // const submitHandler = (e: any) => {
+        // e.preventDefault();
         // instance.post("auth/login", JSON.stringify({
         //     email: email,
         //     password: password
@@ -31,7 +27,7 @@ const SecessionComponent: React.FC<SecesstionComponentProps> = ({
         //         toast(response.data);
         //     }
         // });
-    };
+    // };
 
     return (
         <div className="secession">

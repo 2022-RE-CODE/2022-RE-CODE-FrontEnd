@@ -29,7 +29,7 @@ const useCheckToken = () => {
         else {
             dispatch(fetchTokenFail());
         }
-    }, []);
+    }, [dispatch]);
 
 }
 

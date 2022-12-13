@@ -36,7 +36,6 @@ const LoginComponent: React.FC<LoginComponentProps> = ({
         }))
         .then(response => {
             if (response.status === 200) {
-                // TODO :: Navigate 후에도 알림 뜨도록 수정
                 toast("로그인이 완료되었습니다.");
                 onLogin(response.data.accessToken.split(' ')[1]);
                 navigate('/');
@@ -51,7 +50,7 @@ const LoginComponent: React.FC<LoginComponentProps> = ({
         <div className="login">
             <div className="login--form-container">
                 <Link to="/" className="Header--home-btn">
-                    <img className="Header--logo-img" src={'logo-recode.png'} />
+                    <img className="Header--logo-img" src={'logo-recode.png'} alt='logo-recode'/>
                 </Link>
                 <div className="login--title1">자신의 능력으로</div>
                 <div className="login--title2">추가 수익을 만들어보세요!</div>

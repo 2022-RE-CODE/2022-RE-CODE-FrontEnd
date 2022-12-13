@@ -1,9 +1,5 @@
-import React from 'react'
-import { useState } from 'react';
-import '../../styles/login.css';
 import { useNavigate } from 'react-router-dom';
-// TODO :: css 분리
-import '../../styles/postinfo.css';
+import '../../styles/fobbiden.css';
 
 const FobbidenErrorComponent = () => {
 

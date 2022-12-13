@@ -1,11 +1,10 @@
 import React, { useState } from 'react'
 import { useSelector } from 'react-redux';
-import { Navigate, useNavigate, useParams } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import { RootState } from '../../redux';
-import { UserType } from '../../redux/user/reducer/user.reducerType';
 import '../../styles/comment.css';
 import instanceWithToken from '../api/axiosWithToken.instance';
-import { CategoryType, CommentType } from './postType';
+import { CommentType } from './postType';
 
 type CommentComponentType = {
     comments: CommentType[] | undefined
@@ -56,8 +55,7 @@ const CommentComponent: React.FC<CommentComponentType> = ({
                                 className='post--comment-nickname'
                                 onClick={() => {navigate(`/user/${comment.userId}`)}}>{comment.nickname}님의 피드백</div>
                             <div className='post--comment-content'>{comment.comment}</div>
-                            {/* TODO :: 하드코딩 변경, commentid로 변경 */}
-                            {(comment.userId == userId && hover === comment.commentId) ?
+                            {(comment.userId === userId && hover === comment.commentId) ?
                                 <>
                                     <div
                                         className='post--comment-btn'

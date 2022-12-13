@@ -20,7 +20,6 @@ export type UserType = {
     img: string
 }
 
-// TODO :: UserReducerState user 타입 정의
 export type UserReducerState = {
     token: string | null, 
     isAuthenticated: boolean | null, 

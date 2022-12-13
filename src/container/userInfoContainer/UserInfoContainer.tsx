@@ -23,7 +23,7 @@ export const UserInfoContainer = () => {
 
     useEffect(() => {
         getUserInfo(params.id);
-    }, []);
+    }, [params.id]);
 
     const getUserInfo = async (id: string | undefined) => {
         try {

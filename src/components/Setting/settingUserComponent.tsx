@@ -1,13 +1,9 @@
-import React, { useCallback, useRef } from 'react'
+import React from 'react'
 import { useState } from 'react';
 import '../../styles/auth.css';
-import { useNavigate } from 'react-router-dom';
 import { ToastContainer, Slide } from "react-toastify";
 import 'react-toastify/dist/ReactToastify.css';
 import instanceWithToken from '../api/axiosWithToken.instance';
-import instanceWithForm from '../api/axiosWithForm';
-import axios from 'axios';
-
 
 type EnumPositionType = {
     [key: string]: string
@@ -22,7 +18,6 @@ const EnumPosition: EnumPositionType = {
 
 const SettingUserComponent: React.FC = () => {
 
-    const navigate = useNavigate();
     const [nickname, setNickname] = useState<string>("");
     const [gitLink, setGitLink] = useState<string>("");
     const [blogLink, setBlogLink] = useState<string>("");
@@ -48,30 +43,30 @@ const SettingUserComponent: React.FC = () => {
         setPosition(e.target.value);
     }
 
-    const onUploadImage = useCallback((e: React.ChangeEvent<HTMLInputElement>) => {
-        if (!e.target.files) {
-            return;
-        }
-        const formData = new FormData();
-        formData.append('image', e.target.files[0]);
-        axios({
-            baseURL: `http://${process.env.REACT_APP_BACK_BASE_URL}/`,
-            url: '/user/update/img',
-            method: 'PUT',
-            data: formData,
-            headers: {
-                'Content-Type': 'multipart/form-data',
-                "Authorization": "bearer " + localStorage.getItem("ACCESS_TOKEN") ?? null 
-            },
-        })
-        .then(response => {
-            console.log(response.data);
-        })
-        .catch(error => {
-            console.error(error);
-        });
+    // const onUploadImage = useCallback((e: React.ChangeEvent<HTMLInputElement>) => {
+    //     if (!e.target.files) {
+    //         return;
+    //     }
+    //     const formData = new FormData();
+    //     formData.append('image', e.target.files[0]);
+    //     axios({
+    //         baseURL: `http://${process.env.REACT_APP_BACK_BASE_URL}/`,
+    //         url: '/user/update/img',
+    //         method: 'PUT',
+    //         data: formData,
+    //         headers: {
+    //             'Content-Type': 'multipart/form-data',
+    //             "Authorization": "bearer " + localStorage.getItem("ACCESS_TOKEN") ?? null 
+    //         },
+    //     })
+    //     .then(response => {
+    //         console.log(response.data);
+    //     })
+    //     .catch(error => {
+    //         console.error(error);
+    //     });
         // instanceWithForm.put('user/update/img', formData);
-    }, []);
+    // }, []);
 
     const submitHandler = async (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();

@@ -57,8 +57,7 @@ const HeaderComponent: React.FC<HeaderComponentProps> = ({
                     </div>
                 </div>
                 <div className="Header--auth-box">
-                    {/* TODO :: 테스트 주석 삭제 */}
-                    {isAuthenticated ?
+                    {isAuthenticated &&
                         <div 
                             className="Header--user-info" 
                             onMouseOver={()=>{setOnUserHover(1)}}
@@ -83,7 +82,6 @@ const HeaderComponent: React.FC<HeaderComponentProps> = ({
                                     </div>
                             </div> : null}
                         </div>   
-                        : null 
                     }
                     {!isAuthenticated ?
                         <Link to="/login" className="Header--login-btn">
