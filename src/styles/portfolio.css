@@ -32,6 +32,7 @@
     width: 18rem;
     height: 100%;
     background-color: #fafbfd;
+    box-shadow: 0 3px 6px rgba(0,0,0,0.10), 0 3px 6px rgba(0,0,0,0.05);
 }
 
 .portfolios--header {
@@ -47,7 +48,6 @@
 }
 
 .portfolio--content {
-    /* position: fixed; */
     margin-left: 20rem;
     height: 100%;
     width: 70%;
@@ -182,4 +182,76 @@
     top: 0%;
     left: 2%;
     color: #7b7b7b;
+}
+
+.portfolio--content--my--modify-wrapper {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    align-items: center;
+    gap: 2rem;
+    flex-wrap: wrap;
+    padding: 1rem;
+    width: 100%;
+}
+
+.portfolio--content--my--modify-wrapper > input {
+    height: 2rem;
+    border: none;
+    padding: .5rem;
+    border-bottom: 1px solid #e3e3e3;
+}
+
+.portfolio--content--my--modify-wrapper > input:focus {
+    position: relative;
+    outline: none;
+    border-bottom: 1px solid black;
+}
+
+.portfolio--content--my--modify-wrapper > input::-webkit-input-placeholder {
+    transition: all .3s ease;
+    position: absolute;
+    top: 50%;
+    color: #919191;
+}
+
+.portfolio--content--my--modify-wrapper > input:focus::-webkit-input-placeholder {
+    position: absolute;
+    font-size: 11px;
+    top: 0%;
+    left: 2%;
+    color: #7b7b7b;
+}
+
+.portfolio--content--my--modify {
+    text-align: center;
+    width: 3rem;
+    background-color: black;
+    color: white;
+    padding: .2rem;
+    border: none;
+    border-radius: .3rem;
+    font-size: .5rem;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+.portfolio--content--my--delete {
+    text-align: center;
+    width: 3rem;
+    background-color: #ed234b;
+    color: white;
+    padding: .2rem;
+    border: none;
+    border-radius: .3rem;
+    font-size: .5rem;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+.portfolio--content--my--btn-wrapper {
+    display: flex;
+    gap: .3rem;
+    align-items: center;
+    padding: .5rem 1rem;
+    text-decoration-line: none;
 }

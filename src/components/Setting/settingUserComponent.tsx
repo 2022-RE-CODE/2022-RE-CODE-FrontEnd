@@ -63,7 +63,7 @@ const SettingUserComponent: React.FC = () => {
                 'Content-Type': 'multipart/form-data',
                 "Authorization": "bearer " + localStorage.getItem("ACCESS_TOKEN") ?? null 
             },
-          })
+        })
         .then(response => {
             console.log(response.data);
         })
@@ -90,7 +90,7 @@ const SettingUserComponent: React.FC = () => {
         <div className="auth">
             <div className="auth--form-container">
                 <div className="login--title2">유저 정보 수정</div>
-                <input type="file" accept="image/*" onChange={onUploadImage} />
+                {/* <input type="file" accept="image/*" onChange={onUploadImage} /> */}
                 <form className="auth--form" onSubmit={submitHandler}>
                     <input value={nickname} onChange={nicknameHandler} placeholder="닉네임"></input>
                     <input value={gitLink} onChange={gitLinkHandler} placeholder="깃허브 링크"></input>

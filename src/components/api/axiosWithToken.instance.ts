@@ -1,18 +1,33 @@
-import axios from 'axios';
+import axios, { AxiosError } from 'axios';
 
 type responseType = {
     status: number,
     data: JSON | string
 } | undefined
 
-const token = localStorage.getItem("ACCESS_TOKEN");
 const instanceWithToken = axios.create({
     baseURL: `http://${process.env.REACT_APP_BACK_BASE_URL}/`,
-    headers: { 
-        "Content-Type": "application/json",
-        "Authorization": "bearer " + token ?? null
-    }   
+    // headers: { 
+    //     "Content-Type": "application/json",
+    // }   
 });
+
+instanceWithToken.interceptors.request.use(
+    (response) => {
+        const accessToken = localStorage.getItem("ACCESS_TOKEN");
+        if (accessToken) {
+            response.headers = {
+                "Authorization": "bearer " + accessToken ?? null,
+                "Content-Type": "application/json",
+            }
+        }
+        return response;
+    },
+
+    (error: AxiosError) => {
+        return error;
+    }
+);
 
 instanceWithToken.interceptors.response.use((response): responseType => {
     if (response === undefined) return {

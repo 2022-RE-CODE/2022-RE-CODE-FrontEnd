@@ -26,9 +26,8 @@ const AppRoutes = () => {
                 <Route path='/post/:id' element={<PostInfoContainer />} />
                 <Route path='/secession' element={<SecessionContainer />} />
                 <Route path='/post/upload' element={<PostUploadContainer />} />
-                <Route path='/portfolio/my' element={<PortfolioContainer />} />'
-                <Route path='/portfolio/:portfolioId' element={<PortfolioContainer />} />'
-                <Route path='/post/modify/:postId' element={<PostModifyContainer />} />'
+                <Route path='/portfolio/:portfolioId' element={<PortfolioContainer />} />
+                <Route path='/post/modify/:postId' element={<PostModifyContainer />} />
                 <Route path='/setting' element={<SettingContainer />} />
             </Routes>
         </BrowserRouter>

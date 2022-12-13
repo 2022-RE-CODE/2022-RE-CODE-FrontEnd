@@ -2,6 +2,7 @@ import React from 'react'
 import { useNavigate } from 'react-router-dom';
 import { UserType } from '../../redux/user/reducer/user.reducerType';
 import '../../styles/postinfo.css';
+import { escapeAttrValue, FilterXSS } from 'xss';
 import FobbidenErrorComponent from '../Auth/fobbidenErrorComponent';
 import CommentComponent from './commentComponent';
 import { CategoryType, CommentType } from './postType';
@@ -28,6 +29,22 @@ const PostInfoComponent: React.FC<PostInfoComponentProps> = ({
     postInfo,
     ToggleLikes
 }) => {
+
+    const codeblockRegexp = /^(language\-.*)/;
+    const postXssFilter = new FilterXSS({
+        onIgnoreTagAttr: (tag, name, value) => {
+            if (name === 'style') return `${name}="${escapeAttrValue(value)}"`;
+            if (tag === 'img') {
+                if (name === 'e_id') return `${name}="${escapeAttrValue(value)}"`;
+                if (name === 'e_idx') return `${name}="${escapeAttrValue(value)}"`;
+                if (name === 'e_type') return `${name}="${escapeAttrValue(value)}"`;
+            }
+            if (tag === 'pre' && codeblockRegexp.test(value)) return `${name}="${escapeAttrValue(value)}"`;
+        },
+        onIgnoreTag: (tag, html) => {
+            if (tag === 'iframe') return html;
+        }
+    });
 
     const navigate = useNavigate();
 
@@ -76,9 +93,7 @@ const PostInfoComponent: React.FC<PostInfoComponentProps> = ({
                     <div className="post--info-careateMinutesAgo">
                         {postInfo ? parseInt(postInfo.createMinutesAgo) <= 120 && postInfo.createMinutesAgo : null}
                     </div>
-                    <div className="post--info-content">
-                        {postInfo?.content}
-                    </div>
+                    <div className="post--info-content" dangerouslySetInnerHTML={{__html: postXssFilter.process(postInfo?postInfo.content:"")}}></div>
                     <CommentComponent 
                         comments={postInfo?.comments}
                     />
