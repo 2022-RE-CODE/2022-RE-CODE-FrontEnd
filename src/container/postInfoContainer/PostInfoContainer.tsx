@@ -5,7 +5,7 @@ import instance from '../../components/api/axios.instance'
 import PostInfoComponent from '../../components/Post/postInfoComponent'
 import { logoutSuccess } from '../../redux/user/action/user.action'
 
-import { useParams } from 'react-router-dom'
+import { useNavigate, useParams } from 'react-router-dom'
 import { useEffect, useState } from 'react'
 import FooterComponent from '../../components/common/footerComponent'
 import { useCheckToken } from '../../utils'
@@ -13,17 +13,20 @@ import instanceWithToken from '../../components/api/axiosWithToken.instance'
 
 export const PostInfoContainer = () => {
 
+    const navigate = useNavigate();
     const isAuthenticated = useSelector((state: RootState) => state.userReducer.isAuthenticated);
     const dispatch = useDispatch();
+    const [postInfo, setPostInfo] = useState();
+    const params = useParams();
 
     const onLogout = () => {
         dispatch(logoutSuccess());
     }
-
+    
     useCheckToken();
-
-    const [postInfo, setPostInfo] = useState();
-    const params = useParams();
+    useEffect(() => {
+        if (isAuthenticated === false) navigate('/fobbiden');
+    }, [])
     
     const getPostInfo = async (id: string | undefined) => {
         try {
@@ -55,7 +58,6 @@ export const PostInfoContainer = () => {
                 onLogout={onLogout}
             />
             <PostInfoComponent
-                isAuthenticated={isAuthenticated}
                 postInfo={postInfo}
                 ToggleLikes={ToggleLikes}
             />

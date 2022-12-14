@@ -1,6 +1,6 @@
 import React from 'react'
 import { useDispatch, useSelector } from 'react-redux';
-import ChatButtonComponent from '../../components/Portfolio/portfolioButtonComponent';
+import PortfolioButtonComponent from '../../components/Portfolio/portfolioButtonComponent';
 import FooterComponent from '../../components/common/footerComponent';
 import HeaderComponent from '../../components/common/headerComponent'
 import PostComponent from '../../components/Post/postComponent';
@@ -26,7 +26,7 @@ export const CommunityContainer = () => {
                 onLogout={onLogout}
             />
             <PostComponent />
-            <ChatButtonComponent />
+            <PortfolioButtonComponent />
             <FooterComponent />
         </div>
     )

@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import { NavLink, useParams } from 'react-router-dom';
+import { NavLink, useNavigate, useParams } from 'react-router-dom';
 import '../../styles/portfolio.css';
 import instanceWithToken from '../api/axiosWithToken.instance';
 import CommentComponent from '../Post/commentComponent';
@@ -51,6 +51,7 @@ const PortfolioComponent: React.FC = () => {
     const [modifyTitle, setModifyTitle] = useState("");
     const [modifyUrl, setModifyUrl] = useState("");
     const [modifyItem, setModifyItem] = useState(0);
+    
     const { portfolioId } = useParams();
 
     useEffect(() => {

@@ -11,7 +11,8 @@ import {
     PostUploadContainer,
     PostModifyContainer,
     SettingContainer,
-    PortfolioContainer
+    PortfolioContainer,
+    FobbidenContainer
 } from '../container';
 
 const AppRoutes = () => {
@@ -25,6 +26,7 @@ const AppRoutes = () => {
                 <Route path='/user/:id' element={<UserInfoContainer />} />
                 <Route path='/post/:id' element={<PostInfoContainer />} />
                 <Route path='/secession' element={<SecessionContainer />} />
+                <Route path='/fobbiden' element={<FobbidenContainer />} />
                 <Route path='/post/upload' element={<PostUploadContainer />} />
                 <Route path='/portfolio/:portfolioId' element={<PortfolioContainer />} />
                 <Route path='/post/modify/:postId' element={<PostModifyContainer />} />

@@ -1,3 +1,9 @@
+.fobbiden-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
 .fobbiden-error {
     margin-top: 5rem;
     height: 20rem;

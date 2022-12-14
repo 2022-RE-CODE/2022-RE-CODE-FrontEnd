@@ -9,3 +9,4 @@ export * from "./postUploadContainer/PostUploadCotainer";
 export * from "./portfolioContainer/PortfolioContainer";
 export * from "./postModifyContainer/PostModifyContainer";
 export * from "./settingContainer/SettingContainer";
+export * from "./fobbidenContainer/FobbidenContainer";

@@ -28,7 +28,7 @@ const PostComponent: React.FC = () => {
                 } else {
                     response = await instance.get(`post/find/title?title=${title}`);
                 }
-                const postList = response.data.data.map((post: PostType) => {
+                const postList = response.data.data.reverse().map((post: PostType) => {
                     
                     const deletePost = async (postId: number) => {
                         await instanceWithToken.delete(`/post/delete/${postId}`);

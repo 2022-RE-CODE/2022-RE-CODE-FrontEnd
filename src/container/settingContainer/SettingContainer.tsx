@@ -1,4 +1,6 @@
+import React, {useEffect} from 'react'
 import { useDispatch, useSelector } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
 import FooterComponent from '../../components/common/footerComponent';
 import HeaderComponent from '../../components/common/headerComponent'
 import SettingUserComponent from '../../components/Setting/settingUserComponent';
@@ -8,6 +10,7 @@ import useCheckToken from '../../utils/useCheckToken';
 
 export const SettingContainer = () => {
 
+    const navigate = useNavigate();
     const isAuthenticated = useSelector((state: RootState) => state.userReducer.isAuthenticated);
     const dispatch = useDispatch();
     const onLogout = () => {
@@ -15,6 +18,9 @@ export const SettingContainer = () => {
     }
 
     useCheckToken();
+    useEffect(() => {
+        if (!isAuthenticated) navigate('/fobbiden');
+    }, [])
 
     return (
         <div className="community">
