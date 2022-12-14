@@ -85,6 +85,7 @@ const PortfolioComponent: React.FC = () => {
 
     const [user, setUser] = useState<UserType>();
     const getUserInfo = async () => {
+        if (portfolioId === "my") return;
         try {
             const response = await instanceWithToken.get(`/user/${portfolioId}`);
             setUser(response.data);
@@ -248,32 +249,6 @@ const PortfolioComponent: React.FC = () => {
                         추가하기
                     </button>
                 </div>}
-                <CommentComponent
-                    comments={[{
-                        commentId: 1,
-                        userId: 1,
-                        comment: "margin이 좀 많네요 ㅋㅋ",
-                        nickname: "영민"
-                    },
-                    {
-                        commentId: 1,
-                        userId: 1,
-                        comment: "좀 병쉰같네요",
-                        nickname: "영민"
-                    },
-                    {
-                        commentId: 1,
-                        userId: 1,
-                        comment: "혹시? 배포는 하셨나요? 접속이 안되는데요?",
-                        nickname: "영민"
-                    },
-                    {
-                        commentId: 1,
-                        userId: 1,
-                        comment: "나보다못했노",
-                        nickname: "영민"
-                    }]}
-                />
             </div>
         </div>
     )

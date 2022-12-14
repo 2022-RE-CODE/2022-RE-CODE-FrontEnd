@@ -5,6 +5,7 @@ import instanceWithToken from '../api/axiosWithToken.instance';
 import FobbidenErrorComponent from '../Auth/fobbidenErrorComponent';
 import { UserType } from '../../redux/user/reducer/user.reducerType';
 import { CategoryType, CommentType } from './postType';
+import { Editor } from '@tinymce/tinymce-react';
 
 type PostUploadComponentProps = {
     isAuthenticated: boolean | null,
@@ -47,11 +48,6 @@ const PostModifyComponent: React.FC<PostUploadComponentProps> = ({
         setTitle(e.target.value);
     };
 
-    const contentHandler = (e: any) => {
-        e.preventDefault();
-        setContent(e.target.value);
-    };
-
     const submitHandler = async (e: any) => {
         e.preventDefault();
         await instanceWithToken.put(`post/update/${postId}`, JSON.stringify({
@@ -76,6 +72,10 @@ const PostModifyComponent: React.FC<PostUploadComponentProps> = ({
         setCategories(categories.filter(state => state.name !== name));
     }
 
+    const handleEditorChange = (content: any, editor: any) => {
+        setContent(content);
+    };
+
     return (
         <div className="post-upload">
             {isAuthenticated ?
@@ -84,7 +84,28 @@ const PostModifyComponent: React.FC<PostUploadComponentProps> = ({
                         <div className="post-upload--title1">코드 리뷰 글 수정하기</div>
                         <form className="post-upload--form" onSubmit={submitHandler}>
                             <input type="text" value={title} onChange={titleHandler} placeholder="제목"></input>
-                            <textarea value={content} onChange={contentHandler} placeholder="내용"></textarea>
+                            <Editor
+                                apiKey="qagffr3pkuv17a8on1afax661irst1hbr4e6tbv888sz91jc"
+                                init={{
+                                    skin: "snow",
+                                    icons: "thin",
+                                    placeholder: "Ask a question or post an update...",
+                                    height: 500,
+                                    menubar: true,
+                                    plugins: [
+                                        "advlist autolink lists link image charmap print preview anchor",
+                                        "searchreplace visualblocks code fullscreen textcolor ",
+                                        "insertdatetime media table paste code help wordcount",
+                                        "codesample"
+                                    ],
+                                    textcolor_rows: "4",
+                                    codesample_global_prismjs: true,
+                                    toolbar:
+                                        "undo redo codesample| styleselect | fontsizeselect | code | bold italic | alignleft aligncenter alignright alignjustify | outdent indent"
+                                }}
+                                onEditorChange={handleEditorChange}
+                                value={content}
+                            />
                             <label className="post-upload-category--label"></label>
                             <div className="post-upload-categories">
                                 <div className="post-upload-category" onClick={()=>addCategory("리액트")}>리액트</div>
