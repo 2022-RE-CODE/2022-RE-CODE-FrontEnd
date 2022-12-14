@@ -26,7 +26,7 @@ export const PostInfoContainer = () => {
     useCheckToken();
     useEffect(() => {
         if (isAuthenticated === false) navigate('/fobbiden');
-    }, [])
+    }, [isAuthenticated, navigate])
     
     const getPostInfo = async (id: string | undefined) => {
         try {

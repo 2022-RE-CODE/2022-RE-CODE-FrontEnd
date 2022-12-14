@@ -20,7 +20,7 @@ export const PostUploadContainer = () => {
     useCheckToken();
     useEffect(() => {
         if (isAuthenticated === false) navigate('/fobbiden');
-    }, [])
+    }, [isAuthenticated, navigate])
 
     return (
         <div className="post-info-container">

@@ -18,7 +18,7 @@ export const PortfolioContainer = () => {
 
     useEffect(() => {
         if (isAuthenticated === false) navigate('/fobbiden');
-    }, [])
+    }, [isAuthenticated, navigate])
 
     useCheckToken();
 

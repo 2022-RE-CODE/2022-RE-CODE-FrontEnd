@@ -2,7 +2,6 @@ import React, { useState } from 'react'
 import { useNavigate } from 'react-router-dom';
 import '../../styles/postinfo.css';
 import instanceWithToken from '../api/axiosWithToken.instance';
-import FobbidenErrorComponent from '../Auth/fobbidenErrorComponent';
 import { CategoryType } from './postType';
 import { Editor } from '@tinymce/tinymce-react';
 

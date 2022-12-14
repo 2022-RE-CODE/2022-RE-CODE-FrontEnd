@@ -19,8 +19,8 @@ export const SettingContainer = () => {
 
     useCheckToken();
     useEffect(() => {
-        if (!isAuthenticated) navigate('/fobbiden');
-    }, [])
+        if (isAuthenticated === false) navigate('/fobbiden');
+    }, [isAuthenticated, navigate])
 
     return (
         <div className="community">
