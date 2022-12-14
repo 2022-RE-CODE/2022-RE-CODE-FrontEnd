@@ -12,9 +12,21 @@
     flex-direction: column;
 }
 
+.popular-reviewer--header {
+    display: flex;
+    justify-content: space-between;
+}
+
 .popular-reviewer--title {
     font-weight: 600;
     font-size: 20px;
+}
+
+.popular-reviewer--redirect-btn {
+    font-weight: 500;
+    font-size: 15px;
+    color: #959595;
+    cursor: pointer;
 }
 
 .card-container {

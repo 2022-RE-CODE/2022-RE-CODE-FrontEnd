@@ -31,8 +31,8 @@ export const MainContainer = () => {
             />
             <BannerComponent />
             <SubTitleComponent />
-            <ViewAllReviewsComponent />
             <PopularReviewerComponent />
+            <ViewAllReviewsComponent />
             <PortfolioButtonComponent />
             <FooterComponent />
         </div>

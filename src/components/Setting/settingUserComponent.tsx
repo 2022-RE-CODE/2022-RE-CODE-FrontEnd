@@ -1,7 +1,7 @@
 import React from 'react'
 import { useState } from 'react';
 import '../../styles/auth.css';
-import { ToastContainer, Slide } from "react-toastify";
+import { toast, ToastContainer, Slide } from "react-toastify";
 import 'react-toastify/dist/ReactToastify.css';
 import instanceWithToken from '../api/axiosWithToken.instance';
 
@@ -78,7 +78,12 @@ const SettingUserComponent: React.FC = () => {
             position: position
         });
 
-        await instanceWithToken.put('user/update', payload);
+        await instanceWithToken.put('user/update', payload)
+            .then(response => {
+                if (response.status === 200) {
+                    toast("유저 정보 수정이 완료되었습니다.");
+                }
+            })
     };
 
     return (

@@ -39,7 +39,12 @@ const PopularReviewerComponent: React.FC = () => {
     return (
         <div className="popular-reviewer">
             <div className="popular-reviewer--container">
-                <div className="popular-reviewer--title">가장 인기있는 리뷰</div>
+                <div className="popular-reviewer--header">
+                    <div className="popular-reviewer--title">가장 인기있는 리뷰</div>
+                    <div 
+                        className="popular-reviewer--redirect-btn"
+                        onClick={()=>navigate('/post')}>모든 리뷰 보러 가기 {'>'}</div>
+                </div>
                 <div className="card-container">
                     {posts}
                 </div>
