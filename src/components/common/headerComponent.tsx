@@ -19,6 +19,7 @@ const HeaderComponent: React.FC<HeaderComponentProps> = ({
 
     const navigate = useNavigate();
     const user = useSelector((state: RootState) => state.userReducer.user);
+    const [search, setSearch] = useState("");
     const [searchEvent, setSearchEvent] = useState(0);
     const [onUserHover, setOnUserHover] = useState(0);
 
@@ -38,6 +39,21 @@ const HeaderComponent: React.FC<HeaderComponentProps> = ({
         navigate('/setting');
     }
 
+    const handleOnClick = () => {
+        navigate(`/post?title=${search}`);
+    };
+
+    const handleOnKeyPress = (e: React.KeyboardEvent<HTMLInputElement>) => {
+        if (e.key === 'Enter') {
+          handleOnClick();
+        }
+    };
+
+    const searchHandler = (e: React.ChangeEvent<HTMLInputElement>) => {
+        e.preventDefault();
+        setSearch(e.target.value);
+    }
+
     return (
         <div className="Header">
             <div className="Header--top">
@@ -47,13 +63,17 @@ const HeaderComponent: React.FC<HeaderComponentProps> = ({
                             <img className="Header--logo-img" src='/logo-recode.png' alt="logo"/>
                         </Link>
                     </div>
+
                     <div className={searchEvent?"Header--search-container-gray":"Header--search-container"}>
                         <div className="Header--search-icon"><BiSearch /></div>
                         <input
                             className={searchEvent?"Header--search-input-gray":"Header--search-input"}
                             placeholder='관심있는 스택을 검색해보세요!'
                             onMouseOver={()=>{setSearchEvent(1)}}
-                            onMouseOut={()=>{setSearchEvent(0)}}></input>
+                            onMouseOut={()=>{setSearchEvent(0)}}
+                            onChange={searchHandler}
+                            value={search}
+                            onKeyDown={handleOnKeyPress}></input>
                     </div>
                 </div>
                 <div className="Header--auth-box">

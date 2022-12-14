@@ -1,14 +1,31 @@
 import React, { useEffect, useState } from 'react'
+import { useSelector } from 'react-redux';
 import { NavLink, useParams } from 'react-router-dom';
+import { RootState } from '../../redux';
 import '../../styles/portfolio.css';
 import instanceWithToken from '../api/axiosWithToken.instance';
 import CommentComponent from '../Post/commentComponent';
 
-type LinksType = {
-    linkId: number,
+type PortfolioType = {
     userId: number,
-    title: string,
-    url: string
+    nickname: string,
+    role: string,
+    roles: string,
+    // todo :: position enum
+    position: string,
+    gitLink: string,
+    blogLink: string,
+    img: string,
+    links: LinksType[]
+}
+
+type LinksType = {
+    links: {
+        linkId: number,
+        userId: number,
+        title: string,
+        url: string
+    }
 }
 
 const PortfolioComponent: React.FC = () => {
@@ -20,18 +37,32 @@ const PortfolioComponent: React.FC = () => {
     const { portfolioId } = useParams();
 
     useEffect(() => {
+        getPortfolios();
+    }, [])
+
+    useEffect(() => {
         getLinks();
     }, [portfolioId])
+
+    const [portfolios, setPortfolios] = useState<PortfolioType[]>();
+    const getPortfolios = async () => {
+        try {
+            const response = await instanceWithToken.get(`/link`);
+            setPortfolios(response.data);
+        } catch (err) {
+            // TODO :: 예외 처리
+        }
+    }    
 
     const [links, setLinks] = useState<LinksType[]>();
     const getLinks = async () => {
         try {
-            const response = await instanceWithToken.get(`/link`);
+            const response = await instanceWithToken.get(`/user/${portfolioId}`);
             setLinks(response.data);
         } catch (err) {
             // TODO :: 예외 처리
         }
-    }
+    }    
 
     const UploadPortfolio = async () => {
         const payload = JSON.stringify({
@@ -94,9 +125,11 @@ const PortfolioComponent: React.FC = () => {
                 </div>
                 <div className="portfolios-all">
                     <NavLink to={`/portfolio/my`} className="portfolio--portfolio-item">내 포트폴리오</NavLink>
-                    <NavLink to={`/portfolio/${"2"}`} className="portfolio--portfolio-item">1번 포트폴리오</NavLink>
-                    <NavLink to={`/portfolio/${"3"}`} className="portfolio--portfolio-item">2번 포트폴리오</NavLink>
-                    <NavLink to={`/portfolio/${"4"}`} className="portfolio--portfolio-item">3번 포트폴리오</NavLink>
+                    {portfolios?.map((portfolio) => {
+                        return (
+                            <NavLink to={`/portfolio/${portfolio.userId}`} className="portfolio--portfolio-item">{portfolio.nickname} 포트폴리오</NavLink>
+                        )
+                    })}
                 </div>
             </div>
             <div className="portfolio--content">
@@ -113,21 +146,21 @@ const PortfolioComponent: React.FC = () => {
                         links?.map((link)=> {
                             return(
                                 <div className="portfolio--content-item-wrapper">
-                                    <a className="portfolio--content-item" href={link.url} target="_black">
-                                        <div className="portfolio--content--my--link">{link.title}</div>
-                                        <div className="portfolio--content--my--ref">{link.url}🔗</div>
+                                    <a className="portfolio--content-item" href={link.links.url} target="_black">
+                                        <div className="portfolio--content--my--link">{link.links.title}</div>
+                                        <div className="portfolio--content--my--ref">{link.links.url}🔗</div>
                                     </a>
                                     {portfolioId==="my" &&
                                     <div className="portfolio--content--my--btn-wrapper">
                                         <div 
                                             className="portfolio--content--my--modify" 
-                                            onClick={()=>onClickModifyBtn(link.linkId, link.title, link.url)}>수정하기</div>
+                                            onClick={()=>onClickModifyBtn(link.links.linkId, link.links.title, link.links.url)}>수정하기</div>
                                         <div 
                                             className="portfolio--content--my--delete" 
-                                            onClick={()=>deleteLink(link.linkId)}>삭제하기</div>
+                                            onClick={()=>deleteLink(link.links.linkId)}>삭제하기</div>
                                     </div>
                                     }
-                                    {(portfolioId==="my" && modifyItem === link.linkId) && 
+                                    {(portfolioId==="my" && modifyItem === link.links.linkId) && 
                                     <div className="portfolio--content--my--modify-wrapper">
                                             <input
                                                 className="portfolio--content--input"
@@ -141,10 +174,11 @@ const PortfolioComponent: React.FC = () => {
                                                 value={modifyUrl} />
                                             <button 
                                                 className="portfolio--content--input-submit-btn"
-                                                onClick={()=>ModifyPortfolio(link.linkId)}>
+                                                onClick={()=>ModifyPortfolio(link.links.linkId)}>
                                                 수정하기
                                             </button>
-                                    </div>}
+                                    </div>
+                                    }
                                 </div>
                             )
                         })
