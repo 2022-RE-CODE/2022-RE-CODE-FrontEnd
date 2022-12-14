@@ -36,6 +36,18 @@ instance.interceptors.response.use((response): responseType => {
     };
 },
     error => {
+        if (error.response.status === 400 && error.response.data.password !== undefined) return {
+            status: 400,
+            data: error.response.data.password
+        };
+        if (error.response.data.status === 400) return {
+            status: 400,
+            data: error.response.data.message
+        };
+        if (error.response.data.status === 409) return {
+            status: 409,
+            data: error.response.data.message
+        };
         if (error.response.data.status === 422) return {
             status: 422,
             data: error.response.data.message

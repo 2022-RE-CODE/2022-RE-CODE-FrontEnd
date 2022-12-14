@@ -65,10 +65,11 @@ const AuthComponent: React.FC = () => {
         instanceWithHeader.post("email/join", qs.stringify({
             email: email
         }))
-            .then((response) => {
-                toast(response.data);
-            });
-
+        .then((response) => {
+            if (response.status === 200) {
+                toast("이메일 전송이 완료되었습니다.");
+            }
+        });
     }
 
     const submitHandler = (e: React.FormEvent<HTMLFormElement>) => {
@@ -92,9 +93,6 @@ const AuthComponent: React.FC = () => {
                     toast.error(response.data);
                 }
             })
-            .catch(error => {
-                toast.error(error.data);
-            });
     };
 
     return (
@@ -111,11 +109,11 @@ const AuthComponent: React.FC = () => {
                         <input type="email" value={email} onChange={emailHandler} placeholder="이메일"></input>
                         <button className="auth--form--emailBtn" type="button" onClick={getVerificationCode}>인증메일 발송</button>
                     </div>
-                    <input value={verificationCode} onChange={codeHandler} placeholder="이메일 인증코드"></input>
-                    <input value={nickname} onChange={nicknameHandler} placeholder="닉네임"></input>
-                    <input type="password" value={password} onChange={passwordHandler} placeholder="비밀번호"></input>
-                    <input type="password" value={checkPassword} onChange={checkPasswordHandler} placeholder="비밀번호 확인"></input>
-                    <select className="auth--form-position" value={position} onChange={positionHandler}>
+                    <input value={verificationCode} onChange={codeHandler} placeholder="이메일 인증코드" required></input>
+                    <input value={nickname} onChange={nicknameHandler} placeholder="닉네임" required></input>
+                    <input type="password" value={password} onChange={passwordHandler} placeholder="비밀번호" required></input>
+                    <input type="password" value={checkPassword} onChange={checkPasswordHandler} placeholder="비밀번호 확인" required></input>
+                    <select className="auth--form-position" value={position} onChange={positionHandler} required>
                         {Object.keys(EnumPosition).map((key: string) => (
                             <option key={key} value={key}>
                                 {EnumPosition[key]}
