@@ -7,7 +7,7 @@ const BannerComponent: React.FC = () => {
 
     const bannerTitle = useMemo(() => {
         return "LEVEL UP YOUR CODES";
-      }, []);
+    }, []);
 
     const [landingTitle, setLandingTitle] = useState("");
     const [isIncreasing, setIsIncreasing] = useState(true);

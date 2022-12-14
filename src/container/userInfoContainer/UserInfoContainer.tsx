@@ -17,7 +17,6 @@ export const UserInfoContainer = () => {
     }
 
     const [user, setUser] = useState();
-    //TODO :: Header IMG render
 
     const params = useParams();
 

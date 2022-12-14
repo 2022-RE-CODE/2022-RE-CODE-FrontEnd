@@ -43,31 +43,6 @@ const SettingUserComponent: React.FC = () => {
         setPosition(e.target.value);
     }
 
-    // const onUploadImage = useCallback((e: React.ChangeEvent<HTMLInputElement>) => {
-    //     if (!e.target.files) {
-    //         return;
-    //     }
-    //     const formData = new FormData();
-    //     formData.append('image', e.target.files[0]);
-    //     axios({
-    //         baseURL: `http://${process.env.REACT_APP_BACK_BASE_URL}/`,
-    //         url: '/user/update/img',
-    //         method: 'PUT',
-    //         data: formData,
-    //         headers: {
-    //             'Content-Type': 'multipart/form-data',
-    //             "Authorization": "bearer " + localStorage.getItem("ACCESS_TOKEN") ?? null 
-    //         },
-    //     })
-    //     .then(response => {
-    //         console.log(response.data);
-    //     })
-    //     .catch(error => {
-    //         console.error(error);
-    //     });
-        // instanceWithForm.put('user/update/img', formData);
-    // }, []);
-
     const submitHandler = async (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
 

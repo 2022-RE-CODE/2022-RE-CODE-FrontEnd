@@ -1,98 +1,45 @@
 import React, { useEffect, useState } from 'react'
-import { NavLink, useNavigate, useParams } from 'react-router-dom';
+import { NavLink, useParams } from 'react-router-dom';
 import '../../styles/portfolio.css';
 import instanceWithToken from '../api/axiosWithToken.instance';
-import CommentComponent from '../Post/commentComponent';
 import { UserType } from '../Post/postType';
-
-type PortfolioType = {
-    userId: number,
-    nickname: string,
-    role: string,
-    roles: string,
-    // todo :: position enum
-    position: string,
-    gitLink: string,
-    blogLink: string,
-    img: string,
-    links: LinksType[]
-}
-
-type LinksType = {
-    links: {
-        linkId: number,
-        userId: number,
-        title: string,
-        url: string
-    }
-}
-
-type LinkType = {
-    linkId: number,
-    title: string,
-    url: string,
-    user: {
-        userId: number,
-        nickname: string,
-        role: string,
-        roles: string,
-        // todo :: position enum
-        position: string,
-        gitLink: string,
-        blogLink: string,
-        img: string
-    },
-    updatedAt: string
-};
+import { LinkType, PortfolioType } from './portfolioType';
 
 const PortfolioComponent: React.FC = () => {
+
     const [title, setTitle] = useState("");
     const [url, setUrl] = useState("");
     const [modifyTitle, setModifyTitle] = useState("");
     const [modifyUrl, setModifyUrl] = useState("");
     const [modifyItem, setModifyItem] = useState(0);
-    
+    const [links, setLinks] = useState<LinkType[]>();
+    const [user, setUser] = useState<UserType>();
+    const [portfolios, setPortfolios] = useState<PortfolioType[]>();
+
     const { portfolioId } = useParams();
 
     useEffect(() => {
+        const getPortfolios = async () => {
+            const response = await instanceWithToken.get(`/link`);
+            setPortfolios(response.data);
+        }
         getPortfolios();
     }, [])
 
     useEffect(() => {
+        const getLinks = async () => {
+            const response = await instanceWithToken.get(`/link/${portfolioId}`);
+            setLinks(response.data);
+        }
+
+        const getUserInfo = async () => {
+            if (portfolioId === "my") return;
+            const response = await instanceWithToken.get(`/user/${portfolioId}`);
+            setUser(response.data);
+        }
         getLinks();
         getUserInfo();
     }, [portfolioId])
-
-    const [portfolios, setPortfolios] = useState<PortfolioType[]>();
-    const getPortfolios = async () => {
-        try {
-            const response = await instanceWithToken.get(`/link`);
-            setPortfolios(response.data);
-        } catch (err) {
-            // TODO :: 예외 처리
-        }
-    }
-
-    const [links, setLinks] = useState<LinkType[]>();
-    const getLinks = async () => {
-        try {
-            const response = await instanceWithToken.get(`/link/${portfolioId}`);
-            setLinks(response.data);
-        } catch (err) {
-            // TODO :: 예외 처리
-        }
-    }
-
-    const [user, setUser] = useState<UserType>();
-    const getUserInfo = async () => {
-        if (portfolioId === "my") return;
-        try {
-            const response = await instanceWithToken.get(`/user/${portfolioId}`);
-            setUser(response.data);
-        } catch (err) {
-            // TODO :: 예외 처리
-        }
-    }
 
     const UploadPortfolio = async () => {
         const payload = JSON.stringify({

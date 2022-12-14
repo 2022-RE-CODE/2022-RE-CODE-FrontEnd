@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useMemo } from 'react';
 import { useNavigate } from 'react-router-dom';
 import '../../styles/allreviews.css';
 import instance from '../api/axios.instance';
@@ -8,6 +8,9 @@ const ViewAllReviewsComponent: React.FC = (props) => {
 
     const [posts, setPosts] = useState<React.ReactNode>();
     const navigate = useNavigate();
+    const PostBackgroundEl = useMemo(() => {
+        return <img src='/post-background.png' alt="logo"></img>
+    }, [])
 
     useEffect(() => {
         const getPosts = async () => {
@@ -16,7 +19,7 @@ const ViewAllReviewsComponent: React.FC = (props) => {
                 return (
                     <div className="card" onClick={() => {navigate(`/post/${post.postId}`)}} key={post.postId}>
                     <div className="card--img">
-                        <img src='/post-background.png' alt="logo"></img>
+                        { PostBackgroundEl }
                         <div className="card--img--title">{post.title}</div>
                     </div>
                     <div className="card--title">{post.title}</div>
@@ -34,7 +37,7 @@ const ViewAllReviewsComponent: React.FC = (props) => {
             setPosts(CardEl);
         }
         getPosts();
-    }, [navigate]);
+    }, [navigate, PostBackgroundEl]);
 
     return (
         <div className="view-all-review">

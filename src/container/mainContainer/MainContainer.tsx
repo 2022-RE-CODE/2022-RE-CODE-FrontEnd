@@ -19,6 +19,7 @@ export const MainContainer = () => {
     const isAuthenticated = useSelector((state: RootState) => state.userReducer.isAuthenticated);
     const dispatch = useDispatch();
 
+
     const onLogout = () => {
         dispatch(logoutSuccess());
     }

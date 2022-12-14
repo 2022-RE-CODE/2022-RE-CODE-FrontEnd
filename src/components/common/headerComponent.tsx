@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useMemo } from 'react'
 import '../../styles/header.css';
 import { BiMenu } from "react-icons/bi";
 import { BiSearch } from "react-icons/bi";
@@ -22,6 +22,10 @@ const HeaderComponent: React.FC<HeaderComponentProps> = ({
     const [search, setSearch] = useState("");
     const [searchEvent, setSearchEvent] = useState(0);
     const [onUserHover, setOnUserHover] = useState(0);
+    const logoEl = useMemo(() => {
+        return <img className="Header--logo-img" src='/logo-recode.png' alt="logo"/>;
+    }, []);
+
 
     const toCommunity = () => {
         navigate('/post');
@@ -60,7 +64,7 @@ const HeaderComponent: React.FC<HeaderComponentProps> = ({
                 <div className="Header--logo-and-search">
                     <div className="Header--logo">
                         <Link to="/" className="Header--home-btn">
-                            <img className="Header--logo-img" src='/logo-recode.png' alt="logo"/>
+                            { logoEl }
                         </Link>
                     </div>
 

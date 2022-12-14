@@ -1,4 +1,4 @@
-import React, {useEffect} from 'react'
+import React, {useEffect, useCallback} from 'react'
 import { useDispatch, useSelector } from 'react-redux';
 import HeaderComponent from '../../components/common/headerComponent'
 import { RootState } from '../../redux';
@@ -12,9 +12,12 @@ export const PortfolioContainer = () => {
     const navigate = useNavigate();
     const isAuthenticated = useSelector((state: RootState) => state.userReducer.isAuthenticated);
     const dispatch = useDispatch();
-    const onLogout = () => {
+    const onLogout = useCallback(
+      () => {
         dispatch(logoutSuccess());
-    }
+      },
+      [dispatch],
+    )
 
     useEffect(() => {
         if (isAuthenticated === false) navigate('/fobbiden');

@@ -1,9 +1,9 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useState, useMemo } from 'react'
 import instance from '../api/axios.instance';
 import '../../styles/post.css';
 import { useNavigate, useSearchParams } from 'react-router-dom';
 import instanceWithToken from '../api/axiosWithToken.instance';
-import { useSelector } from 'react-redux';
+import { useSelector} from 'react-redux';
 import { CategoryType, PostType } from './postType';
 import { RootState } from '../../redux';
 
@@ -12,6 +12,9 @@ const PostComponent: React.FC = () => {
     const [searchParams, ] = useSearchParams();
     const navigate = useNavigate();
     const userId = useSelector((state: RootState) => state.userReducer.user?.userId);
+    const PostBackgroundEl = useMemo(() => {
+        return <img src='/post-background.png' alt="logo"></img>
+    }, [])
 
     const toPostUploadPage = () => {
         navigate('/post/upload');
@@ -44,7 +47,7 @@ const PostComponent: React.FC = () => {
                                     <div 
                                         className="card--img"
                                         onClick={() => { navigate(`/post/${post.postId}`) }}>
-                                        <img src='/post-background.png' alt="logo"></img>
+                                        { PostBackgroundEl }
                                         <div className="card--img--title">{post.title}</div>
                                     </div>
                                     <div className='post--category-container'>
@@ -84,8 +87,6 @@ const PostComponent: React.FC = () => {
                                     : null }
                                     </div>
                                 <hr />
-                                {/* TODO :: Position에 기반한 게시글 나누기 */}
-                                {/* {post.user.position} */}
                             </div>
                         </>
                     )
@@ -96,7 +97,7 @@ const PostComponent: React.FC = () => {
             }
         }
         getPosts();
-    }, [searchParams, userId, navigate]);
+    }, [searchParams, userId, navigate, PostBackgroundEl]);
 
     return (
         <div className="post">

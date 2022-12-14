@@ -4,12 +4,13 @@ import { RootState } from '../../redux'
 import { logoutSuccess } from '../../redux/user/action/user.action'
 import useCheckToken from '../../utils/useCheckToken'
 import PostModifyComponent from '../../components/Post/postModifyComponent'
-import { useParams } from 'react-router-dom'
+import { useParams, useNavigate } from 'react-router-dom'
 import { useEffect, useState } from 'react'
 import instance from '../../components/api/axios.instance'
 
 export const PostModifyContainer = () => {
 
+    const navigate = useNavigate();
     const isAuthenticated = useSelector((state: RootState) => state.userReducer.isAuthenticated);
     const dispatch = useDispatch();
     const [postInfo, setPostInfo] = useState();
@@ -23,6 +24,10 @@ export const PostModifyContainer = () => {
         getPostInfo(postId);
     }, [postId]);
 
+    useEffect(() => {
+        if (isAuthenticated === false) navigate('/fobbiden');
+    }, [isAuthenticated, navigate])
+
     const getPostInfo = async (id: string | undefined) => {
         try {
             const response = await instance.get(`post/find/detail/${id}`);
@@ -32,7 +37,6 @@ export const PostModifyContainer = () => {
             // setMessage(err);
         }
     }
-
 
     useCheckToken();
 
