@@ -87,7 +87,7 @@
     border-radius: .8rem;
     font-size: .9rem;
     font-weight: 600;
-    transition: background-color ease-in-out .4s;
+    transition: background-color ease-in-out .3s, color ease-in-out .3s;
     cursor: pointer;
     color: black;
     text-decoration: none;

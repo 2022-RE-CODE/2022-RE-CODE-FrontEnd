@@ -47,20 +47,22 @@ const CommentComponent: React.FC<CommentComponentType> = ({
             <div className='post--info--comment-all'>
                 {comments?.map((comment: CommentType) => {
                     return (
-                        <div 
-                            className='post--comment' 
-                            onMouseOver={() => {setHover(comment.commentId)}} 
-                            onMouseOut={() => {setHover(0)}}>
-                            <div 
+                        <div
+                            className='post--comment'
+                            onMouseOver={() => { setHover(comment.commentId) }}
+                            onMouseOut={() => { setHover(0) }}>
+                            <div
                                 className='post--comment-nickname'
-                                onClick={() => {navigate(`/user/${comment.userId}`)}}>{comment.nickname}님의 피드백</div>
+                                onClick={() => { navigate(`/user/${comment.userId}`) }}>{comment.nickname}님의 피드백</div>
                             <div className='post--comment-content'>{comment.comment}</div>
                             {(comment.userId === userId && hover === comment.commentId) ?
                                 <>
                                     <div
                                         className='post--comment-btn'
-                                        onClick={() => {deleteComment(comment.commentId)}}>
-                                        삭제
+                                        onClick={() => { deleteComment(comment.commentId) }}>
+                                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6">
+                                            <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
+                                        </svg>
                                     </div>
                                 </> : null
                             }
