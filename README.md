@@ -90,12 +90,12 @@ react 생명주기는 마운트 -> 업데이트 -> 언마운트 순으로 진행
 <table>
     <tr>
         <td align="center">
-            <a href="https://github.com/gimhanul">
+            <a href="https://github.com/min050410">
                 <img alt="김영민" src="https://avatars.githubusercontent.com/min050410" width="100" />
             </a>
         </td>
         <td align="center">
-            <a href="https://github.com/dlatldhs">
+            <a href="https://github.com/wonyongChoi05">
                 <img alt="최원용" src="https://avatars.githubusercontent.com/wonyongChoi05?" width="100" />
             </a>
         </td>
