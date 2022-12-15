@@ -42,6 +42,7 @@
     height: 100%;
     border-radius: 20px;
 }
+
 .card--img--title {
     position: absolute;
     top: 45%;
@@ -59,7 +60,6 @@
     display: flex;
     flex-direction: row;
     gap: .5rem;
-    justify-content: flex-end;
     margin-top: .4rem;
 }
 

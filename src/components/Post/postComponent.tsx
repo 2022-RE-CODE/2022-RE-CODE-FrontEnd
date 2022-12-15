@@ -25,6 +25,10 @@ const PostComponent: React.FC = () => {
             try {
                 const page = searchParams.get('page');
                 const title = searchParams.get('title');
+                const resizeTitle = (title: string, len: number) => {
+                    if (title.length < len) return title;
+                    else return title.slice(0,len) + '...';
+                }
                 let response;
                 if (title === null) {
                     response = await instance.get(`post/find/all?page=${page ?? 0}`);
@@ -48,7 +52,7 @@ const PostComponent: React.FC = () => {
                                         className="card--img"
                                         onClick={() => { navigate(`/post/${post.postId}`) }}>
                                         { PostBackgroundEl }
-                                        <div className="card--img--title">{post.title}</div>
+                                        <div className="card--img--title">{resizeTitle(post.title, 10)}</div>
                                     </div>
                                     <div className='post--category-container'>
                                         {post.categories.map((category: CategoryType) => {
@@ -62,18 +66,7 @@ const PostComponent: React.FC = () => {
                                     <div 
                                         className="post--title" 
                                         onClick={() => { navigate(`/post/${post.postId}`) }}>
-                                        {post.title}
-                                    </div>
-                                    <div className="post--info">
-                                        <div className="post--info--view">
-                                            <span>조회수 {post.view}</span>
-                                        </div>
-                                        <div className="post--info--dot">
-                                            <span>•</span>
-                                        </div>
-                                        <div className='post--info--like'>
-                                            <span>추천 {post.likes}</span>
-                                        </div>
+                                        {resizeTitle(post.title, 30)}
                                     </div>
                                     { post.user.userId === userId ? 
                                     <div className='post--info-btn-wrapper'>

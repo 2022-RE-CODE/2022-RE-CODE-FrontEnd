@@ -18,7 +18,7 @@ const FooterComponent: React.FC = () => {
                         <div className="footer--info-title">RE:CODE</div>
                         <div className="footer--info--maker">프론트: 김영민, 백엔드: 최원용, 김영민</div>
                         <div className="footer--info-email">min050410@gmail.com</div>
-                        <div className="footer--info-copyright">Copyright 2022. min050410, nyoung. All rights reserved.</div>
+                        <div className="footer--info-copyright">Copyright 2022. min050410, nyong. All rights reserved.</div>
                     </div>
                 </div>
         </div>
