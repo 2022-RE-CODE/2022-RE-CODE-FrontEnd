@@ -22,8 +22,9 @@ const HeaderComponent: React.FC<HeaderComponentProps> = ({
     const [search, setSearch] = useState("");
     const [searchEvent, setSearchEvent] = useState(0);
     const [onUserHover, setOnUserHover] = useState(0);
+    const [onCategoryHover, setOnCategoryHover] = useState(0);
     const logoEl = useMemo(() => {
-        return <img className="Header--logo-img" src='/logo-recode.png' alt="logo"/>;
+        return <img className="Header--logo-img" src='/logo-recode.png' alt="logo" />;
     }, []);
 
 
@@ -49,7 +50,7 @@ const HeaderComponent: React.FC<HeaderComponentProps> = ({
 
     const handleOnKeyPress = (e: React.KeyboardEvent<HTMLInputElement>) => {
         if (e.key === 'Enter') {
-          handleOnClick();
+            handleOnClick();
         }
     };
 
@@ -64,17 +65,17 @@ const HeaderComponent: React.FC<HeaderComponentProps> = ({
                 <div className="Header--logo-and-search">
                     <div className="Header--logo">
                         <Link to="/" className="Header--home-btn">
-                            { logoEl }
+                            {logoEl}
                         </Link>
                     </div>
 
-                    <div className={searchEvent?"Header--search-container-gray":"Header--search-container"}>
+                    <div className={searchEvent ? "Header--search-container-gray" : "Header--search-container"}>
                         <div className="Header--search-icon"><BiSearch /></div>
                         <input
-                            className={searchEvent?"Header--search-input-gray":"Header--search-input"}
+                            className={searchEvent ? "Header--search-input-gray" : "Header--search-input"}
                             placeholder='관심있는 스택을 검색해보세요!'
-                            onMouseOver={()=>{setSearchEvent(1)}}
-                            onMouseOut={()=>{setSearchEvent(0)}}
+                            onMouseOver={() => { setSearchEvent(1) }}
+                            onMouseOut={() => { setSearchEvent(0) }}
                             onChange={searchHandler}
                             value={search}
                             onKeyDown={handleOnKeyPress}></input>
@@ -82,13 +83,13 @@ const HeaderComponent: React.FC<HeaderComponentProps> = ({
                 </div>
                 <div className="Header--auth-box">
                     {isAuthenticated &&
-                        <div 
-                            className="Header--user-info" 
-                            onMouseOver={()=>{setOnUserHover(1)}}
+                        <div
+                            className="Header--user-info"
+                            onMouseOver={() => { setOnUserHover(1) }}
                         >
                             <img src={user?.img || '/default.png'} alt="userInfo"></img>
                             <div className="Header--user-info--name">{user?.nickname}님</div>
-                            {onUserHover? 
+                            {onUserHover ?
                                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" className="w-5 h-5">
                                     <path fillRule="evenodd" d="M14.77 12.79a.75.75 0 01-1.06-.02L10 8.832 6.29 12.77a.75.75 0 11-1.08-1.04l4.25-4.5a.75.75 0 011.08 0l4.25 4.5a.75.75 0 01-.02 1.06z" clipRule="evenodd" />
                                 </svg>
@@ -96,16 +97,16 @@ const HeaderComponent: React.FC<HeaderComponentProps> = ({
                                     <path fillRule="evenodd" d="M5.23 7.21a.75.75 0 011.06.02L10 11.168l3.71-3.938a.75.75 0 111.08 1.04l-4.25 4.5a.75.75 0 01-1.08 0l-4.25-4.5a.75.75 0 01.02-1.06z" clipRule="evenodd" />
                                 </svg>
                             }
-                            {onUserHover? <div className="Header--user-info--menu" 
-                                            onMouseOver={()=>{setOnUserHover(1)}} 
-                                            onMouseOut={()=>{setOnUserHover(0)}}>
-                                <div 
+                            {onUserHover ? <div className="Header--user-info--menu"
+                                onMouseOver={() => { setOnUserHover(1) }}
+                                onMouseOut={() => { setOnUserHover(0) }}>
+                                <div
                                     className="Header--user-info--menu--myinfo"
                                     onClick={() => toUserInfo(user?.userId)}>
-                                        내 정보 보기
-                                    </div>
+                                    내 정보 보기
+                                </div>
                             </div> : null}
-                        </div>   
+                        </div>
                     }
                     {!isAuthenticated ?
                         <Link to="/login" className="Header--login-btn">
@@ -126,15 +127,45 @@ const HeaderComponent: React.FC<HeaderComponentProps> = ({
                 </div>
             </div>
             <div className="Header--bottom">
-                <div className="Header--category">
+                <div className="Header--category" onMouseOver={() => { setOnCategoryHover(1) }}>
                     <BiMenu />
                     <div className="Header--category--text">카테고리</div>
                 </div>
+                {onCategoryHover ?
+                    <div className="Header--category--menu"
+                        onMouseOver={() => { setOnCategoryHover(1) }}
+                        onMouseOut={() => { setOnCategoryHover(0) }}>
+                        <div
+                            className="Header--category--menu-item"
+                            onClick={() => navigate('/post?category=리액트')}>
+                            리액트 {">"}
+                        </div>
+                        <div
+                            className="Header--category--menu-item"
+                            onClick={() => navigate('/post?category=스프링')}>
+                            스프링 {">"}
+                        </div>
+                        <div
+                            className="Header--category--menu-item"
+                            onClick={() => navigate('/post?category=자바')}>
+                            자바 {">"}
+                        </div>
+                        <div
+                            className="Header--category--menu-item"
+                            onClick={() => navigate('/post?category=타입스크립트')}>
+                            타입스크립트 {">"}
+                        </div>
+                        <div
+                            className="Header--category--menu-item"
+                            onClick={() => navigate('/post?category=스프링')}>
+                            넥스트 {">"}
+                        </div>
+                    </div> : null}
                 <div className="Header--menu">
-                    <div className="Header--menu-1" onClick = {toCommunity}>게시판</div>
-                    <div className="Header--menu-2" onClick = {toPortfolio}>포트폴리오</div>
+                    <div className="Header--menu-1" onClick={toCommunity}>게시판</div>
+                    <div className="Header--menu-2" onClick={toPortfolio}>포트폴리오</div>
                     <a className="Header--menu-3" rel="noreferrer" href={GITHUB_URL} target="_blank">깃허브</a>
-                    <div className="Header--menu-4" onClick = {toSetting}>설정</div>
+                    <div className="Header--menu-4" onClick={toSetting}>설정</div>
                 </div>
             </div>
         </div>

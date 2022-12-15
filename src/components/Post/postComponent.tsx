@@ -25,16 +25,23 @@ const PostComponent: React.FC = () => {
             try {
                 const page = searchParams.get('page');
                 const title = searchParams.get('title');
+                const category = searchParams.get('category');
                 const resizeTitle = (title: string, len: number) => {
                     if (title.length < len) return title;
                     else return title.slice(0,len) + '...';
                 }
                 let response;
-                if (title === null) {
-                    response = await instance.get(`post/find/all?page=${page ?? 0}`);
-                } else {
+                if (title !== null) {
                     response = await instance.get(`post/find/title?title=${title}`);
+                } 
+                else if (category !== null) {
+                    response = {
+                        data: await instance.get(`/category?categoryName=${category}`)
+                    }
                 }
+                else {
+                    response = await instance.get(`post/find/all?page=${page ?? 0}`);
+                } 
                 const postList = response.data.data.reverse().map((post: PostType) => {
                     
                     const deletePost = async (postId: number) => {

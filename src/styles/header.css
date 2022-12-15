@@ -204,6 +204,7 @@ body {width:100%; height:100%; margin:0; padding:0; overflow-y:scroll; position:
     gap: 2rem;
     margin-top: .4rem;
     margin-left: 1.2rem;
+    position: relative;
 }
 
 .Header--menu {
@@ -280,6 +281,37 @@ body {width:100%; height:100%; margin:0; padding:0; overflow-y:scroll; position:
     text-decoration: underline;
     background-color: #f8f8f8;
 }
+
+
+.Header--category--menu {
+    z-index: 2;
+    position: absolute;
+    top: 100%;
+    height: 10rem;
+    width: 10rem;
+    background-color: white;
+    border-radius: .2rem;
+    border: 1px solid #e3e3e3;
+}
+
+.Header--category--menu-item {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: .8rem;
+    border-radius: 5px;
+    padding: .4rem;
+    cursor: pointer;
+    transition: background-color ease-in-out .4s;
+}
+
+.Header--category--menu-item:hover {
+    color: #ed234b;
+    text-decoration: underline;
+    background-color: #f1f1ef;
+}
+
+
 
 
 

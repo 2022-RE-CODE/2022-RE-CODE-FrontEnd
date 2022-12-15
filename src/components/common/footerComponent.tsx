@@ -2,8 +2,7 @@ import React from 'react'
 import '../../styles/footer.css';
 import { BSSM_WEB_URL, GITHUB_URL } from '../../constants/constants';
 
-const FooterComponent: React.FC = () => {
-
+const FooterComponent: React.FC = () => {   
     return (
         <div className="Footer">
                 <div className="footer--nav-container">
